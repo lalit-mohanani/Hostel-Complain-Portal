@@ -7,6 +7,10 @@
 * The adminitration will also be able to act fast and track the details of each and every complaint.
 * If the current officer is not able to channel out the complaint, then it can be forwarded to a higher ranked officer.
 
+## Deployed Website
+
+[Hostel Management Portal](http://coderelay-terror404.infinityfreeapp.com/CodeRelay_22/ "Named link title")
+
 ## Tech stacks used in this project
 
 * HTML
