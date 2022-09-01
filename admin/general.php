@@ -4,6 +4,11 @@
   require '../core/config.php';
   require '../core/admin-key.php';
 
+   $username=$_SESSION['username'];
+   $qu=mysql_query("SELECT * FROM admin WHERE username='$username'"); 
+   $ar=mysql_fetch_array($qu); 
+   $aid=$ar['id'];
+
   date_default_timezone_set('Asia/Kolkata');
   $update = date('M, l, h:i a');
       if(isset($_POST['update']))
@@ -64,7 +69,7 @@
           <div class = "col-lg-12">
             <form class="" action="" method="post" autocomplete="off">
                   <?php
-                  $query1=mysql_query("SELECT * FROM admin WHERE id='1'");
+                  $query1=mysql_query("SELECT * FROM admin WHERE id='$aid'");
             			while( $arry1=mysql_fetch_array($query1)) {
                   ?>
               <table>
