@@ -17,6 +17,7 @@
 * [Bootstrap v3.3.7](http://getbootstrap.com "Named link title") 
 * [XAMPP v5.6.3](https://downloadsapachefriends.global.ssl.fastly.net/5.6.3/xampp-win32-5.6.3-0-VC11-installer.exe "Named link title")  
 * PHP
+* JavaScript
 * MySQL
 
 ## How to Replicate the project ?
