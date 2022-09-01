@@ -7,12 +7,17 @@
 * The adminitration will also be able to act fast and track the details of each and every complaint.
 * If the current officer is not able to channel out the complaint, then it can be forwarded to a higher ranked officer.
 
+## Deployed Website
+
+[Hostel Management Portal](http://coderelay-terror404.infinityfreeapp.com/CodeRelay_22/ "Named link title")
+
 ## Tech stacks used in this project
 
 * HTML
 * [Bootstrap v3.3.7](http://getbootstrap.com "Named link title") 
 * [XAMPP v5.6.3](https://downloadsapachefriends.global.ssl.fastly.net/5.6.3/xampp-win32-5.6.3-0-VC11-installer.exe "Named link title")  
 * PHP
+* JavaScript
 * MySQL
 
 ## How to Replicate the project ?
