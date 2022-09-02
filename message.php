@@ -78,7 +78,7 @@
             <div class="container">
               <div class="panel panel-default">
                   <div class="panel-body">
-                      <h2>Your Refference no : &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $ref;
+                      <h2>Your Reference no : &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $ref;
                       echo"<p><span class='error'>".$error."</p></span>";
                       echo "<p><span class='message'>".$message."</p></span>";
                       ?></h2>

@@ -9,7 +9,7 @@
 
 ## Deployed Website
 
-[Hostel Management Portal](http://coderelay-terror404.infinityfreeapp.com/CodeRelay_22/ "Named link title")
+[Hostel Management Portal](http://hmp-iitbbs.epizy.com/CodeRelay_22/ "Named link title")
 
 ## Tech stacks used in this project
 
