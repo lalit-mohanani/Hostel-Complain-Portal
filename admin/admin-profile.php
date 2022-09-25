@@ -68,7 +68,7 @@
             </div> -->
 
             <div class="track red">
-                Active Complaints <br> <br><p><?php echo $count_cmp;?></p>
+                Active Complaint <br> <br><p><?php echo $count_cmp;?></p>
             </div>
           <?php 
           if($aid!=3){
