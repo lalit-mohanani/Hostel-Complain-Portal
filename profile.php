@@ -9,77 +9,83 @@
  ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hostel Management Portal</title>
-    <link rel="shortcut icon" href="files/img/hm12.jpg">
-    <link rel="stylesheet" href="files/css/bootstrap.css">
-    <link rel="stylesheet" href="files/css/custom.css">
-  </head>
-  <body>
 
-      <div class="coverusr" style="height: 300px; ;">
-        <nav class="nav_u" >
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hostel Management Portal</title>
+  <link rel="shortcut icon" href="files/img/hm12.jpg">
+  <link rel="stylesheet" href="files/css/bootstrap.css">
+  <link rel="stylesheet" href="files/css/custom.css">
+</head>
 
-          <ul>
-            <li style="position:absolute;left:20px;"><a style="font-size:19px">Hostel Management Portal</a></li>
-          <li><a href="profile.php">Home</a></li>
-            <li><a href="message.php">Add Complaints</a></li>
-            <li><a href="status.php">Status</a></li>
-          <li><a href="logout.php" onClick="javascript:return confirm ('Do you really want to Logout ?');">Logout</a></li>
-            
-          </ul>
-          
+<body>
 
-          
-        
-        </nav>
+  <div class="coverusr" style="height: 300px; ;">
+    <nav class="nav_u">
 
-        <p class="text-right pdd" style="padding-right:8px">
-           <?php echo date("d M , l "); ?>
-        </p>
-      </div>
+      <ul>
+        <li style="position:absolute;left:20px;"><a style="font-size:19px">Hostel Management Portal</a></li>
+        <li><a href="profile.php">Home</a></li>
+        <li><a href="message.php">Add Complaints</a></li>
+        <li><a href="status.php">Status</a></li>
+        <li><a href="logout.php" onClick="javascript:return confirm ('Do you really want to Logout ?');">Logout</a></li>
+
+      </ul>
+
+
+
+
+    </nav>
+
+    <p class="text-right pdd" style="padding-right:8px">
+      <?php echo date("d M , l "); ?>
+    </p>
+  </div>
 
   <div class="animated fadeIn">
 
-      
 
-          <div class="content" >
-            <div class="container" style="margin-top: 30px;padding-top: 10px;">
-            
-                  <div class="col-lg-12" >
 
-                      <h2 class="text-center">How to complain?</h2>
-                      <br><br><br>
+    <div class="content">
+      <div class="container text-center" style="margin-top: 30px;padding-top: 10px;">
 
-                      <div class="col-md-4" style="border: 0px solid  #4db6ac; ">
-                        <div class="quotes blg text-center" style="border: 0px solid  #4db6ac;">
-                          <h3>First</h3>
-                            <p>You can complain directly with us you have been dealing with.  Complaints are often sorted out immediately this way.</p>
-                        </div>
-                      </div>
 
-                      <div class="col-md-4">
-                        <div class="quotes blg text-center"style="border: 0px solid  #4db6ac;">
-                          <h3>Second</h3>
-                            <p>If you don’t know who to contact, or you have a name but no telephone number, then call our enquiries team on 18XX XXX XXX</p>
-                        </div>
-                      </div>
 
-                      <div class="col-md-4">
-                        <div class="quotes blg text-center"style="border: 0px solid  #4db6ac;">
-                          <h3>Third</h3>
-                            <p>The Best way to complain you can use our online complaints form.</p>
-                        </div>
-                      </div>
+        <h2 class="text-center" style="text-align: center;">How to complain?</h2>
+        <br><br><br>
+        <div class="row align-items-start">
+          <div class="col-sm-4" style="border: 0px solid  #4db6ac; ">
+            <div class="quotes blg text-center" style="border: 0px solid  #4db6ac;">
+              <h3>First</h3>
+              <p>You can complain directly with us you have been dealing with. Complaints are often sorted out
+                immediately this way.</p>
+            </div>
+          </div>
 
-                    <div class="col-lg-12" style="margin: 20px; text-align: center;">
-                        <p>Your complaint will be recorded and dealt with by the most appropriate team or person in your area.</p>
-                    </div>
+          <div class="col-sm-4">
+            <div class="quotes blg text-center" style="border: 0px solid  #4db6ac;">
+              <h3>Second</h3>
+              <p>If you don’t know who to contact, or you have a name but no telephone number, then call our enquiries
+                team on 18XX XXX XXX</p>
+            </div>
+          </div>
 
-              <!-- <div class="content">
+          <div class="col-sm-4">
+            <div class="quotes blg text-center" style="border: 0px solid  #4db6ac;">
+              <h3>Third</h3>
+              <p>The Best way to complain you can use our online complaints form.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-12" style="margin: 20px; text-align: center;">
+          <p>Your complaint will be recorded and dealt with by the most appropriate team or person in your area.</p>
+        </div>
+
+        <!-- <div class="content">
                 <div class="col-lg-12">
                   <div class="posts">
                     <?php
@@ -97,26 +103,27 @@
               </div> -->
 
 
-            </div>
 
 
-            <div class="col-lg-12"  >
-                  <div class="jumbotron india_cover"></div>
-            </div>
 
-          </div>
+        <div class="col-lg-12">
+          <div class="jumbotron india_cover"></div>
         </div>
+
       </div>
-      
-      <?php
+    </div>
+  </div>
+
+  <?php
       include 'footer2.php';
       ?>
-                
 
 
 
 
-  
+
+
   <?php include 'core/jsscript.php'; ?>
-  </body>
+</body>
+
 </html>
