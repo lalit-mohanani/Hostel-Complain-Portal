@@ -117,6 +117,9 @@ button.log{
 button.log:hover{
   background: #85e0d8;
 }
+button.logmessage:hover{
+  background: #85e0d8;
+}
 
 textarea{
   border: 0px;
