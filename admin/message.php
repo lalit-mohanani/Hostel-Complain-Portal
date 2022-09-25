@@ -1,59 +1,83 @@
 <?php
-  require '../core/session.php';
-  require '../core/config.php';
-  require '../core/admin-key.php';
+require '../core/session.php';
+require '../core/config.php';
+require '../core/admin-key.php';
 
- ?>
-<?php $filter=$_GET['fil']; $coi=$_GET['coi']; $at=$_GET['at'];?>
-<?php 
-   $username=$_SESSION['username'];
-   $query1=mysql_query("SELECT * FROM admin WHERE username='$username'"); 
-   $arry1=mysql_fetch_array($query1); 
-   $aid=$arry1['id'];
+?>
+<?php $filter = $_GET['fil'];
+$coi = $_GET['coi'];
+$at = $_GET['at']; ?>
+<?php
+$username = $_SESSION['username'];
+$query1 = mysql_query("SELECT * FROM admin WHERE username='$username'");
+$arry1 = mysql_fetch_array($query1);
+$aid = $arry1['id'];
 ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hostel Management Portal  </title>
-    <link rel="shortcut icon" href="../files/img/hm12.jpg">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../files/css/bootstrap.css"> -->
-    <link rel="stylesheet" href="../files/css/custom.css">
 
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hostel Management Portal </title>
+  <link rel="shortcut icon" href="../files/img/hm12.jpg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="../files/css/bootstrap.css"> -->
+  <link rel="stylesheet" href="../files/css/custom.css">
+
+</head>
+
+<body>
 
   <?php require 'nav.php'; ?>
   <div class="animated fadeIn">
 
 
-  <div class="cover main">
-    <h1>Complaints</h1>
-  </div>
+    <div class="cover main">
+      <h1>Complaints</h1>
+    </div>
 
     <div class="div">
-        <div class="col-lg-12 ">
-          <?php
-            if(empty($filter) && empty($coi) && empty($at)){$result = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");}
-            else if(!empty($filter)){$result = mysql_query("SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");}  
-            else if(!empty($coi)){$result = mysql_query("SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");}
-            else{$result = mysql_query("SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");}
-            $num_rows = mysql_num_rows($result);
-          ?>
-              <div class='admin-data'>
-                Total Complaints
-                <span class='button view' href=''><?php echo "$num_rows";?></a>
-              </div>
-              <br><br><br><br>
-              <br><br>
-              <br>
+      <div class="col-lg-12 ">
+        <?php
+        if (empty($filter) && empty($coi) && empty($at)) {
+          $result = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+        } else if (!empty($filter)) {
+          $result = mysql_query("SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+        } else if (!empty($coi)) {
+          $result = mysql_query("SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+        } else {
+          $result = mysql_query("SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+        }
+        $num_rows = mysql_num_rows($result);
+        ?>
+        <div class='admin-data'>
+          Total Complaints
+          <span class='button view' href=''><?php echo "$num_rows"; ?></a>
+        </div>
+        <br><br><br><br>
+        <br><br>
+        <br>
 
-              <div class="container" style="margin-left:15px;">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            <li><a class="dropdown-item active" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+        </div>
+
+        <!-- <div class="container" style="margin-left:15px;">
                 <div class="dropdown">
-                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
+                 <button class="btn btn-default dropdown-toggle" type="button" data-bs-toggle="dropdown" style="background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
                  -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 -moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
@@ -91,68 +115,70 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
                   </li>
                  </ul>
                 </div>
-               </div>
+               </div> -->
 
-              <br>
-              <h2 class="text-center"><?php echo $message; ?></h2>
-              <br><br>
+        <br>
+        <h2 class="text-center"><?php echo $message; ?></h2>
+        <br><br>
 
-              
-              <div class="list-group">
-              <?php
 
-            while($data=mysql_fetch_array($result)) {
+        <div class="list-group">
+          <?php
+
+          while ($data = mysql_fetch_array($result)) {
             //echo"<div class='admin-data'>";
-            echo "<a href='#' class='list-group-item active''>";
+            echo "<a href='message-view.php?ref=$data[ref_no]' class='list-group-item active''>";
             echo "<h4 class='list-group-item-heading'>";
             echo $data['name'];
-            $empty=$data['name'];
+            $empty = $data['name'];
             echo "<p class='list-group-item-text'>details</p>";
             echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";
             //echo "</div>";
             echo "</h4>";
             echo "</a>";
             echo "<br><br><br><br><br>";
-
           }
-            if (empty($empty)==true) {
-              $message = "You Have no Message !!";
-            }else{
-              $message = "You Have got some Message";
-
-            }
+          if (empty($empty) == true) {
+            $message = "You Have no Message !!";
+          } else {
+            $message = "You Have got some Message";
+          }
 
 
           ?>
-              </div>
-
-
-
-          <br><br><br><br><br><br><br><br><br><br><br><br>
-
         </div>
+
+
+
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+
       </div>
+    </div>
 
   </div>
 
-      <footer2>
-      <br><br>&copy <?php echo date("Y"); ?> <?php echo $web_name; ?>
-      </footer2>
+  <footer2>
+    <br><br>&copy <?php echo date("Y"); ?> <?php echo $web_name; ?>
+  </footer2>
 
-    <script src="../files/js/jquery.js"></script>
-    <script src="../files/js/bootstrap.min.js"></script>
-    <script src="../files/js/script.js"></script>
+  <!-- <script src="../files/js/jquery.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <!-- <script src="../files/js/script.js"></script> -->
 
-    <script>$(document).ready(function() {
-     $(".dropdown-submenu a.test").on("click", function(e) {
-      $(this)
-       .next("ul")
-       .toggle();
-      e.stopPropagation();
-      e.preventDefault();
-     });
+  <script>
+    $(document).ready(function() {
+      $(".dropdown-submenu a.test").on("click", function(e) {
+        $(this)
+          .next("ul")
+          .toggle();
+        e.stopPropagation();
+        e.preventDefault();
+      });
     });
-    </script>               
+  </script>
 
-  </body>
+</body>
+
 </html>
