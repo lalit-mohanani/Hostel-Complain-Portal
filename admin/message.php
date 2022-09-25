@@ -96,17 +96,21 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
               <h2 class="text-center"><?php echo $message; ?></h2>
               <br><br>
 
-              <ol style="color:darkcyan;">
-          <?php
+              
+              <div class="list-group">
+              <?php
 
             while($data=mysql_fetch_array($result)) {
             //echo"<div class='admin-data'>";
-            echo "<li class='admin-data' style='width:500px;'>";
+            echo "<a href='#' class='list-group-item active''>";
+            echo "<h4 class='list-group-item-heading'>";
             echo $data['name'];
             $empty=$data['name'];
+            echo "<p class='list-group-item-text'>details</p>";
             echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";
             //echo "</div>";
-            echo "</li>";
+            echo "</h4>";
+            echo "</a>";
             echo "<br><br><br><br><br>";
 
           }
@@ -119,7 +123,8 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
 
 
           ?>
-              </ol>
+              </div>
+
 
 
           <br><br><br><br><br><br><br><br><br><br><br><br>
