@@ -60,18 +60,44 @@ $aid = $arry1['id'];
         <br><br>
         <br>
 
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown button
+        <div class="btn-group dropend" style="margin-left:15px">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
+                 -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
+box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">
+            Filter
           </button>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-            <li><a class="dropdown-item active" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li>
-              <hr class="dropdown-divider">
+            <li class="dropdown-submenu dropdown-submenu-dark">
+              <a class="test dropdown-item dropdown-toggle" tabindex="-1" href="#">Hostel Name</a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" tabindex="-1" href="?fil=MHR">MHR</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?fil=BHR">BHR</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?fil=RHR">RHR</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?fil=SHR">SHR</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?fil=GHR">GHR</a></li>
+              </ul>
             </li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li>
+            <li class="dropdown-submenu dropdown-submenu-dark">
+              <a class="test dropdown-item dropdown-toggle" tabindex="-1" href="#">Category of Issue</a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" tabindex="-1" href="?coi=Cleanliness">Cleanliness</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?coi=Electricity">Electricity</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?coi=Broken Items">Broken Items</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?coi=Internet Issue">Internet Issue</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?coi=Food">Food</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?coi=Other">Other</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropdown-submenu-dark">
+              <a class="test dropdown-item dropdown-toggle" tabindex="-1" href="#">Availability</a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" tabindex="-1" href="?at=Morning (6:00 - 11:59)">Morning (6:00 - 11:59)</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?at=Afternoon (12:00 - 16:00)">Afternoon (12:00 - 16:00)</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?at=Evening (16:00 - 20:00)">Evening (16:00 - 20:00)</a></li>
+                <li><a class="dropdown-item" tabindex="-1" href="?at=Night (20:00 - 00:00)">Night (20:00 - 00:00)</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
 
@@ -122,21 +148,27 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
         <br><br>
 
 
-        <div class="list-group">
+        <div class="list-group" style="margin-left:15px">
           <?php
 
           while ($data = mysql_fetch_array($result)) {
             //echo"<div class='admin-data'>";
-            echo "<a href='message-view.php?ref=$data[ref_no]' class='list-group-item active''>";
-            echo "<h4 class='list-group-item-heading'>";
+        
+            echo "<a href='message-view.php?ref=$data[ref_no]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
+            echo '<div class="d-flex w-100 justify-content-between">';
+            echo '<h5 class="mb-1">';
             echo $data['name'];
             $empty = $data['name'];
-            echo "<p class='list-group-item-text'>details</p>";
-            echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";
+            echo '</h5>';
+            echo '<small>3 days ago</small>';
+            echo '</div>';
+            echo '<p class="mb-1">Some placeholder content in a paragraph.</p>';
+            echo '<small>And some small print.</small>';
+            // echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";
             //echo "</div>";
-            echo "</h4>";
             echo "</a>";
-            echo "<br><br><br><br><br>";
+            echo "<br>";
+            // echo "<br><br><br><br><br>";
           }
           if (empty($empty) == true) {
             $message = "You Have no Message !!";
@@ -161,11 +193,9 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
     <br><br>&copy <?php echo date("Y"); ?> <?php echo $web_name; ?>
   </footer2>
 
-  <!-- <script src="../files/js/jquery.js"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> -->
+  <script src="../files/js/jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  <!-- <script src="../files/js/script.js"></script> -->
+  <script src="../files/js/script.js"></script>
 
   <script>
     $(document).ready(function() {
