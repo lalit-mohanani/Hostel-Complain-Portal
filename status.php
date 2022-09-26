@@ -59,7 +59,7 @@ require './core/user_key.php';
             while ($data = mysql_fetch_array($result)) {
               // echo"<div class='admin-data'>";
               echo '<li>';
-              echo "<a href='status-view.php?ref=$data[ref_no]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
+              echo "<a href='status-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
               echo '<div class="d-flex w-100 justify-content-between">';
               echo '<h5 class="mb-1">';
               echo $data['CategoryOfIssue'];
@@ -107,8 +107,14 @@ require './core/user_key.php';
   </footer2>
 
   <script src="files/js/jquery.js"></script>
-  <script src="files/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   <script src="files/js/script.js"></script>
+  <script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
+    })
+  </script>
 
 </body>
 
