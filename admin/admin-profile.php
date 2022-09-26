@@ -58,8 +58,10 @@
               $frd = mysql_query("SELECT * FROM `stats` where status=($aid+1)");
               $count_frd = mysql_num_rows($frd);
             ?>
-
-            <div class="track theme">
+         <div class="container text-center">
+         <div class="row align-items-start">
+          <div class="col-lg-12">
+            <div class="track theme col-lg-4" >
                 Total Users <br> <br><p><?php echo $count_users;?></p>
             </div>
 
@@ -67,15 +69,18 @@
                 Total Engineers <br> <p><?php echo $count_engi;?></p>
             </div> -->
 
-            <div class="track red">
+            <div class="track red col-lg-4" >
                 Active Complaint <br> <br><p><?php echo $count_cmp;?></p>
             </div>
           <?php 
           if($aid!=3){
-            echo "<div class='track blue'>Forwarded <br> <br><p> $count_frd</p></div>";
+            echo "<div class='track blue col-lg-4' >Forwarded <br> <br><p> $count_frd</p></div>";
           }
           ?>
           </div>
+          </div>
+        </div>
+      </div>
 
 
 

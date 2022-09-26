@@ -30,7 +30,7 @@
 
 
   <div class="cover main">
-    <h1>Complaints</h1>
+    <h1>Rejected</h1>
   </div>
 
     <div class="div">
@@ -46,11 +46,8 @@
                 Total Complaints
                 <span class='button view' href=''><?php echo "$num_rows";?></a>
               </div>
-              
               <br><br><br><br>
               <br><br>
-              <a class='button view' href='rejected.php'>Rejected</a>
-              <a class='button view' href='accepted.php'>Accepted</a>
               <br>
 
               <div class="container" style="margin-left:15px;">
@@ -132,9 +129,9 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
 
   </div>
 
-      <!-- <footer2 style="padding: 20px;">
+      <footer2>
       <br><br>&copy <?php echo date("Y"); ?> <?php echo $web_name; ?>
-      </footer2> -->
+      </footer2>
 
     <script src="../files/js/jquery.js"></script>
     <script src="../files/js/bootstrap.min.js"></script>

@@ -171,9 +171,9 @@
         </div>
       </div>
     </div>
-    <?php
-      include 'footer2.php';
-      ?>
+    <!-- <?php
+      // include 'footer2.php';
+      ?> -->
     <script src="files/js/jquery.js"></script>
     <script src="files/js/bootstrap.min.js"></script>
     <script src="files/js/script.js"></script>

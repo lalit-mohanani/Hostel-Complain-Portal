@@ -23,15 +23,17 @@
 <body>
 
   <div class="coverusr" style="height: 300px; ;">
+
     <nav class="nav_u">
 
+      
       <ul>
         <li style="position:absolute;left:20px;"><a style="font-size:19px">Hostel Management Portal</a></li>
         <li><a href="profile.php">Home</a></li>
         <li><a href="message.php">Add Complaints</a></li>
         <li><a href="status.php">Status</a></li>
         <li><a href="logout.php" onClick="javascript:return confirm ('Do you really want to Logout ?');">Logout</a></li>
-
+        
       </ul>
 
 
@@ -39,7 +41,8 @@
 
     </nav>
 
-    <p class="text-right pdd" style="padding-right:8px">
+    
+    <p class="text-right pdd" style="padding-left:85%">
       <?php echo date("d M , l "); ?>
     </p>
   </div>
@@ -80,10 +83,7 @@
           </div>
         </div>
 
-
-        <div class="col-lg-12" style="margin: 20px; text-align: center;">
-          <p>Your complaint will be recorded and dealt with by the most appropriate team or person in your area.</p>
-        </div>
+        <left -->
 
         <!-- <div class="content">
                 <div class="col-lg-12">
@@ -114,9 +114,9 @@
     </div>
   </div>
 
-  <?php
+  <!-- <?php
       include 'footer2.php';
-      ?>
+      ?> -->
 
 
 
