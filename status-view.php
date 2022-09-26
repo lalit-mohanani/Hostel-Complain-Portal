@@ -4,8 +4,8 @@
   require './core/user_key.php';
 
   $ref = $_GET['ref'];
-	$result = mysql_query("SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
-	$arry = mysql_fetch_array($result);
+	$result = mysqli_query($this->link,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
+	$arry = mysqli_fetch_array($result);
 	if (!$result) {
 			die("Error: Data not found..");
 		}
@@ -37,8 +37,8 @@
   <?php require 'nav-profile.php';?>
                   <div class="panel-body" style="text-align:center;">
                       <h2>Status : &nbsp;&nbsp;&nbsp;&nbsp;<?php 
-                      $query2=mysql_query("SELECT * FROM `stats` WHERE ref_no='$ref'");
-                      while( $arry2=mysql_fetch_array($query2) ) {
+                      $query2=mysqli_query($this->link,"SELECT * FROM `stats` WHERE ref_no='$ref'");
+                      while( $arry2=mysqli_fetch_array($query2) ) {
                         $status=$arry2['status'];
                       }
                       if($status==0){echo "Rejected";}
@@ -69,8 +69,8 @@
            <br><br><br><br>
            <table>
           <?php
-            $query1=mysql_query("SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
-            while( $arry=mysql_fetch_array($query1) ) {
+            $query1=mysqli_query($this->link,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
+            while( $arry=mysqli_fetch_array($query1) ) {
 
               $id = $arry['id'];
               $name = $arry['name'];

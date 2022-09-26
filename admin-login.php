@@ -8,13 +8,13 @@
   $message="";
 
   if(empty($_POST)===false){
-  $username = mysql_real_escape_string($_POST['username']);
-  $password = mysql_real_escape_string($_POST['password']);
+  $username = mysqli_real_escape_string($link,$_POST['username']);
+  $password = mysqli_real_escape_string($link,$_POST['password']);
     if(empty($username) || empty($password)){
           header('Location:admin-login.php');
     }else{
-        $query1=mysql_query("SELECT * FROM `admin` WHERE id AND username='$username' and password='$password'") or die(mysql_error());
-        if(mysql_num_rows($query1)>0){
+        $query1=mysqli_query($link,"SELECT * FROM `admin` WHERE id AND username='$username' and password='$password'") or die(mysqli_error($link));
+        if(mysqli_num_rows($query1)>0){
             $_SESSION['username'] = $_REQUEST['username'];
             header('Location:admin/admin-profile.php');
         }else{

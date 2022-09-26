@@ -4,16 +4,16 @@
   require '../core/admin-key.php';
 
   $ref = $_GET['ref'];
-	$result = mysql_query("SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
-	$arry = mysql_fetch_array($result);
+	$result = mysqli_query($this->link,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
+	$arry = mysqli_fetch_array($result);
 	if (!$result) {
 			die("Error: Data not found..");
 		}
  ?>
  <?php 
    $username=$_SESSION['username'];
-   $query1=mysql_query("SELECT * FROM admin WHERE username='$username'"); 
-   $arry1=mysql_fetch_array($query1); 
+   $query1=mysqli_query($this->link,"SELECT * FROM admin WHERE username='$username'"); 
+   $arry1=mysqli_fetch_array($query1); 
    $aid=$arry1['id'];
    ?>
 <!DOCTYPE html>
@@ -56,8 +56,8 @@
            <br><br><br><br>
           <table>
           <?php
-            $query1=mysql_query("SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
-            while( $arry=mysql_fetch_array($query1) ) {
+            $query1=mysqli_query($this->link,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
+            while( $arry=mysqli_fetch_array($query1) ) {
 
               $id = $arry['id'];
               

@@ -20,8 +20,8 @@
   <body >
   <?php 
    $username=$_SESSION['username'];
-   $query1=mysql_query("SELECT * FROM admin WHERE username='$username'"); 
-   $arry1=mysql_fetch_array($query1); 
+   $query1=mysqli_query($link,"SELECT * FROM admin WHERE username='$username'"); 
+   $arry1=mysqli_fetch_array($query1); 
    $usr=$arry1['name'];
    $aid=$arry1['id'];
    ?>
@@ -50,14 +50,14 @@
           <div class="analysis">
             <?php
               
-              $users = mysql_query("SELECT * FROM `circle` ");
-              $count_users = mysql_num_rows($users);
+              $users = mysqli_query($link,"SELECT * FROM `circle` ");
+              $count_users = mysqli_num_rows($users);
 
-              $cmp = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
-              $count_cmp = mysql_num_rows($cmp);
+              $cmp = mysqli_query($link,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
+              $count_cmp = mysqli_num_rows($cmp);
 
-              $frd = mysql_query("SELECT * FROM `stats` where status=($aid+1)");
-              $count_frd = mysql_num_rows($frd);
+              $frd = mysqli_query($link,"SELECT * FROM `stats` where status=($aid+1)");
+              $count_frd = mysqli_num_rows($frd);
             ?>
 
             <div class="track theme">

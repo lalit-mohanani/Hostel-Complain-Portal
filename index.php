@@ -12,13 +12,13 @@
   $message="";
 
   if(empty($_POST)===false){
-  $email = mysql_real_escape_string($_POST['email']);
-  $password = mysql_real_escape_string($_POST['password']);
+  $email = mysqli_real_escape_string($this->link,$_POST['email']);
+  $password = mysqli_real_escape_string($this->link,$_POST['password']);
     if(empty($email) || empty($password)){
           header('Location:index.php');
     }else{
-        $query1=mysql_query("SELECT * FROM `circle` WHERE email='$email' and password='$password'") or die(mysql_error());
-        if(mysql_num_rows($query1)>0){
+        $query1=mysqli_query($this->link,"SELECT * FROM `circle` WHERE email='$email' and password='$password'") or die(mysqli_error($this->link));
+        if(mysqli_num_rows($query1)>0){
             $_SESSION['email'] = $_REQUEST['email'];
             header('Location:profile.php');
         }else{

@@ -1,4 +1,4 @@
-
+i
 <?php
     require 'core/session.php';
     require 'core/config.php';
@@ -48,29 +48,29 @@
       <div class="padd">
         <div class="col-lg-12 text-center">
           <?php
-            $query1=mysql_query("SELECT * FROM `circle` WHERE email LIKE '%$session%'");
-            while( $arry=mysql_fetch_array($query1) ) {
+            $query1=mysqli_query($this->link,"SELECT * FROM `circle` WHERE email LIKE '%$session%'");
+            while( $arry=mysqli_fetch_array($query1) ) {
               $id=$arry['id'];
               $rollno=$arry['rollno'];
               $name=$arry['name'];
               $email = $arry['email'];
                  }
                    if(empty($_POST)===false){
-                     $phoneno =mysql_real_escape_string($_POST['phoneno']);
+                     $phoneno =mysqli_real_escape_string($this->link,$_POST['phoneno']);
       
-                     $complain = mysql_real_escape_string($_POST['complain']);
-                     $CategoryOfIssue=mysql_real_escape_string($_POST['CategoryOfIssue']);
-                     $nameOfHostel=mysql_real_escape_string($_POST['nameOfHostel']);
-                     $address=mysql_real_escape_string($_POST['address']);
-                     $availability=mysql_real_escape_string($_POST['availability']);
+                     $complain = mysqli_real_escape_string($this->link,$_POST['complain']);
+                     $CategoryOfIssue=mysqli_real_escape_string($this->link,$_POST['CategoryOfIssue']);
+                     $nameOfHostel=mysqli_real_escape_string($this->link,$_POST['nameOfHostel']);
+                     $address=mysqli_real_escape_string($this->link,$_POST['address']);
+                     $availability=mysqli_real_escape_string($this->link,$_POST['availability']);
                      if(empty($phoneno) || empty($complain) || empty($CategoryOfIssue || empty($address))){
 
                      }else
                      if (!preg_match("/^[0-9]*$/",$phoneno)) {
                        $error = "Invalid Phone Number";
                      }else{
-                       mysql_query("INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysql_error());
-                       mysql_query("INSERT INTO `stats` VALUES ('$ref',1,NOW())");
+                       mysqli_query($this->link,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysqli_error($this->link));
+                       mysqli_query($this->link,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
                        $message = "Your Complain has been Registerd";
                        }
                    }

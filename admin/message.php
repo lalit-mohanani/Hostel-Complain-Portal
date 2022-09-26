@@ -1,4 +1,4 @@
-<?php
+i<?php
 require '../core/session.php';
 require '../core/config.php';
 require '../core/admin-key.php';
@@ -9,8 +9,8 @@ $coi = $_GET['coi'];
 $at = $_GET['at']; ?>
 <?php
 $username = $_SESSION['username'];
-$query1 = mysql_query("SELECT * FROM admin WHERE username='$username'");
-$arry1 = mysql_fetch_array($query1);
+$query1 = mysqli_query($this->link,"SELECT * FROM admin WHERE username='$username'");
+$arry1 = mysqli_fetch_array($query1);
 $aid = $arry1['id'];
 ?>
 <!DOCTYPE html>
@@ -42,15 +42,15 @@ $aid = $arry1['id'];
       <div class="col-lg-12 ">
         <?php
         if (empty($filter) && empty($coi) && empty($at)) {
-          $result = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+          $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
         } else if (!empty($filter)) {
-          $result = mysql_query("SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+          $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
         } else if (!empty($coi)) {
-          $result = mysql_query("SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+          $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
         } else {
-          $result = mysql_query("SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+          $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
         }
-        $num_rows = mysql_num_rows($result);
+        $num_rows = mysqli_num_rows($result);
         ?>
         <div class='admin-data'>
           Total Complaints
@@ -152,7 +152,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
         <ol>
           <?php
 
-          while ($data = mysql_fetch_array($result)) {
+          while ($data = mysqli_fetch_array($result)) {
             //echo"<div class='admin-data'>";
 
             echo '<li>';

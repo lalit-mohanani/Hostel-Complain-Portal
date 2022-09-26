@@ -6,7 +6,7 @@ require '../core/admin-key.php';
 
 		$ref = $_GET['ref'];
 		
-		mysql_query("UPDATE `stats` SET `Status`=4 WHERE `ref_no` = $ref")or die(mysql_error());
+		mysqli_query($this->link,"UPDATE `stats` SET `Status`=4 WHERE `ref_no` = $ref")or die(mysqli_error($this->link));
 		// mysql_query("DELETE FROM `cmp_log` WHERE id='$id'")or die(mysql_error());
 		header("Location:message.php");
 

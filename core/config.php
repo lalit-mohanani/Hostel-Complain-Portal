@@ -9,13 +9,13 @@ class MySqlDriver {
 
    function __construct($database=""){
 	   if (!empty($database)){ $this->database = $database; }
-	   $this->link = mysql_connect($this->host,$this->username,$this->password);
-	   if ($this->link) { mysql_select_db($this->database,$this->link); }
+	   $this->link = mysqli_connect($this->host,$this->username,$this->password);
+	   if ($this->link) { mysqli_select_db($this->link,$this->database); }
 	   return $this->link;  // returns false if connection could not be made.
    }
    // this will be called automatically at the end of scope
    public function __destruct() {
-      mysql_close( $this->link );
+      mysqli_close( $this->link );
    }
 }
 $gLink=new MySqlDriver();

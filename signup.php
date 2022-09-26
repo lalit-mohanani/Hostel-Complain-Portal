@@ -4,17 +4,17 @@
 
 
   if(empty($_POST)===false){
-    $rollno = mysql_real_escape_string($_POST['rollno']);
-    $name = mysql_real_escape_string($_POST['name']);
-    $username = mysql_real_escape_string($_POST['username']);
-    $email =  mysql_real_escape_string($_POST['email']);
-    $password =  mysql_real_escape_string($_POST['password']);
+    $rollno = mysqli_real_escape_string($this->link,$_POST['rollno']);
+    $name = mysqli_real_escape_string($this->link,$_POST['name']);
+    $username = mysqli_real_escape_string($this->link,$_POST['username']);
+    $email =  mysqli_real_escape_string($this->link,$_POST['email']);
+    $password =  mysqli_real_escape_string($this->link,$_POST['password']);
     if(empty($name) || empty($username) || empty($email) ||empty($password) || empty($rollno)){
 
     }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL) === true) {
       $message = "It's not a valid email address";
     }else{
-      mysql_query("INSERT INTO `circle` VALUES ('0','$rollno','$name','$username','$email','$password',NOW())") or die(mysql_error());
+      mysqli_query($this->link,"INSERT INTO `circle` VALUES ('0','$rollno','$name','$username','$email','$password',NOW())") or die(mysqli_error($this->link));
       $message = "Your account has been Registerd";
       }
   }

@@ -36,8 +36,8 @@ require './core/user_key.php';
       <div class="col-lg-12">
         <?php
         $email = $_SESSION['email'];
-        $result = mysql_query("SELECT * FROM `cmp_log` WHERE email='$email'");
-        $num_rows = mysql_num_rows($result);
+        $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` WHERE email='$email'");
+        $num_rows = mysqli_num_rows($result);
 
         ?>
         <!-- <div class='admin-data'>
@@ -56,7 +56,7 @@ require './core/user_key.php';
           <ol>
           <?php
 
-          while ($data = mysql_fetch_array($result)) {
+          while ($data = mysqli_fetch_array($result)) {
             // echo"<div class='admin-data'>";
             echo '<li>';
             echo "<a href='status-view.php?ref=$data[ref_no]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";

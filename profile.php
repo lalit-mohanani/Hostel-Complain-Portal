@@ -90,8 +90,8 @@
                 <div class="col-lg-12">
                   <div class="posts">
                     <?php
-                      $db=mysql_query("SELECT * FROM `posts` ");
-                      while($data=mysql_fetch_array($db)) {
+                      $db=mysqli_query($this->link,"SELECT * FROM `posts` ");
+                      while($data=mysqli_fetch_array($db)) {
                       echo "<br> <br> <div class='quotes glow'> ";
                       echo "<h4 class='heading'> Heading : ".$data['subject']."</h4>";
                       echo "<p> Story : ".$data['story']."<br><br>";
