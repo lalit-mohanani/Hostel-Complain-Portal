@@ -54,45 +54,47 @@ require './core/user_key.php';
 
         <div class="list-group">
           <ol>
-          <?php
+            <?php
 
-          while ($data = mysql_fetch_array($result)) {
-            // echo"<div class='admin-data'>";
-            echo '<li>';
-            echo "<a href='status-view.php?ref=$data[ref_no]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
-            echo '<div class="d-flex w-100 justify-content-between">';
-            echo '<h5 class="mb-1">';
-            echo $data['CategoryOfIssue'];
-            $empty = $data['CategoryOfIssue'];
-            echo '</h5>';
-            echo '<small>3 days ago</small>';
-            echo '</div>';
-            echo '<p class="mb-1">Some placeholder content in a paragraph.</p>';
-            echo '<div class="d-flex justify-content-between">';
-            echo '<small>And some small print.</small>';
-            // echo '<small style="color:red">Public</small>';
-            echo '<medium style="color:green">Private</medium>';
-            echo '</div>';
-            // echo "<a class='button view' href='status-view.php?ref=$data[ref_no]'>View Status</a>";
-            // echo "</div>";
-            echo "</a>";
-            echo '</li>';
-            echo "<br>";
-            // echo "<br><br><br><br><br>";
-          }
-          if (empty($empty) == true) {
-            $message = "You Have no Message !!";
-          } else {
-            $message = "You Have got some Message";
-          }
+            while ($data = mysql_fetch_array($result)) {
+              // echo"<div class='admin-data'>";
+              echo '<li>';
+              echo "<a href='status-view.php?ref=$data[ref_no]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
+              echo '<div class="d-flex w-100 justify-content-between">';
+              echo '<h5 class="mb-1">';
+              echo $data['CategoryOfIssue'];
+              $empty = $data['CategoryOfIssue'];
+              echo '</h5>';
+              echo '<small>3 days ago</small>';
+              echo '</div>';
+              echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
+              echo '<div class="d-flex justify-content-between">';
+              echo "<small style='color:#37474f'>$data[nameOfHostel], $data[address] | Phone No. ";
+              echo $data['phone no'];
+              echo " | Availability: $data[availability]</small>";
+              // echo '<small style="color:red">Public</small>';
+              echo '<medium style="color:green">Private</medium>';
+              echo '</div>';
+              // echo "<a class='button view' href='status-view.php?ref=$data[ref_no]'>View Status</a>";
+              // echo "</div>";
+              echo "</a>";
+              echo '</li>';
+              echo "<br>";
+              // echo "<br><br><br><br><br>";
+            }
+            if (empty($empty) == true) {
+              $message = "You Have no Message !!";
+            } else {
+              $message = "You Have got some Message";
+            }
 
 
-          ?>
+            ?>
           </ol>
         </div>
 
 
-        
+
         <br><br><br><br><br><br><br><br><br><br><br><br>
 
       </div>
