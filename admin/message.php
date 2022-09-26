@@ -147,7 +147,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
         <h2 class="text-center"><?php echo $message; ?></h2>
         <br><br>
 
-
+        
         <div class="list-group" style="margin-left:15px">
         <ol>
           <?php
@@ -156,7 +156,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
             //echo"<div class='admin-data'>";
 
             echo '<li>';
-            echo "<a href='message-view.php?ref=$data[ref_no]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
+            echo "<a href='message-view.php?ref=$data[ref_no]' title='Header' data-bs-toggle='popover' data-bs-placement='bottom' data-bs-content='Content' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
             echo '<div class="d-flex w-100 justify-content-between">';
             echo '<h5 class="mb-1">';
             echo $data['name'];
@@ -167,7 +167,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
             echo '<p class="mb-1">Some placeholder content in a paragraph.</p>';
             echo '<div class="d-flex justify-content-between">';
             echo '<small>And some small print.</small>';
-            // echo '<small style="color:red">Public</small>';
+            // echo '<medium style="color:red">Public</medium>';
             echo '<medium style="color:green">Private</medium>';
             echo '</div>';
             // echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";
@@ -216,6 +216,12 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
       });
     });
   </script>
+  
+  <script>
+$(document).ready(function(){
+    $('[data-bs-toggle="popover"]').popover();   
+});
+</script>
 
 </body>
 

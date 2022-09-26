@@ -111,6 +111,9 @@
                echo "<tr> <td> <b> Complain </b> </td>";
                echo "     <td> ".$complain."</td> </tr>";
 
+               echo "<tr> <td> <b> Remarks by Warden </b> </td>";
+               echo "     <td> ".$remarks."</td> </tr>";
+
           ?>
           </table>
 
