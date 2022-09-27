@@ -10,7 +10,7 @@
 
 
 
-        <a href="profile.php">Home</a>
+        <a href="profile.php" style="padding-top:14.5px;">Home</a>
 
 
         <ul class="dropdown-menu">

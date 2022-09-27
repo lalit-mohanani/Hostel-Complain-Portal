@@ -39,6 +39,26 @@ $aid = $arry1['id'];
     </div>
 
     <div class="div">
+<<<<<<< HEAD
+        <div class="col-lg-12 ">
+          <?php
+            if(empty($filter) && empty($coi) && empty($at)){$result = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");}
+            else if(!empty($filter)){$result = mysql_query("SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");}  
+            else if(!empty($coi)){$result = mysql_query("SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");}
+            else{$result = mysql_query("SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");}
+            $num_rows = mysql_num_rows($result);
+          ?>
+              <div class='admin-data'>
+                Total Complaints
+                <span class='button view' href=''><?php echo "$num_rows";?></a>
+              </div>
+              
+              <br><br><br><br>
+              <br><br>
+              <a class='button view' href='rejected.php'>Rejected</a>
+              <a class='button view' href='accepted.php'>Accepted</a>
+              <br>
+=======
       <div class="col-lg-12 ">
         <?php
         if (empty($filter) && empty($coi) && empty($at)) {
@@ -59,6 +79,7 @@ $aid = $arry1['id'];
         <br><br><br><br>
         <br><br>
         <br>
+>>>>>>> 564b74e40bcf0cefb9affc4a7a8a26274bc6e4fc
 
         <div class="btn-group dropend" style="margin-left:15px">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
@@ -197,9 +218,15 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">Filter
 
   </div>
 
+<<<<<<< HEAD
+      <!-- <footer2 style="padding: 20px;">
+      <br><br>&copy <?php echo date("Y"); ?> <?php echo $web_name; ?>
+      </footer2> -->
+=======
   <footer2>
     <br><br>&copy <?php echo date("Y"); ?> <?php echo $web_name; ?>
   </footer2>
+>>>>>>> 564b74e40bcf0cefb9affc4a7a8a26274bc6e4fc
 
   <script src="../files/js/jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

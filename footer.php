@@ -1,6 +1,6 @@
 <footer>
-  <div class="foonav">
-      <a href="blog/blog.php">Email: admin@iitbbs.ac.in </a> &nbsp;&nbsp;|
+  <div class="foonav" >
+      <a href="blog/blog.php" style="padding-bottom:20px;">Email: admin@iitbbs.ac.in </a> &nbsp;&nbsp;|
       <a href="blog/documentation.php">Phone: 7205898887</a>
 
   </div>
