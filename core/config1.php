@@ -34,5 +34,7 @@ if(!$conn){
  $google_client->addScope('email');
  
  $google_client->addScope('profile');
+ $google_client->addScope('phone');
+
 
 ?>

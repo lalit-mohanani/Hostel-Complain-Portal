@@ -48,13 +48,13 @@
       <div class="padd">
         <div class="col-lg-12 text-center">
           <?php
-            $query1=mysqli_query($conn,"SELECT * FROM `circle` WHERE email LIKE '%$session%'");
-            while( $arry=mysqli_fetch_array($query1) ) {
-              $id=$arry['id'];
-              $rollno=$arry['rollno'];
-              $name=$arry['name'];
-              $email = $arry['email'];
-                 }
+              $query1 = mysqli_query($conn,"SELECT max(id) as id FROM `cmp_log` ");
+              while ($arry = mysqli_fetch_array($query1)) {
+                $id = $arry['id'];
+              }
+              $rollno=substr($_SESSION['email'],0,9);
+              $name=$_SESSION['name']." ".$_SESSION['user_last_name'];
+              $email = $_SESSION['email'];
                    if(empty($_REQUEST)===false){
                     
                      $phoneno =mysqli_real_escape_string($conn,$_POST['phoneno']);
@@ -66,10 +66,11 @@
                      $availability=mysqli_real_escape_string($conn,$_POST['availability']);
                      if(empty($phoneno) || empty($complain) || empty($CategoryOfIssue || empty($address))){
                       // $message = "Please fill all details!";
-                     }else
-                     if (!preg_match("/^[0-9]*$/",$phoneno)) {
-                       $error = "Invalid Phone Number";
-                     }else{
+                    }else
+                    if (!preg_match("/^[0-9]*$/",$phoneno)) {
+                      $error = "Invalid Phone Number";
+                    }else{
+                        $id++;
                        mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysqli_error($conn));
                        mysqli_query($conn,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
                        $message = "Your Complain has been Registerd";
@@ -143,7 +144,7 @@
                 </tr>
                 <tr>
                   <td class="text-left">Your Email ID</td>
-                  <td class="text-left"><div class="form-control" style="width:450px; text-align:left"><?php echo $email; ?></div></td>
+                  <td class="text-left"><div class="form-control" style="width:450px; text-align:left"><?php echo $_SESSION['email']; ?></div></td>
                 </tr>
                 <tr>
                   <td class="text-left">Roll Number</td>

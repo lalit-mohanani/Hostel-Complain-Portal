@@ -2,29 +2,9 @@
 
 
   require 'core/session.php';
-   require 'core/config1.php';
-  // require 'db_credentials.php';
+  require 'core/config1.php';
   require 'core/redirect.php';
-  // session_start();
-  // New Addition
- 
-  // $db = mysqli_connect('localhost', 'root', '');
-  // echo "gay bhai";
-  // Error message
 
-  // if(mysqli_connect_errno()) {
-  //   $msg = "Failed to Load: ";
-  //   $msg .= mysqli_connect_error();
-  //   $msg .= " : " . mysqli_connect_errno();
-  //   exit($msg);
-  // }
-
-  // end->Error message
-
-  // end->New Addition
-
-//  echo "$_SESSION[username]";
-// $_SESSION['username']=$_POST['email'];
 $login_button = '';
 
 
@@ -51,7 +31,7 @@ if(isset($_GET["code"]))
  
   if(!empty($data['given_name']))
   {
-   $_SESSION['user_first_name'] = $data['given_name'];
+   $_SESSION['name'] = $data['given_name'];
   }
 
   if(!empty($data['family_name']))
@@ -61,17 +41,12 @@ if(isset($_GET["code"]))
 
   if(!empty($data['email']))
   {
-   $_SESSION['user_email_address'] = $data['email'];
-  }
-
-  if(!empty($data['gender']))
-  {
-   $_SESSION['user_gender'] = $data['gender'];
+   $_SESSION['email'] = $data['email'];
   }
 
   if(!empty($data['picture']))
   {
-   $_SESSION['user_image'] = $data['picture'];
+   $_SESSION['image'] = $data['picture'];
   }
  }
 }
@@ -87,13 +62,13 @@ if(!isset($_SESSION['access_token']))
 
 
 <?php
-  // if(isset($_REQUEST['email'])===true){
-  //   // echo "kaam baki";
-  //     header("location:profile.php");
+  if(isset($_SESSION['email'])===true){
+    // echo "kaam baki";
+      header("location:profile.php");
+  }
+  // else {
+  //   echo "gay bhai";
   // }
-  // // else {
-  // //   echo "gay bhai";
-  // // }
 
   // $message="";
 
@@ -168,8 +143,8 @@ if(!isset($_SESSION['access_token']))
                   // echo '<img src="'.$_SESSION["user_image"].'" class="img-responsive img-circle img-thumbnail" />';
 
 
-                  echo '<h3><b>Name :</b> '.$_SESSION['user_first_name'].' '.$_SESSION['user_last_name'].'</h3>';
-                  echo '<h3><b>Email :</b> '.$_SESSION['user_email_address'].'</h3>';
+                  echo '<h3><b>Name :</b> '.$_SESSION['name'].' '.$_SESSION['user_last_name'].'</h3>';
+                  echo '<h3><b>Email :</b> '.$_SESSION['email'].'</h3>';
                   echo '<h3><a href="logout.php">Logout</h3></div>';
                  }
                  else
@@ -187,7 +162,6 @@ if(!isset($_SESSION['access_token']))
       </div>
 
       <div class="links">
-        <!-- <a href="dummy-login.php">Engineer</a> -->
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="admin-login.php">Admin </a>
       </div>
 

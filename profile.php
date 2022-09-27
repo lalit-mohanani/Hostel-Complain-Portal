@@ -1,11 +1,11 @@
 <?php
 
   require 'core/session.php';
-  require 'core/config.php';
-//  include 'core/user_key.php';
+  require 'core/config1.php';
+
 
  require 'core/redirect.php';
-
+//  echo $_SESSION['name']," ", $_SESSION['user_last_name'];
  ?>
 <!DOCTYPE html>
 <html>
@@ -90,14 +90,14 @@
                 <div class="col-lg-12">
                   <div class="posts">
                     <?php
-                      $db=mysqli_query($this->link,"SELECT * FROM `posts` ");
-                      while($data=mysqli_fetch_array($db)) {
-                      echo "<br> <br> <div class='quotes glow'> ";
-                      echo "<h4 class='heading'> Heading : ".$data['subject']."</h4>";
-                      echo "<p> Story : ".$data['story']."<br><br>";
-                      echo " Posted By : ".$data['session_name']."<br>";
-                      echo "</p></div><br><br>";
-                     }
+                    //   $db=mysqli_query($this->link,"SELECT * FROM `posts` ");
+                    //   while($data=mysqli_fetch_array($db)) {
+                    //   echo "<br> <br> <div class='quotes glow'> ";
+                    //   echo "<h4 class='heading'> Heading : ".$data['subject']."</h4>";
+                    //   echo "<p> Story : ".$data['story']."<br><br>";
+                    //   echo " Posted By : ".$data['session_name']."<br>";
+                    //   echo "</p></div><br><br>";
+                    //  }
                     ?>
                   </div>
                 </div>
