@@ -103,7 +103,7 @@ $message = "";
                   <td class="text-left"><div class="dis_b"><?php echo $ref;  ?></div></td>
                 </tr> -->
               <tr>
-                <td class="text-left">Name of Hostel</td>
+                <td class="text-left shadow-none">Name of Hostel</td>
                 <td>
                   <!-- <input type = "text" name="nameOfHostel" style="text-align:center;"> -->
                   <!-- <input list="namesOfHostel" name="nameOfHostel" style="text-align:center;"/> -->
