@@ -2,22 +2,46 @@
 
 
   require 'core/session.php';
-  require 'core/config.php';
+   require 'core/config1.php';
+  // require 'db_credentials.php';
   require 'core/redirect.php';
+  // session_start();
+  // New Addition
+ 
+  // $db = mysqli_connect('localhost', 'root', '');
+  // echo "gay bhai";
+  // Error message
 
-  if(isset($_SESSION['username'])===true){
+  // if(mysqli_connect_errno()) {
+  //   $msg = "Failed to Load: ";
+  //   $msg .= mysqli_connect_error();
+  //   $msg .= " : " . mysqli_connect_errno();
+  //   exit($msg);
+  // }
+
+  // end->Error message
+
+  // end->New Addition
+
+//  echo "$_SESSION[username]";
+// $_SESSION['username']=$_POST['email'];
+  if(isset($_REQUEST['email'])===true){
+    // echo "kaam baki";
       header("location:profile.php");
   }
+  // else {
+  //   echo "gay bhai";
+  // }
 
   $message="";
 
   if(empty($_POST)===false){
-  $email = mysqli_real_escape_string($this->link,$_POST['email']);
-  $password = mysqli_real_escape_string($this->link,$_POST['password']);
+  $email = mysqli_real_escape_string($conn,$_POST['email']);
+  $password = mysqli_real_escape_string($conn,$_POST['password']);
     if(empty($email) || empty($password)){
           header('Location:index.php');
     }else{
-        $query1=mysqli_query($this->link,"SELECT * FROM `circle` WHERE email='$email' and password='$password'") or die(mysqli_error($this->link));
+        $query1=mysqli_query($conn,"SELECT * FROM `circle` WHERE email='$email' and password='$password'") or die(mysqli_error($conn));
         if(mysqli_num_rows($query1)>0){
             $_SESSION['email'] = $_REQUEST['email'];
             header('Location:profile.php');

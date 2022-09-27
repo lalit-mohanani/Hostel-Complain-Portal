@@ -1,11 +1,11 @@
 <?php
 
   require '../core/session.php';
-  require '../core/config.php';
+  require '../core/config1.php';
   require '../core/admin-key.php';
 
    $username=$_SESSION['username'];
-   $qu=mysqli_query($this->link,"SELECT * FROM admin WHERE username='$username'"); 
+   $qu=mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'"); 
    $ar=mysqli_fetch_array($qu); 
    $aid=$ar['id'];
 
@@ -13,9 +13,9 @@
   $update = date('M, l, h:i a');
       if(isset($_POST['update']))
       {
-        $name = mysqli_real_escape_string($this->link,$_POST['name']);
-        $username = mysqli_real_escape_string($this->link,$_POST['username']);
-        $password=mysqli_real_escape_string($this->link,$_POST['password']);
+        $name = mysqli_real_escape_string($conn,$_POST['name']);
+        $username = mysqli_real_escape_string($conn,$_POST['username']);
+        $password=mysqli_real_escape_string($conn,$_POST['password']);
         if(empty($name) || empty($username) || empty($password)){
           $message="
           <div class='alert errr' id='msg'>
@@ -28,7 +28,7 @@
            <p>Choose Name, Username And Password !!</p>
           </div>";
         }else{
-            mysqli_query($this->link,"UPDATE admin SET name='$name',username='$username',password='$password',up_time='$update' WHERE id='1'")or die(mysqli_error($this->link));
+            mysqli_query($conn,"UPDATE admin SET name='$name',username='$username',password='$password',up_time='$update' WHERE id='1'")or die(mysqli_error($conn));
             $message = "
             <div class='alert succ' id='msg'>
               <div class ='text-right' id='close'>
@@ -70,7 +70,7 @@
           <div class = "col-lg-12">
             <form class="" action="" method="post" autocomplete="off">
                   <?php
-                  $query1=mysqli_query($this->link,"SELECT * FROM admin WHERE id='$aid'");
+                  $query1=mysqli_query($conn,"SELECT * FROM admin WHERE id='$aid'");
             			while( $arry1=mysqli_fetch_array($query1)) {
                   ?>
               <table>

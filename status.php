@@ -1,7 +1,8 @@
 <?php
 require './core/session.php';
-require './core/config.php';
-require './core/user_key.php';
+require './core/config1.php';
+require 'core/redirect.php';
+// require './core/user_key.php';
 
 ?>
 
@@ -36,7 +37,7 @@ require './core/user_key.php';
       <div class="col-lg-12">
         <?php
         $email = $_SESSION['email'];
-        $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` WHERE email='$email'");
+        $result = mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE email='$email'");
         $num_rows = mysqli_num_rows($result);
 
         ?>

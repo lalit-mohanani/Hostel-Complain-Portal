@@ -1,6 +1,6 @@
 <?php
   require '../core/session.php';
-  require '../core/config.php';
+  require '../core/config1.php';
   require '../core/admin-key.php';
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
   <body >
   <?php 
    $username=$_SESSION['username'];
-   $query1=mysqli_query($link,"SELECT * FROM admin WHERE username='$username'"); 
+   $query1=mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'"); 
    $arry1=mysqli_fetch_array($query1); 
    $usr=$arry1['name'];
    $aid=$arry1['id'];
@@ -50,13 +50,13 @@
           <div class="analysis">
             <?php
               
-              $users = mysqli_query($link,"SELECT * FROM `circle` ");
+              $users = mysqli_query($conn,"SELECT * FROM `circle` ");
               $count_users = mysqli_num_rows($users);
 
-              $cmp = mysqli_query($link,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
+              $cmp = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
               $count_cmp = mysqli_num_rows($cmp);
 
-              $frd = mysqli_query($link,"SELECT * FROM `stats` where status=($aid+1)");
+              $frd = mysqli_query($conn,"SELECT * FROM `stats` where status=($aid+1)");
               $count_frd = mysqli_num_rows($frd);
             ?>
 

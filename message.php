@@ -1,8 +1,8 @@
-i
 <?php
     require 'core/session.php';
-    require 'core/config.php';
-    include 'core/user_key.php';
+    require 'core/config1.php';
+    require 'core/redirect.php';
+    // include 'core/user_key.php';
     //for session
     $session=$_SESSION['email'];
     $ref = rand (3858558,100000);$error = "";$message = "";
@@ -48,29 +48,30 @@ i
       <div class="padd">
         <div class="col-lg-12 text-center">
           <?php
-            $query1=mysqli_query($this->link,"SELECT * FROM `circle` WHERE email LIKE '%$session%'");
+            $query1=mysqli_query($conn,"SELECT * FROM `circle` WHERE email LIKE '%$session%'");
             while( $arry=mysqli_fetch_array($query1) ) {
               $id=$arry['id'];
               $rollno=$arry['rollno'];
               $name=$arry['name'];
               $email = $arry['email'];
                  }
-                   if(empty($_POST)===false){
-                     $phoneno =mysqli_real_escape_string($this->link,$_POST['phoneno']);
+                   if(empty($_REQUEST)===false){
+                    
+                     $phoneno =mysqli_real_escape_string($conn,$_POST['phoneno']);
       
-                     $complain = mysqli_real_escape_string($this->link,$_POST['complain']);
-                     $CategoryOfIssue=mysqli_real_escape_string($this->link,$_POST['CategoryOfIssue']);
-                     $nameOfHostel=mysqli_real_escape_string($this->link,$_POST['nameOfHostel']);
-                     $address=mysqli_real_escape_string($this->link,$_POST['address']);
-                     $availability=mysqli_real_escape_string($this->link,$_POST['availability']);
+                     $complain = mysqli_real_escape_string($conn,$_POST['complain']);
+                     $CategoryOfIssue=mysqli_real_escape_string($conn,$_POST['CategoryOfIssue']);
+                     $nameOfHostel=mysqli_real_escape_string($conn,$_POST['nameOfHostel']);
+                     $address=mysqli_real_escape_string($conn,$_POST['address']);
+                     $availability=mysqli_real_escape_string($conn,$_POST['availability']);
                      if(empty($phoneno) || empty($complain) || empty($CategoryOfIssue || empty($address))){
-
+                      // $message = "Please fill all details!";
                      }else
                      if (!preg_match("/^[0-9]*$/",$phoneno)) {
                        $error = "Invalid Phone Number";
                      }else{
-                       mysqli_query($this->link,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysqli_error($this->link));
-                       mysqli_query($this->link,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
+                       mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysqli_error($conn));
+                       mysqli_query($conn,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
                        $message = "Your Complain has been Registerd";
                        }
                    }
@@ -98,11 +99,11 @@ i
                     <select class="form-select" id="inputGroupSelect02" name="nameOfHostel" style="width:450px">
                           <!-- <datalist id="namesOfHostel"> -->
                           <option selected>Choose...</option>
-                            <option value="1">MHR</option>
-                            <option value="2">BHR</option>
-                            <option value="3">RHR</option>
-                            <option value="4">SHR</option>
-                            <option value="5">GHR</option>
+                            <option value="MHR">MHR</option>
+                            <option value="BHR">BHR</option>
+                            <option value="RHR">RHR</option>
+                            <option value="SHR">SHR</option>
+                            <option value="GHR">GHR</option>
                           <!-- </datalist> -->
                           </select>
                   </td>
@@ -116,12 +117,12 @@ i
                         <select class="form-select" id="inputGroupSelect02" name="CategoryOfIssue" style="width:450px">
                           <!-- <datalist id="categoriesofissue"> -->
                           <option selected>Choose...</option>
-                            <option value="1">Cleanliness</option>
-                            <option value="2">Electricity</option>
-                            <option value="3">Broken Items</option>
-                            <option value="4">Internet Issue</option>
-                            <option value="5">Food</option>
-                            <option value="6">Other</option>
+                            <option value="Cleanliness">Cleanliness</option>
+                            <option value="Electricity">Electricity</option>
+                            <option value="Broken Items">Broken Items</option>
+                            <option value="Internet Issue">Internet Issue</option>
+                            <option value="Food">Food</option>
+                            <option value="Other">Other</option>
                           <!-- </datalist> -->
                   </select>
                   </td>
@@ -155,10 +156,10 @@ i
                         <select class="form-select" id="inputGroupSelect02" name="availability" style="width:450px">
                           <!-- <datalist id="availabilityOfTime"> -->
                           <option selected>Choose...</option>
-                            <option value="1">Morning (6:00 - 11:59)</option>
-                            <option value="2">Afternoon (12:00 - 16:00)</option>
-                            <option value="3">Evening (16:00 - 20:00)</option>
-                            <option value="4">Night (20:00 - 00:00)</option>
+                            <option value="Morning (6:00 - 11:59)">Morning (6:00 - 11:59)</option>
+                            <option value="Afternoon (12:00 - 16:00)">Afternoon (12:00 - 16:00)</option>
+                            <option value="Evening (16:00 - 20:00)">Evening (16:00 - 20:00)</option>
+                            <option value="Night (20:00 - 00:00)">Night (20:00 - 00:00)</option>
                           <!-- </datalist> -->
                         </select>
                   </td>

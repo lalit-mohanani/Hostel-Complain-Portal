@@ -2,9 +2,9 @@
 
   require 'core/session.php';
   require 'core/config.php';
-  include 'core/user_key.php';
+//  include 'core/user_key.php';
 
-//  require 'core/redirect.php';
+ require 'core/redirect.php';
 
  ?>
 <!DOCTYPE html>

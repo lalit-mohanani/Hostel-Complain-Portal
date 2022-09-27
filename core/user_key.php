@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['email'])===false){
+if(isset($_REQUEST['email'])===false){
     header("location:error.php");
 }
 ?>

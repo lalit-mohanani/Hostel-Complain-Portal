@@ -1,6 +1,6 @@
-i<?php
+<?php
 require '../core/session.php';
-require '../core/config.php';
+require '../core/config1.php';
 require '../core/admin-key.php';
 
 ?>
@@ -9,7 +9,7 @@ $coi = $_GET['coi'];
 $at = $_GET['at']; ?>
 <?php
 $username = $_SESSION['username'];
-$query1 = mysqli_query($this->link,"SELECT * FROM admin WHERE username='$username'");
+$query1 = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
 $arry1 = mysqli_fetch_array($query1);
 $aid = $arry1['id'];
 ?>
@@ -42,13 +42,13 @@ $aid = $arry1['id'];
       <div class="col-lg-12 ">
         <?php
         if (empty($filter) && empty($coi) && empty($at)) {
-          $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+          $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
         } else if (!empty($filter)) {
-          $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+          $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
         } else if (!empty($coi)) {
-          $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+          $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
         } else {
-          $result = mysqli_query($this->link,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+          $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
         }
         $num_rows = mysqli_num_rows($result);
         ?>
