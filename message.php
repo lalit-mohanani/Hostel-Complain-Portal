@@ -48,6 +48,11 @@ $message = "";
       width: 100px;
       border-radius: 5px;
     }
+
+    .reset-style,
+    .reset-style * {
+      all: revert;
+    }
   </style>
 </head>
 
@@ -110,11 +115,11 @@ $message = "";
                   <select class="form-select" id="inputGroupSelect02" name="nameOfHostel" style="width:450px">
                     <!-- <datalist id="namesOfHostel"> -->
                     <option selected>Choose...</option>
-                    <option value="1">MHR</option>
-                    <option value="2">BHR</option>
-                    <option value="3">RHR</option>
-                    <option value="4">SHR</option>
-                    <option value="5">GHR</option>
+                    <option value="MHR">MHR</option>
+                    <option value="BHR">BHR</option>
+                    <option value="RHR">RHR</option>
+                    <option value="SHR">SHR</option>
+                    <option value="GHR">GHR</option>
                     <!-- </datalist> -->
                   </select>
                 </td>
@@ -128,12 +133,12 @@ $message = "";
                   <select class="form-select" id="inputGroupSelect02" name="CategoryOfIssue" style="width:450px">
                     <!-- <datalist id="categoriesofissue"> -->
                     <option selected>Choose...</option>
-                    <option value="1">Cleanliness</option>
-                    <option value="2">Electricity</option>
-                    <option value="3">Broken Items</option>
-                    <option value="4">Internet Issue</option>
-                    <option value="5">Food</option>
-                    <option value="6">Other</option>
+                    <option value="Cleanliness">Cleanliness</option>
+                    <option value="Electricity">Electricity</option>
+                    <option value="Broken Items">Broken Items</option>
+                    <option value="Internet Issue">Internet Issue</option>
+                    <option value="Food">Food</option>
+                    <option value="Other">Other</option>
                     <!-- </datalist> -->
                   </select>
                 </td>
@@ -173,19 +178,44 @@ $message = "";
                   <select class="form-select" id="inputGroupSelect02" name="availability" style="width:450px">
                     <!-- <datalist id="availabilityOfTime"> -->
                     <option selected>Choose...</option>
-                    <option value="1">Morning (6:00 - 11:59)</option>
-                    <option value="2">Afternoon (12:00 - 16:00)</option>
-                    <option value="3">Evening (16:00 - 20:00)</option>
-                    <option value="4">Night (20:00 - 00:00)</option>
+                    <option value="Morning (6:00 - 11:59)">Morning (6:00 - 11:59)</option>
+                    <option value="Afternoon (12:00 - 16:00)">Afternoon (12:00 - 16:00)</option>
+                    <option value="Evening (16:00 - 20:00)">Evening (16:00 - 20:00)</option>
+                    <option value="Night (20:00 - 00:00)">Night (20:00 - 00:00)</option>
                     <!-- </datalist> -->
                   </select>
                 </td>
               </tr>
-              <!--                 
-                <tr>
-                  <td class="text-left">Your Subject *</td>
-                  <td><input type="text" name = "subject" placeholder = "Subject"></td>
-                </tr> -->
+
+              <tr>
+                <td>Visibility</td>
+                <td>
+                  <fieldset class="row mb-3">
+                    <div class="col-sm-10">
+                      <div class="form-check form-check-inline" style="float:left;color:black">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Public" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                          Public
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline" style="float:left;color:black">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Private">
+                        <label class="form-check-label" for="gridRadios2">
+                          Private
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <!-- <div class="form-check form-check-inline"  color:black">
+                    <input class="form-check-input" type="radio" name="Public" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Public</label>
+                  </div>
+                  <div class="form-check form-check-inline" style="float:left; color:brown">
+                    <input class="form-check-input" type="radio" name="Private" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Private</label>
+                  </div> -->
+                </td>
+              </tr>
               <tr>
                 <td class="text-left">Your Complain *</td>
                 <td><textarea class="form-control" name="complain" rows="8" cols="80" placeholder="Your complain..." id="floatingTextarea" style="width:450px"></textarea></td>
