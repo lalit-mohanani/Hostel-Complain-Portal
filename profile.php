@@ -2,7 +2,7 @@
 
   require 'core/session.php';
   require 'core/config1.php';
-
+  include 'core/user_key.php';
 
  require 'core/redirect.php';
 //  echo $_SESSION['name']," ", $_SESSION['user_last_name'];
