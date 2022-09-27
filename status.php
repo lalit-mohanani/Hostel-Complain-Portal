@@ -52,7 +52,7 @@ require './core/user_key.php';
         <h2 class="text-center"><?php echo $message; ?></h2>
         <br><br>
 
-        <div class="list-group">
+        <div class="list-group" style="width:37em;">
           <ol>
             <?php
 
@@ -102,9 +102,9 @@ require './core/user_key.php';
 
   </div>
 
-  <footer2>
+  <!-- <footer2>
     <br><br>&copy <?php echo date("Y"); ?> <?php echo $web_name; ?>
-  </footer2>
+  </footer2> -->
 
   <script src="files/js/jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

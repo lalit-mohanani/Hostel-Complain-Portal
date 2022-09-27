@@ -43,7 +43,7 @@ require '../core/admin-key.php';
       &nbsp;&nbsp;&nbsp;
 
 
-      <p class="text-right">
+      <p class="text-right" style="margin-left:80%" >
         <?php echo date("l, d M"); ?>
       </p>
 

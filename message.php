@@ -108,11 +108,11 @@ $message = "";
                   <td class="text-left"><div class="dis_b"><?php echo $ref;  ?></div></td>
                 </tr> -->
               <tr>
-                <td class="text-left shadow-none">Name of Hostel</td>
+                <td class="text-left ">Name of Hostel</td>
                 <td>
                   <!-- <input type = "text" name="nameOfHostel" style="text-align:center;"> -->
                   <!-- <input list="namesOfHostel" name="nameOfHostel" style="text-align:center;"/> -->
-                  <select class="form-select" id="inputGroupSelect02" name="nameOfHostel" style="width:450px">
+                  <select class="form-select shadow-none" id="inputGroupSelect02" name="nameOfHostel" style="width:450px">
                     <!-- <datalist id="namesOfHostel"> -->
                     <option selected>Choose...</option>
                     <option value="MHR">MHR</option>
@@ -130,7 +130,7 @@ $message = "";
                 <!-- <td><input type = "text" name="CategoryOfIssue">  </td> -->
                 <td>
                   <!-- <input list="categoriesofissue" name="CategoryOfIssue" style="text-align:center;"/> -->
-                  <select class="form-select" id="inputGroupSelect02" name="CategoryOfIssue" style="width:450px">
+                  <select class="form-select shadow-none" id="inputGroupSelect02" name="CategoryOfIssue" style="width:450px">
                     <!-- <datalist id="categoriesofissue"> -->
                     <option selected>Choose...</option>
                     <option value="Cleanliness">Cleanliness</option>
@@ -151,12 +151,12 @@ $message = "";
               </tr>
               <tr>
                 <td class="text-left">Room Number</td>
-                <td><input type="text" class="form-control" name="address" placeholder="Block-Room No." aria-label="Username" aria-describedby="addon-wrapping" style="width:450px"></td>
+                <td><input type="text" class="form-control shadow-none" name="address" placeholder="Block-Room No." aria-label="Username" aria-describedby="addon-wrapping" style="width:450px"></td>
                 <!-- <td><input type = "text" name = "address" style="text-align:center;">  </td> -->
               </tr>
               <tr>
                 <td class="text-left">Contact Number *</td>
-                <td><input type="number" class="form-control" name="phoneno" maxlength=10 placeholder="10-digit No." aria-label="Username" aria-describedby="addon-wrapping" style="width:450px"></td>
+                <td><input type="number" class="form-control shadow-none" name="phoneno" maxlength=10 placeholder="10-digit No." aria-label="Username" aria-describedby="addon-wrapping" style="width:450px"></td>
                 <!-- <td><input type = "number" name = "phoneno" maxlength=10 style="text-align:center;">  </td> -->
               </tr>
               <tr>
@@ -175,7 +175,7 @@ $message = "";
                 <td class="text-left">Availability (Time)</td>
                 <td>
                   <!-- <input list="availabilityOfTime" name="availability" style="text-align:center;"/> -->
-                  <select class="form-select" id="inputGroupSelect02" name="availability" style="width:450px">
+                  <select class="form-select shadow-none" id="inputGroupSelect02" name="availability" style="width:450px">
                     <!-- <datalist id="availabilityOfTime"> -->
                     <option selected>Choose...</option>
                     <option value="Morning (6:00 - 11:59)">Morning (6:00 - 11:59)</option>
@@ -218,7 +218,7 @@ $message = "";
               </tr>
               <tr>
                 <td class="text-left">Your Complain *</td>
-                <td><textarea class="form-control" name="complain" rows="8" cols="80" placeholder="Your complain..." id="floatingTextarea" style="width:450px"></textarea></td>
+                <td><textarea class="form-control shadow-none" name="complain" rows="8" cols="80" placeholder="Your complain..." id="floatingTextarea" style="width:450px"></textarea></td>
                 <!-- <td><textarea name="complain" rows="8" cols="80" placeholder="Your complain"></textarea></td> -->
               </tr>
               <tr>

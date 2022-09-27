@@ -2,7 +2,7 @@
 
 <div class="bar">
      <!-- Single button -->
-      <div class="btn-group">
+      <div class="btn-group nav-item">
         <button type="button" class="acc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?php if (isset($_SESSION['email'])===true) {echo $_SESSION['email'];}?>
            <span class="caret"></span>
