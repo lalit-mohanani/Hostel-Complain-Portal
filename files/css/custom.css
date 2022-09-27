@@ -10,7 +10,7 @@ a,a:hover,a:focus,a:visited{color:#4db6ac;
   text-decoration: none!important;
 outline: 0px!important;}
 a:-webkit-any-link {
-    text-decoration: none;!important
+    text-decoration: none!important;
 }
 button{
   border: 0px;
@@ -115,6 +115,9 @@ button.log{
 
 }
 button.log:hover{
+  background: #85e0d8;
+}
+button.logmessage:hover{
   background: #85e0d8;
 }
 
