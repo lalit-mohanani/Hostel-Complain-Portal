@@ -57,14 +57,15 @@ $message = "";
 </head>
 
 <body>
-  <div class="cover user text-center" style="height:120px;">
-    <br>
-    <h2>Add Complaints</h2>
-  </div>
-  <?php require 'nav-profile.php'; ?>
   <div class="animated fadeIn">
-    <div class="padd">
-      <div class="col-lg-12 text-center">
+    <div class="cover user text-center" style="height:120px;">
+      <br>
+      <h2>Add Complaints</h2>
+    </div>
+    <?php require 'nav-profile.php'; ?>
+    <!-- <div class="animated fadeIn"> -->
+    <div class="col-lg-12 text-center">
+      <div class="col-md-auto">
         <?php
         $query1 = mysql_query("SELECT * FROM `circle` WHERE email LIKE '%$session%'");
         while ($arry = mysql_fetch_array($query1)) {
@@ -102,36 +103,26 @@ $message = "";
                                                                 ?></h2>
               </div>
             </div>
-            <table style="margin-left: 180px; width:90%">
-              <!-- <tr>
-                  <td class="text-left">Your Refference no</td>
-                  <td class="text-left"><div class="dis_b"><?php echo $ref;  ?></div></td>
-                </tr> -->
+            <table style="width:90%">
+
               <tr>
                 <td class="text-left shadow-none">Name of Hostel</td>
                 <td>
-                  <!-- <input type = "text" name="nameOfHostel" style="text-align:center;"> -->
-                  <!-- <input list="namesOfHostel" name="nameOfHostel" style="text-align:center;"/> -->
-                  <select class="form-select" id="inputGroupSelect02" name="nameOfHostel" style="width:450px">
-                    <!-- <datalist id="namesOfHostel"> -->
+                  <select class="form-select" id="inputGroupSelect02" name="nameOfHostel" style="width:100%">
                     <option selected>Choose...</option>
                     <option value="MHR">MHR</option>
                     <option value="BHR">BHR</option>
                     <option value="RHR">RHR</option>
                     <option value="SHR">SHR</option>
                     <option value="GHR">GHR</option>
-                    <!-- </datalist> -->
                   </select>
                 </td>
               </tr>
               <tr>
 
                 <td class="text-left">Category of Issue</td>
-                <!-- <td><input type = "text" name="CategoryOfIssue">  </td> -->
                 <td>
-                  <!-- <input list="categoriesofissue" name="CategoryOfIssue" style="text-align:center;"/> -->
-                  <select class="form-select" id="inputGroupSelect02" name="CategoryOfIssue" style="width:450px">
-                    <!-- <datalist id="categoriesofissue"> -->
+                  <select class="form-select" id="inputGroupSelect02" name="CategoryOfIssue" style="width:100%">
                     <option selected>Choose...</option>
                     <option value="Cleanliness">Cleanliness</option>
                     <option value="Electricity">Electricity</option>
@@ -139,50 +130,44 @@ $message = "";
                     <option value="Internet Issue">Internet Issue</option>
                     <option value="Food">Food</option>
                     <option value="Other">Other</option>
-                    <!-- </datalist> -->
                   </select>
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Name</td>
                 <td class="text-left">
-                  <div class="form-control" style="width:450px; text-align:left"><?php echo $name; ?></div>
+                  <div class="form-control" style="width:100%; text-align:left"><?php echo $name; ?></div>
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Room Number</td>
-                <td><input type="text" class="form-control" name="address" placeholder="Block-Room No." aria-label="Username" aria-describedby="addon-wrapping" style="width:450px"></td>
-                <!-- <td><input type = "text" name = "address" style="text-align:center;">  </td> -->
+                <td><input type="text" class="form-control" name="address" placeholder="Block-Room No." aria-label="Username" aria-describedby="addon-wrapping" style="width:100%"></td>
               </tr>
               <tr>
                 <td class="text-left">Contact Number *</td>
-                <td><input type="number" class="form-control" name="phoneno" maxlength=10 placeholder="10-digit No." aria-label="Username" aria-describedby="addon-wrapping" style="width:450px"></td>
-                <!-- <td><input type = "number" name = "phoneno" maxlength=10 style="text-align:center;">  </td> -->
+                <td><input type="number" class="form-control" name="phoneno" maxlength=10 placeholder="10-digit No." aria-label="Username" aria-describedby="addon-wrapping" style="width:100%"></td>
               </tr>
               <tr>
                 <td class="text-left">Your Email ID</td>
                 <td class="text-left">
-                  <div class="form-control" style="width:450px; text-align:left"><?php echo $email; ?></div>
+                  <div class="form-control" style="width:100%; text-align:left"><?php echo $email; ?></div>
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Roll Number</td>
                 <td class="text-left">
-                  <div class="form-control" style="width:450px; text-align:left"><?php echo $rollno; ?></div>
+                  <div class="form-control" style="width:100%; text-align:left"><?php echo $rollno; ?></div>
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Availability (Time)</td>
                 <td>
-                  <!-- <input list="availabilityOfTime" name="availability" style="text-align:center;"/> -->
-                  <select class="form-select" id="inputGroupSelect02" name="availability" style="width:450px">
-                    <!-- <datalist id="availabilityOfTime"> -->
+                  <select class="form-select" id="inputGroupSelect02" name="availability" style="width:100%">
                     <option selected>Choose...</option>
                     <option value="Morning (6:00 - 11:59)">Morning (6:00 - 11:59)</option>
                     <option value="Afternoon (12:00 - 16:00)">Afternoon (12:00 - 16:00)</option>
                     <option value="Evening (16:00 - 20:00)">Evening (16:00 - 20:00)</option>
                     <option value="Night (20:00 - 00:00)">Night (20:00 - 00:00)</option>
-                    <!-- </datalist> -->
                   </select>
                 </td>
               </tr>
@@ -206,20 +191,11 @@ $message = "";
                       </div>
                     </div>
                   </fieldset>
-                  <!-- <div class="form-check form-check-inline"  color:black">
-                    <input class="form-check-input" type="radio" name="Public" id="inlineRadio1" value="option1">
-                    <label class="form-check-label" for="inlineRadio1">Public</label>
-                  </div>
-                  <div class="form-check form-check-inline" style="float:left; color:brown">
-                    <input class="form-check-input" type="radio" name="Private" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">Private</label>
-                  </div> -->
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Your Complain *</td>
-                <td><textarea class="form-control" name="complain" rows="8" cols="80" placeholder="Your complain..." id="floatingTextarea" style="width:450px"></textarea></td>
-                <!-- <td><textarea name="complain" rows="8" cols="80" placeholder="Your complain"></textarea></td> -->
+                <td><textarea class="form-control" name="complain" rows="8" cols="80" placeholder="Your complain..." id="floatingTextarea" style="width:100%"></textarea></td>
               </tr>
               <tr>
                 <td></td>
@@ -227,7 +203,6 @@ $message = "";
               </tr>
               <tr>
                 <td></td>
-                <!-- <td><button type="submit" class="btn btn-primary btn-lg logmessage">Submit</button></td> -->
                 <td><button type="submit" class="log">Submit</button></td>
               </tr>
             </table>
@@ -236,6 +211,8 @@ $message = "";
       </div>
     </div>
   </div>
+  <!-- </div>
+  </div> -->
   <?php
   include 'footer2.php';
   ?>

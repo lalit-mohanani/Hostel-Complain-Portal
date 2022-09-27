@@ -23,7 +23,6 @@ $aid = $arry1['id'];
   <title>Hostel Management Portal </title>
   <link rel="shortcut icon" href="../files/img/hm12.jpg">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="../files/css/bootstrap.css"> -->
   <link rel="stylesheet" href="../files/css/custom.css">
 
 </head>
@@ -38,7 +37,7 @@ $aid = $arry1['id'];
       <h1>Complaints</h1>
     </div>
 
-    <div class="div">
+    <div class="col-md-auto" style="padding-left:225px;padding-right:20px">
 
       <div class="col-lg-12 ">
         <?php

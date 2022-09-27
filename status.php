@@ -25,14 +25,14 @@ require './core/user_key.php';
 
   <div class="animated fadeIn">
 
-
+  <!-- <div class="coverusr" style="height: 300px; ;"> -->
     <div class="cover user text-center" style="height:120px;">
       <br>
       <h2>Complaints</h2>
     </div>
 
     <?php require 'nav-profile.php'; ?>
-    <div class="div">
+    <div class="col-md-auto">
       <div class="col-lg-12">
         <?php
         $email = $_SESSION['email'];
@@ -52,8 +52,8 @@ require './core/user_key.php';
         <h2 class="text-center"><?php echo $message; ?></h2>
         <br><br>
 
-        <div class="list-group">
-          <ol>
+        <div class="list-group" style="margin-right:10px;">
+          <ol style="padding-left:25px">
             <?php
 
             while ($data = mysql_fetch_array($result)) {

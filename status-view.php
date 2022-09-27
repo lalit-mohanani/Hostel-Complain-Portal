@@ -23,6 +23,11 @@ if (!$result) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="./files/css/bootstrap.css"> -->
   <link rel="stylesheet" href="./files/css/custom.css">
+  <style>
+    td {
+      padding-left: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -64,19 +69,8 @@ if (!$result) {
     </div>
 
 
-    <div class="div">
-      <div class="col-lg-12 ">
-        <!-- <?php
-              echo "<a class='button logout' style='background-color: rgb(62, 179, 153);border-radius: 5px;margin-right: 8px;' href ='m_accept.php?id=$id' onClick=\"javascript:return confirm ('Confirm Acceptance');\">Accept</a>";
-              ?>
-
-          <?php
-          echo "<a class='button logout' style='background-color: rgb(62, 179, 153);border-radius: 5px;margin-right: 8px;' href ='m_reject.php?id=$id' onClick=\"javascript:return confirm ('Confirm Rejection');\">Reject</a>";
-          ?>
-
-          <?php
-          echo "<a class='button logout' style='background-color: #116ba7;border-radius: 5px;' href ='m_escalate.php?id=$id' onClick=\"javascript:return confirm ('Do you really want to escalate ?');\">Escalate</a>";
-          ?> -->
+    <div class="col-md-auto">
+      <div class="col-lg-12 " style="padding-left:5px;padding-right:5px">
 
         <br><br><br><br>
         <table>
