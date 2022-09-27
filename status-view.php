@@ -120,6 +120,9 @@ if (!$result) {
           echo "<tr> <td> <b> Availability Time </b> </td>";
           echo "     <td> " . $avail . "</td> </tr>";
 
+          echo "<tr> <td> <b> Visibility </b> </td>";
+          echo "     <td> " . $visibility . "</td> </tr>";
+
           echo "<tr> <td> <b> Complain </b> </td>";
           echo "     <td> " . $complain . "</td> </tr>";
 
