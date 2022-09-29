@@ -22,13 +22,13 @@ if(!$conn){
  $google_client = new Google_Client();
  
  //Set the OAuth 2.0 Client ID
- $google_client->setClientId('599638185867-cc0vt6gem2qefjmml3gss45du9a176gs.apps.googleusercontent.com');
+ $google_client->setClientId('599638185867-g0jt41i7d92hj845g5nboe2qmbe7eoi7.apps.googleusercontent.com');
  
  //Set the OAuth 2.0 Client Secret key
- $google_client->setClientSecret('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');
+ $google_client->setClientSecret('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');
  
  //Set the OAuth 2.0 Redirect URI
- $google_client->setRedirectUri('http://localhost/CodeRelay_22/index.php');
+ $google_client->setRedirectUri('http://localhost/CodeRelay_22/admin-login.php');
  // to get the email and profile 
  $google_client->addScope('email');
  

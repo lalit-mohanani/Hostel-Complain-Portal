@@ -1,17 +1,17 @@
 <?php
 require '../core/session.php';
-require '../core/config1.php';
-require '../core/admin-key.php';
+// require '../core/config2.php';
+// require '../core/admin-key.php';
 
 ?>
 <?php $filter = $_GET['fil'];
 $coi = $_GET['coi'];
 $at = $_GET['at']; ?>
 <?php
-$username = $_SESSION['username'];
+$username = $_SESSION['name']." ".$_SESSION['user_last_name'];
 $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
 $arry1 = mysqli_fetch_array($query1);
-$aid = $arry1['id'];
+$aid = 1;
 ?>
 <!DOCTYPE html>
 <html>

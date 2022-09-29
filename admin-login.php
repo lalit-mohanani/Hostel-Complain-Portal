@@ -2,28 +2,87 @@
   //user login and homepage
 
   require 'core/session.php';
-  require 'core/config1.php';
-    require 'core/redirect.php';
+  require 'core/config2.php';
+  require 'core/redirect.php';
 
-  $message="";
 
-  if(empty($_REQUEST)===false){
-  $username = mysqli_real_escape_string($conn,$_POST['username']);
-  $password = mysqli_real_escape_string($conn,$_POST['password']);
-    if(empty($username) || empty($password)){
-          header('Location:admin-login.php');
-    }else{
-        $query1=mysqli_query($conn,"SELECT * FROM `admin` WHERE id AND username='$username' and password='$password'") or die(mysqli_error($conn));
-        if(mysqli_num_rows($query1)>0){
-            $_SESSION['username'] = $_REQUEST['username'];
-            header('Location:admin/admin-profile.php');
-        }else{
-          $message="Admin username and password is incorrect";
-        }
-      }
+$login_button = '';
+
+
+if(isset($_GET["code"]))
+{
+
+ $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
+
+
+ if(!isset($token['error']))
+ {
+ 
+  $google_client->setAccessToken($token['access_token']);
+
+ 
+  $_SESSION['access_token'] = $token['access_token'];
+
+
+  $google_service = new Google_Service_Oauth2($google_client);
+
+ 
+  $data = $google_service->userinfo->get();
+
+ 
+  if(!empty($data['given_name']))
+  {
+   $_SESSION['name'] = $data['given_name'];
   }
- ?>
 
+  if(!empty($data['family_name']))
+  {
+   $_SESSION['user_last_name'] = $data['family_name'];
+  }
+
+  if(!empty($data['email']))
+  {
+   $_SESSION['email'] = $data['email'];
+  }
+
+  if(!empty($data['picture']))
+  {
+   $_SESSION['image'] = $data['picture'];
+  }
+ }
+}
+
+
+if(!isset($_SESSION['access_token']))
+{
+ $login_button = '<a href="'.$google_client->createAuthUrl().'">Login With Google</a>';
+}
+
+?>
+  <!-- // $message="";
+
+  // if(empty($_REQUEST)===false){
+  // $username = mysqli_real_escape_string($conn,$_POST['username']);
+  // $password = mysqli_real_escape_string($conn,$_POST['password']);
+  //   if(empty($username) || empty($password)){
+  //         header('Location:admin-login.php');
+  //   }else{
+  //       $query1=mysqli_query($conn,"SELECT * FROM `admin` WHERE id AND username='$username' and password='$password'") or die(mysqli_error($conn));
+  //       if(mysqli_num_rows($query1)>0){
+  //           $_SESSION['username'] = $_REQUEST['username'];
+  //           header('Location:admin/admin-profile.php');
+  //       }else{
+  //         $message="Admin username and password is incorrect";
+  //       }
+  //     }
+  // }
+ ?> -->
+ <?php
+  if(isset($_SESSION['email'])===true){
+    // echo "kaam baki";
+      header("location:admin/admin-profile.php");
+  }
+  ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -63,6 +122,21 @@
                 <br><br>
                 <button type="submit" class="log">Login</button>
                 <br><br>
+                <?php
+                if($login_button == ''){
+                  // echo '<div class="panel-heading">Welcome User</div><div class="panel-body">';
+                  // echo '<img src="'.$_SESSION["user_image"].'" class="img-responsive img-circle img-thumbnail" />';
+
+
+                  echo '<h3><b>Name :</b> '.$_SESSION['name'].' '.$_SESSION['user_last_name'].'</h3>';
+                  echo '<h3><b>Email :</b> '.$_SESSION['email'].'</h3>';
+                  echo '<h3><a href="logout.php">Logout</h3></div>';
+                 }
+                 else
+                 {
+                   echo '<div align="center">'.$login_button . '</div>';
+                  }
+                  ?>
                 <span class="red"><?php echo $message; ?></span>
               </form>
               <br>

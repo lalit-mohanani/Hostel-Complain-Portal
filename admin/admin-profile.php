@@ -1,7 +1,23 @@
 <?php
   require '../core/session.php';
-  require '../core/config1.php';
+  // require '../core/config2.php';
   require '../core/admin-key.php';
+
+//  require 'core/redirect.php';
+$host = "localhost";
+$database = "hrmd";
+$username = "root";
+$password = "";
+
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if(!$conn){
+   die('Error in connecting to server or Database');
+ }
+
+ session_start();
+  // echo $_SESSION['name']," ", $_SESSION['user_last_name'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,11 +35,12 @@
   </head>
   <body >
   <?php 
-   $username=$_SESSION['username'];
+   $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
+  //  echo $username;
    $query1=mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'"); 
    $arry1=mysqli_fetch_array($query1); 
-   $usr=$arry1['name'];
-   $aid=$arry1['id'];
+   $usr= $username;
+   $aid=1;
    ?>
 
   <?php require 'nav.php'; ?>
@@ -33,13 +50,13 @@
 
     <div class="cover main">
       <?php
-      if (isset($_SESSION['username'])===true) {echo "<h1> Welcome, ".$usr."</h1>";}
+      if (isset($_SESSION['email'])===true) {echo "<h1> Welcome, ".$usr."</h1>";}
        ?>
        <a class="button logout" style="background-color: rgb(62, 179, 153);border-radius: 4%;"href="../logout.php" onClick="javascript:return confirm ('Do you really want to logout ?');"> Logout </a>
        &nbsp;&nbsp;&nbsp;
 
 
-       <p class="text-right">
+       <p class="text-center">
           <?php echo date("l, d M"); ?>
        </p>
 
@@ -90,7 +107,7 @@
 
 
     <!-- <footer>
-    <br><br>&copy <?php echo date("Y"); ?> <?php echo $web_name; ?>
+    <br><br>&copy
     </footer> -->
     <?php
       include 'footer2.php';
