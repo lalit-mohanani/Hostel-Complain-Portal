@@ -61,52 +61,68 @@ if (isset($_POST['update'])) {
       border: 0px;
     }
   </style>
+  <style>
+    li {
+      font-size: 21px;
+    }
+  </style>
 </head>
 
 <body>
-  <?php require 'nav.php'; ?>
-  <div class="cover main">
-    <h1>General Settings</h1>
-  </div>
-  <div class="div">
-    <div class="col-lg-12">
-      <form class="" action="" method="post" autocomplete="off">
-        <?php
-        $query1 = mysql_query("SELECT * FROM admin WHERE id='$aid'");
-        while ($arry1 = mysql_fetch_array($query1)) {
-        ?>
-          <table>
-            <tr>
-              <td>
-                <h4>Update your data</h4><br><br>
-              </td>
-            </tr>
-            <tr>
-              <td>Last Updated on :</td>
-              <td> <?php echo $arry1['up_time']; ?></td>
-            </tr>
-            <tr>
-              <td>Name</td>
-              <td><input type="text" name="name" placeholder="<?php echo $arry1['name']; ?>"></td>
-            </tr>
-            <tr>
-              <td>Username</td>
-              <td><input type="text" name="username" placeholder="<?php echo $arry1['username']; ?>"></td>
-            </tr>
-            <tr>
-              <td>Password</td>
-              <td><input type="text" name="password" placeholder="<?php echo $arry1['password']; ?>"></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><button name="update" type="submit" class="log">Save</button></td>
-            </tr>
-      </form>
-    <?php
-        }
-        echo $message;
-    ?>
-    </table>
+  <div class="container-fluid overflow-hidden">
+    <div class="row vh-100 overflow-auto">
+      <?php require 'nav.php'; ?>
+
+      <div class="col d-flex flex-column h-sm-100">
+        <main class="row overflow-auto" style="height:100%;">
+          <div class="animated fadeIn" style="padding:0px">
+            <div class="cover main">
+              <h1>General Settings</h1>
+            </div>
+            <div class="col-md-auto">
+              <div class="col-lg-12">
+                <form class="" action="" method="post" autocomplete="off">
+                  <?php
+                  $query1 = mysql_query("SELECT * FROM admin WHERE id='$aid'");
+                  while ($arry1 = mysql_fetch_array($query1)) {
+                  ?>
+                    <table>
+                      <tr>
+                        <td>
+                          <h4>Update your data</h4><br><br>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Last Updated on :</td>
+                        <td> <?php echo $arry1['up_time']; ?></td>
+                      </tr>
+                      <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="name" placeholder="<?php echo $arry1['name']; ?>"></td>
+                      </tr>
+                      <tr>
+                        <td>Username</td>
+                        <td><input type="text" name="username" placeholder="<?php echo $arry1['username']; ?>"></td>
+                      </tr>
+                      <tr>
+                        <td>Password</td>
+                        <td><input type="text" name="password" placeholder="<?php echo $arry1['password']; ?>"></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><button name="update" type="submit" class="log">Save</button></td>
+                      </tr>
+                </form>
+              <?php
+                  }
+                  echo $message;
+              ?>
+              </table>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
   </div>
   <?php
