@@ -1,20 +1,19 @@
 <?php
-
 require '../core/session.php';
-require '../core/config.php';
+require '../core/config1.php';
 require '../core/admin-key.php';
 
 $username = $_SESSION['username'];
-$qu = mysql_query("SELECT * FROM admin WHERE username='$username'");
-$ar = mysql_fetch_array($qu);
+$qu = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username'");
+$ar = mysqli_fetch_array($qu);
 $aid = $ar['id'];
 
 date_default_timezone_set('Asia/Kolkata');
 $update = date('M, l, h:i a');
 if (isset($_POST['update'])) {
-  $name = mysql_real_escape_string($_POST['name']);
-  $username = mysql_real_escape_string($_POST['username']);
-  $password = mysql_real_escape_string($_POST['password']);
+  $name = mysqli_real_escape_string($conn, $_POST['name']);
+  $username = mysqli_real_escape_string($conn, $_POST['username']);
+  $password = mysqli_real_escape_string($conn, $_POST['password']);
   if (empty($name) || empty($username) || empty($password)) {
     $message = "
           <div class='alert errr' id='msg'>
@@ -27,7 +26,7 @@ if (isset($_POST['update'])) {
            <p>Choose Name, Username And Password !!</p>
           </div>";
   } else {
-    mysql_query("UPDATE admin SET name='$name',username='$username',password='$password',up_time='$update' WHERE id='1'") or die(mysql_error());
+    mysqli_query($conn, "UPDATE admin SET name='$name',username='$username',password='$password',up_time='$update' WHERE id='1'") or die(mysqli_error($conn));
     $message = "
             <div class='alert succ' id='msg'>
               <div class ='text-right' id='close'>
@@ -83,8 +82,8 @@ if (isset($_POST['update'])) {
               <div class="col-lg-12">
                 <form class="" action="" method="post" autocomplete="off">
                   <?php
-                  $query1 = mysql_query("SELECT * FROM admin WHERE id='$aid'");
-                  while ($arry1 = mysql_fetch_array($query1)) {
+                  $query1 = mysqli_query($conn, "SELECT * FROM admin WHERE id='$aid'");
+                  while ($arry1 = mysqli_fetch_array($query1)) {
                   ?>
                     <table>
                       <tr>

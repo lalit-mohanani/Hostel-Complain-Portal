@@ -1,6 +1,6 @@
 <?php
 require '../core/session.php';
-require '../core/config.php';
+require '../core/config1.php';
 require '../core/admin-key.php';
 
 ?>
@@ -9,8 +9,8 @@ $coi = $_GET['coi'];
 $at = $_GET['at']; ?>
 <?php
 $username = $_SESSION['username'];
-$query1 = mysql_query("SELECT * FROM admin WHERE username='$username'");
-$arry1 = mysql_fetch_array($query1);
+$query1 = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username'");
+$arry1 = mysqli_fetch_array($query1);
 $aid = $arry1['id'];
 ?>
 <!DOCTYPE html>
@@ -41,8 +41,9 @@ $aid = $arry1['id'];
       font-size: 20px;
     }
 
-    .reset-style, .reset-style * {
-        all: revert;
+    .reset-style,
+    .reset-style * {
+      all: revert;
     }
   </style>
 
@@ -62,19 +63,18 @@ $aid = $arry1['id'];
             </div>
 
             <div class="col-md-auto">
-
               <div class="col-lg-12" style="padding-left:10px">
                 <?php
                 if (empty($filter) && empty($coi) && empty($at)) {
-                  $result = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else if (!empty($filter)) {
-                  $result = mysql_query("SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else if (!empty($coi)) {
-                  $result = mysql_query("SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else {
-                  $result = mysql_query("SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 }
-                $num_rows = mysql_num_rows($result);
+                $num_rows = mysqli_num_rows($result);
                 ?>
 
                 <br><br><br><br>
@@ -85,15 +85,15 @@ $aid = $arry1['id'];
                 <div class="col-lg-12">
                   <?php
                   if (empty($filter) && empty($coi) && empty($at)) {
-                    $result = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($filter)) {
-                    $result = mysql_query("SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($coi)) {
-                    $result = mysql_query("SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else {
-                    $result = mysql_query("SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   }
-                  $num_rows = mysql_num_rows($result);
+                  $num_rows = mysqli_num_rows($result);
                   ?>
 
                   <br><br>
@@ -167,7 +167,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                     <ol>
                       <?php
 
-                      while ($data = mysql_fetch_array($result)) {
+                      while ($data = mysqli_fetch_array($result)) {
 
                         echo '<li>';
                         echo "<a href='message-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
@@ -180,11 +180,11 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                         echo '</div>';
                         echo '<div class="d-flex justify-content-between">';
                         echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
-                        
+
                         // echo "<a class='nav-link' href ='m_accept.php?ref=$data[ref_no]' onClick=\"javascript:return confirm ('Confirm Acceptance');\">";
                         // echo '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
                         // <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                      // </svg>';
+                        // </svg>';
                         // echo '</a>';
                         echo '</div>';
                         echo '<div class="d-flex justify-content-between">';
