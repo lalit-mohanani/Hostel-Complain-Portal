@@ -1,10 +1,22 @@
 <?php
 
   require '../core/session.php';
-  require '../core/config1.php';
+  // require '../core/config1.php';
   require '../core/admin-key.php';
+$host = "localhost";
+$database = "hrmd";
+$username = "root";
+$password = "";
 
-   $username=$_SESSION['username'];
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if(!$conn){
+   die('Error in connecting to server or Database');
+ }
+
+ session_start();
+   $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
    $qu=mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'"); 
    $ar=mysqli_fetch_array($qu); 
    $aid=$ar['id'];

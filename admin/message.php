@@ -1,18 +1,31 @@
 <?php
 require '../core/session.php';
 // require '../core/config2.php';
-// require '../core/admin-key.php';
+require '../core/admin-key.php';
+$host = "localhost";
+$database = "hrmd";
+$username = "root";
+$password = "";
 
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if(!$conn){
+   die('Error in connecting to server or Database');
+ }
+
+ session_start();
 ?>
 <?php $filter = $_GET['fil'];
 $coi = $_GET['coi'];
 $at = $_GET['at']; ?>
-<?php
-$username = $_SESSION['name']." ".$_SESSION['user_last_name'];
-$query1 = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
-$arry1 = mysqli_fetch_array($query1);
-$aid = 1;
-?>
+<?php 
+  $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
+  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
+  $arry1 = mysqli_fetch_array($query1);
+  $usr = $arry1['name'];
+  $aid = $arry1['id'];
+ ?>
 <!DOCTYPE html>
 <html>
 
