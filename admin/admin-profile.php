@@ -1,7 +1,22 @@
 <?php
 require '../core/session.php';
-require '../core/config.php';
+// require '../core/config.php';
 require '../core/admin-key.php';
+
+$host = "localhost";
+$database = "hrmd";
+$username = "root";
+$password = "";
+
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if(!$conn){
+   die('Error in connecting to server or Database');
+ }
+
+ session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,9 +41,9 @@ require '../core/admin-key.php';
 
 <body>
   <?php
-  $username = $_SESSION['username'];
-  $query1 = mysql_query("SELECT * FROM admin WHERE username='$username'");
-  $arry1 = mysql_fetch_array($query1);
+  $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
+  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
+  $arry1 = mysqli_fetch_array($query1);
   $usr = $arry1['name'];
   $aid = $arry1['id'];
   ?>
@@ -42,17 +57,15 @@ require '../core/admin-key.php';
 
 
             <div class="cover main">
-              <?php
-              if (isset($_SESSION['username']) === true) {
-                echo "<h1> Welcome, " . $usr . "</h1>";
-              }
-              ?>
-              <a class="button logout" style="background-color: rgb(62, 179, 153);border-radius: 4%;" href="../logout.php" onClick="javascript:return confirm ('Do you really want to logout ?');"> Logout </a>
-              &nbsp;&nbsp;&nbsp;
+            <?php
+      if (isset($_SESSION['email'])===true) {echo "<h1> Welcome, ".$usr."</h1>";}
+       ?>
+       <a class="button logout" style="background-color: rgb(62, 179, 153);border-radius: 4%;"href="../logout.php" onClick="javascript:return confirm ('Do you really want to logout ?');"> Logout </a>
+       &nbsp;&nbsp;&nbsp;
 
 
               <p class="text-right">
-                <?php echo date("l, d M"); ?>
+              <?php echo date("l, d M"); ?>
               </p>
 
             </div>
@@ -62,14 +75,14 @@ require '../core/admin-key.php';
                 <div class="analysis">
                   <?php
 
-                  $users = mysql_query("SELECT * FROM `circle` ");
-                  $count_users = mysql_num_rows($users);
+$users = mysqli_query($conn,"SELECT * FROM `circle` ");
+$count_users = mysqli_num_rows($users);
 
-                  $cmp = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
-                  $count_cmp = mysql_num_rows($cmp);
+$cmp = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
+$count_cmp = mysqli_num_rows($cmp);
 
-                  $frd = mysql_query("SELECT * FROM `stats` where status=($aid+1)");
-                  $count_frd = mysql_num_rows($frd);
+$frd = mysqli_query($conn,"SELECT * FROM `stats` where status=($aid+1)");
+$count_frd = mysqli_num_rows($frd);
                   ?>
 
                   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" style="padding-top:10px;">

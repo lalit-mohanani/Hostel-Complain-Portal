@@ -1,46 +1,60 @@
 <?php
 
 require '../core/session.php';
-require '../core/config.php';
+// require '../core/config.php';
 require '../core/admin-key.php';
 
-$username = $_SESSION['username'];
-$qu = mysql_query("SELECT * FROM admin WHERE username='$username'");
-$ar = mysql_fetch_array($qu);
-$aid = $ar['id'];
+$host = "localhost";
+$database = "hrmd";
+$username = "root";
+$password = "";
 
-date_default_timezone_set('Asia/Kolkata');
-$update = date('M, l, h:i a');
-if (isset($_POST['update'])) {
-  $name = mysql_real_escape_string($_POST['name']);
-  $username = mysql_real_escape_string($_POST['username']);
-  $password = mysql_real_escape_string($_POST['password']);
-  if (empty($name) || empty($username) || empty($password)) {
-    $message = "
-          <div class='alert errr' id='msg'>
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if(!$conn){
+   die('Error in connecting to server or Database');
+ }
+
+ session_start();
+   $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
+   $qu=mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'"); 
+   $ar=mysqli_fetch_array($qu); 
+   $aid=$ar['id'];
+
+  date_default_timezone_set('Asia/Kolkata');
+  $update = date('M, l, h:i a');
+  if(isset($_POST['update']))
+  {
+    $name = mysqli_real_escape_string($conn,$_POST['name']);
+    $username = mysqli_real_escape_string($conn,$_POST['username']);
+    $password=mysqli_real_escape_string($conn,$_POST['password']);
+    if(empty($name) || empty($username) || empty($password)){
+      $message="
+      <div class='alert errr' id='msg'>
+      <div class ='text-right' id='close'>
+          <svg class='pointer' fill='#FFF' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'>
+              <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/>
+              <path d='M0 0h24v24H0z' fill='none'/>
+          </svg>
+      </div>
+       <p>Choose Name, Username And Password !!</p>
+      </div>";
+    }else{
+        mysqli_query($conn,"UPDATE admin SET name='$name',username='$username',password='$password',up_time='$update' WHERE id='1'")or die(mysqli_error($conn));
+        $message = "
+        <div class='alert succ' id='msg'>
           <div class ='text-right' id='close'>
-              <svg class='pointer' fill='#FFF' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'>
-                  <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/>
-                  <path d='M0 0h24v24H0z' fill='none'/>
-              </svg>
+            <svg class='pointer' fill='#ccc' height='24' viewBox='0 0 24 24' width='24'     xmlns='http://www.w3.org/2000/svg'>
+              <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/>
+              <path d='M0 0h24v24H0z' fill='none'/>
+            </svg>
+            <p class='text-center'>Your credentials has been Changed</p>
           </div>
-           <p>Choose Name, Username And Password !!</p>
-          </div>";
-  } else {
-    mysql_query("UPDATE admin SET name='$name',username='$username',password='$password',up_time='$update' WHERE id='1'") or die(mysql_error());
-    $message = "
-            <div class='alert succ' id='msg'>
-              <div class ='text-right' id='close'>
-                <svg class='pointer' fill='#ccc' height='24' viewBox='0 0 24 24' width='24'     xmlns='http://www.w3.org/2000/svg'>
-                  <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/>
-                  <path d='M0 0h24v24H0z' fill='none'/>
-                </svg>
-                <p class='text-center'>Your credentials has been Changed</p>
-              </div>
-            </div>
-            ";
+        </div>
+        ";
+      }
   }
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -83,8 +97,8 @@ if (isset($_POST['update'])) {
               <div class="col-lg-12">
                 <form class="" action="" method="post" autocomplete="off">
                   <?php
-                  $query1 = mysql_query("SELECT * FROM admin WHERE id='$aid'");
-                  while ($arry1 = mysql_fetch_array($query1)) {
+                  $query1=mysqli_query($conn,"SELECT * FROM admin WHERE id='$aid'");
+            			while( $arry1=mysqli_fetch_array($query1)) {
                   ?>
                     <table>
                       <tr>

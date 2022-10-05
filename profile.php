@@ -1,10 +1,10 @@
 <?php
 
   require 'core/session.php';
-  require 'core/config.php';
+  require 'core/config1.php';
   include 'core/user_key.php';
 
-//  require 'core/redirect.php';
+  require 'core/redirect.php';
 
  ?>
 <!DOCTYPE html>
@@ -105,29 +105,6 @@
           </div>
         </div>
 
-        <left -->
-
-        <!-- <div class="content">
-                <div class="col-lg-12">
-                  <div class="posts">
-                    <?php
-                      $db=mysql_query("SELECT * FROM `posts` ");
-                      while($data=mysql_fetch_array($db)) {
-                      echo "<br> <br> <div class='quotes glow'> ";
-                      echo "<h4 class='heading'> Heading : ".$data['subject']."</h4>";
-                      echo "<p> Story : ".$data['story']."<br><br>";
-                      echo " Posted By : ".$data['session_name']."<br>";
-                      echo "</p></div><br><br>";
-                     }
-                    ?>
-                  </div>
-                </div>
-              </div> -->
-
-
-
-
-
         <div class="col-lg-12">
           <div class="jumbotron india_cover"></div>
         </div>
@@ -135,15 +112,6 @@
       </div>
     </div>
   </div>
-
-  <!-- <?php
-      include 'footer2.php';
-      ?> -->
-
-
-
-
-
 
   <?php include 'core/jsscript.php'; ?>
 </body>

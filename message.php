@@ -1,7 +1,7 @@
 <?php
 require 'core/session.php';
-require 'core/config.php';
-include 'core/user_key.php';
+require 'core/config1.php';
+require 'core/redirect.php';
 //for session
 $session = $_SESSION['email'];
 $ref = rand(3858558, 100000);
@@ -67,31 +67,34 @@ $message = "";
     <div class="col-lg-12 text-center">
       <div class="col-md-auto">
         <?php
-        $query1 = mysql_query("SELECT * FROM `circle` WHERE email LIKE '%$session%'");
-        while ($arry = mysql_fetch_array($query1)) {
+        $query1 = mysqli_query($conn,"SELECT max(id) as id FROM `cmp_log` ");
+        while ($arry = mysqli_fetch_array($query1)) {
           $id = $arry['id'];
-          $rollno = $arry['rollno'];
-          $name = $arry['name'];
-          $email = $arry['email'];
         }
-        if (empty($_POST) === false) {
-          $phoneno = mysql_real_escape_string($_POST['phoneno']);
+        $rollno=substr($_SESSION['email'],0,9);
+        $name=$_SESSION['name']." ".$_SESSION['user_last_name'];
+        $email = $_SESSION['email'];
+             if(empty($_REQUEST)===false){
+              
+               $phoneno =mysqli_real_escape_string($conn,$_POST['phoneno']);
 
-          $complain = mysql_real_escape_string($_POST['complain']);
-          $CategoryOfIssue = mysql_real_escape_string($_POST['CategoryOfIssue']);
-          $nameOfHostel = mysql_real_escape_string($_POST['nameOfHostel']);
-          $address = mysql_real_escape_string($_POST['address']);
-          $availability = mysql_real_escape_string($_POST['availability']);
-          if (empty($phoneno) || empty($complain) || empty($CategoryOfIssue || empty($address))) {
-          } else
-                     if (!preg_match("/^[0-9]*$/", $phoneno)) {
-            $error = "Invalid Phone Number";
-          } else {
-            mysql_query("INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysql_error());
-            mysql_query("INSERT INTO `stats` VALUES ('$ref',1,NOW())");
-            $message = "Your Complain has been Registerd";
-          }
-        }
+               $complain = mysqli_real_escape_string($conn,$_POST['complain']);
+               $CategoryOfIssue=mysqli_real_escape_string($conn,$_POST['CategoryOfIssue']);
+               $nameOfHostel=mysqli_real_escape_string($conn,$_POST['nameOfHostel']);
+               $address=mysqli_real_escape_string($conn,$_POST['address']);
+               $availability=mysqli_real_escape_string($conn,$_POST['availability']);
+               if(empty($phoneno) || empty($complain) || empty($CategoryOfIssue || empty($address))){
+                // $message = "Please fill all details!";
+              }else
+              if (!preg_match("/^[0-9]*$/",$phoneno)) {
+                $error = "Invalid Phone Number";
+              }else{
+                  $id++;
+                 mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysqli_error($conn));
+                 mysqli_query($conn,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
+                 $message = "Your Complain has been Registerd";
+                 }
+             }
         ?>
         <form class="" method="post" autocomplete="off">
           <div class="container">
@@ -150,7 +153,7 @@ $message = "";
               <tr>
                 <td class="text-left">Your Email ID</td>
                 <td class="text-left">
-                  <div class="form-control" style="width:100%; text-align:left"><?php echo $email; ?></div>
+                  <div class="form-control" style="width:100%; text-align:left"><?php echo $_SESSION['email']; ?></div>
                 </td>
               </tr>
               <tr>

@@ -1,17 +1,32 @@
 <?php
 require '../core/session.php';
-require '../core/config.php';
+// require '../core/config.php';
 require '../core/admin-key.php';
+
+$host = "localhost";
+$database = "hrmd";
+$username = "root";
+$password = "";
+
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if(!$conn){
+   die('Error in connecting to server or Database');
+ }
+
+ session_start();
 
 ?>
 <?php $filter = $_GET['fil'];
 $coi = $_GET['coi'];
 $at = $_GET['at']; ?>
 <?php
-$username = $_SESSION['username'];
-$query1 = mysql_query("SELECT * FROM admin WHERE username='$username'");
-$arry1 = mysql_fetch_array($query1);
-$aid = $arry1['id'];
+$username=$_SESSION['name']." ".$_SESSION['user_last_name'];
+  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
+  $arry1 = mysqli_fetch_array($query1);
+  $usr = $arry1['name'];
+  $aid = $arry1['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,15 +81,15 @@ $aid = $arry1['id'];
               <div class="col-lg-12" style="padding-left:10px">
                 <?php
                 if (empty($filter) && empty($coi) && empty($at)) {
-                  $result = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else if (!empty($filter)) {
-                  $result = mysql_query("SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else if (!empty($coi)) {
-                  $result = mysql_query("SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else {
-                  $result = mysql_query("SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 }
-                $num_rows = mysql_num_rows($result);
+                $num_rows = mysqli_num_rows($result);
                 ?>
 
                 <br><br><br><br>
@@ -85,15 +100,15 @@ $aid = $arry1['id'];
                 <div class="col-lg-12">
                   <?php
                   if (empty($filter) && empty($coi) && empty($at)) {
-                    $result = mysql_query("SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($filter)) {
-                    $result = mysql_query("SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($coi)) {
-                    $result = mysql_query("SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else {
-                    $result = mysql_query("SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   }
-                  $num_rows = mysql_num_rows($result);
+                  $num_rows = mysqli_num_rows($result);
                   ?>
 
                   <br><br>
@@ -167,7 +182,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                     <ol>
                       <?php
 
-                      while ($data = mysql_fetch_array($result)) {
+while ($data = mysqli_fetch_array($result)) {
 
                         echo '<li>';
                         echo "<a href='message-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
