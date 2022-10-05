@@ -2,19 +2,19 @@
   //user login and homepage
 
   require 'core/session.php';
-  require 'core/config1.php';
+  require 'core/config.php';
     require 'core/redirect.php';
 
   $message="";
 
-  if(empty($_REQUEST)===false){
-  $username = mysqli_real_escape_string($conn,$_POST['username']);
-  $password = mysqli_real_escape_string($conn,$_POST['password']);
+  if(empty($_POST)===false){
+  $username = mysql_real_escape_string($_POST['username']);
+  $password = mysql_real_escape_string($_POST['password']);
     if(empty($username) || empty($password)){
           header('Location:admin-login.php');
     }else{
-        $query1=mysqli_query($conn,"SELECT * FROM `admin` WHERE id AND username='$username' and password='$password'") or die(mysqli_error($conn));
-        if(mysqli_num_rows($query1)>0){
+        $query1=mysql_query("SELECT * FROM `admin` WHERE id AND username='$username' and password='$password'") or die(mysql_error());
+        if(mysql_num_rows($query1)>0){
             $_SESSION['username'] = $_REQUEST['username'];
             header('Location:admin/admin-profile.php');
         }else{
