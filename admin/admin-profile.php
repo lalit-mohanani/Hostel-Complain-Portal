@@ -64,15 +64,9 @@ if(!$conn){
        &nbsp;&nbsp;&nbsp;
 
 
-<<<<<<< HEAD
       <p class="text-right" style="margin-left:80%" >
         <?php echo date("l, d M"); ?>
       </p>
-=======
-              <p class="text-right">
-              <?php echo date("l, d M"); ?>
-              </p>
->>>>>>> b10d54baf5e4ca23f4a2be220bcc99af0302833e
 
             </div>
 
