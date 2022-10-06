@@ -1,19 +1,19 @@
 <?php
-if (isset($_SESSION['username'])===true) {
+// if (isset($_SESSION['username'])===true) {
 
-    header('Location:admin/admin-profile.php');
-}
-// }elseif(isset($_SESSION['name'])===true){
+//     header('Location:admin/admin-profile.php');
+// }
+// // }elseif(isset($_SESSION['name'])===true){
 
-//   header('Location:dummy/profile.php');
+// //   header('Location:dummy/profile.php');
+
+// // }
+// elseif(isset($_SESSION['email'])===true){
+
+//   header('Location:profile.php');
+
+// }else{
 
 // }
-elseif(isset($_SESSION['email'])===true){
-
-  header('Location:profile.php');
-
-}else{
-
-}
 
 ?> 
