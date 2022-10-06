@@ -1,57 +1,81 @@
 <?php
-  require '../core/session.php';
-  require '../core/admin-key.php';
-  
- ?>
-    <nav class="admin">
-      <ul>
-        <h1>HMP</h1>
-          <li><a href="admin-profile.php">
-          <svg fill="#FFFFFF" height="40" viewBox="0 0 24 24" width="24" style="padding-bottom:17px;" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-             <path d="M0 0h24v24H0z" fill="none"/>
-          </svg>
-          Profile</a></li>
+require '../core/session.php';
+require '../core/admin-key.php';
 
-          <!-- <li><a href="users.php">
-            <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0V0z" fill="none"/>
-                <path d="M5.5 22v-7.5H4V9c0-1.1.9-2 2-2h3c1.1 0 2 .9 2 2v5.5H9.5V22h-4zM18 22v-6h3l-2.54-7.63C18.18 7.55 17.42 7 16.56 7h-.12c-.86 0-1.63.55-1.9 1.37L12 16h3v6h3zM7.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm9 0c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2z"/>
-            </svg>
-          Users</a></li> -->
+?>
 
-
-          <li><a class="disable" href="message.php">
-          <svg fill="#FFFFFF" height="40" viewBox="0 0 24 24" width="24" style="padding-bottom:17px;"xmlns="http://www.w3.org/2000/svg">
-              <path d="M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z"/>
-             <path d="M0 0h24v24H0z" fill="none"/>
-          </svg>
-          Complaints</a></li>
-          
-          
-
-
-          <!-- <li><a href="create.php">
-            <svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-            </svg>
-          Create</a></li> -->
-
-
-          <li><a href="general.php">
-            <svg fill="#FFFFFF" height="40" viewBox="0 0 24 24" width="24"style="padding-bottom:17px;" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
-            </svg>
-            General</a></li>
-
-
-          <li><a href="../logout.php" onClick="javascript:return confirm ('Do you really want to logout ?');">
-            <svg  fill="#FFFFFF" height="40" viewBox="0 0 24 24" width="24" style="padding-bottom:17px;"xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/>
-            </svg>
-          Logout</a></li>
-      </ul>
-    </nav>
+<div class="col-12 col-sm-3 col-xl-2 sm-2 px-0 bg-dark d-flex sticky-top" style="background-color:#37474f">
+    <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white" style="background-color:#37474f">
+        <a href="admin-profile.php" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none" style="font-size:40px">
+            <span class="">HMP<span class="d-none d-sm-inline" style="font-size:40px;"></span></span>
+        </a>
+        <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
+            <li class="nav-item">
+                <a href="admin-profile.php" class="nav-link px-sm-0 px-2">
+                    <!-- <i class="fs-5 bi-house"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                    </svg>
+                    <span class="ms-1 d-none d-sm-inline text-white">Home</span>
+                </a>
+            </li>
+            <br>
+            <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope-paper" viewBox="0 0 16 16">
+                        <path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2H4Zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6v-2.55Zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5.417Zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267v2.55Zm13 .566v5.734l-4.778-2.867L15 7.383Zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083l6.965 4.18ZM1 13.116V7.383l4.778 2.867L1 13.117Z" />
+                    </svg>
+                    <span class="ms-1 d-none d-sm-inline text-white">Complaints</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                    <li><a class="dropdown-item" href="#">Your Hostel</a></li>
+                    <li><a class="dropdown-item" href="message.php">Other Hostels</a></li>
+                    <li><a class="dropdown-item" href="#">Other Wardens</a></li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <a href="general.php" class="nav-link px-sm-0 px-2">
+                    <!-- <i class="fs-5 bi-table"></i> -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                    </svg>
+                    <span class="ms-1 d-none d-sm-inline text-white">Account</span>
+                </a>
+            </li>
+            <br>
+            <li>
+                <a href="../logout.php" onClick="javascript:return confirm ('Do you really want to logout ?');" class="nav-link px-sm-0 px-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                    </svg>
+                    <span class="ms-1 d-none d-sm-inline text-white">Logout</span>
+                </a>
+            </li>
+        </ul>
+        <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                    <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0h-7zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492V2.5z" />
+                </svg>
+                <span class="d-none d-sm-inline mx-1" style="font-size:21px">Contacts</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#">Cheif Warden</a></li>
+                <li><a class="dropdown-item" href="#">Hostel Wardens</a></li>
+                <li><a class="dropdown-item" href="#">Hall Offices</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- <div class="col d-flex flex-column h-sm-100">
+            <main class="row overflow-auto">
+                
+            </main>
+            <footer class="row bg-light py-4 mt-auto">
+                <div class="col"> Footer content here... </div>
+            </footer>
+        </div> -->

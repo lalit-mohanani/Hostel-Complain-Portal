@@ -1,7 +1,7 @@
 <?php
 require 'core/session.php';
-require 'core/config.php';
-include 'core/user_key.php';
+require 'core/config1.php';
+require 'core/redirect.php';
 //for session
 $session = $_SESSION['email'];
 $ref = rand(3858558, 100000);
@@ -57,40 +57,44 @@ $message = "";
 </head>
 
 <body>
-  <div class="cover user text-center" style="height:120px;">
-    <br>
-    <h2>Add Complaints</h2>
-  </div>
-  <?php require 'nav-profile.php'; ?>
   <div class="animated fadeIn">
-    <div class="padd">
-      <div class="col-lg-12 text-center">
+    <div class="cover user text-center" style="height:120px;">
+      <br>
+      <h2>Add Complaints</h2>
+    </div>
+    <?php require 'nav-profile.php'; ?>
+    <!-- <div class="animated fadeIn"> -->
+    <div class="col-lg-12 text-center">
+      <div class="col-md-auto">
         <?php
-        $query1 = mysql_query("SELECT * FROM `circle` WHERE email LIKE '%$session%'");
-        while ($arry = mysql_fetch_array($query1)) {
+        $query1 = mysqli_query($conn,"SELECT max(id) as id FROM `cmp_log` ");
+        while ($arry = mysqli_fetch_array($query1)) {
           $id = $arry['id'];
-          $rollno = $arry['rollno'];
-          $name = $arry['name'];
-          $email = $arry['email'];
         }
-        if (empty($_POST) === false) {
-          $phoneno = mysql_real_escape_string($_POST['phoneno']);
+        $rollno=substr($_SESSION['email'],0,9);
+        $name=$_SESSION['name']." ".$_SESSION['user_last_name'];
+        $email = $_SESSION['email'];
+             if(empty($_REQUEST)===false){
+              
+               $phoneno =mysqli_real_escape_string($conn,$_POST['phoneno']);
 
-          $complain = mysql_real_escape_string($_POST['complain']);
-          $CategoryOfIssue = mysql_real_escape_string($_POST['CategoryOfIssue']);
-          $nameOfHostel = mysql_real_escape_string($_POST['nameOfHostel']);
-          $address = mysql_real_escape_string($_POST['address']);
-          $availability = mysql_real_escape_string($_POST['availability']);
-          if (empty($phoneno) || empty($complain) || empty($CategoryOfIssue || empty($address))) {
-          } else
-                     if (!preg_match("/^[0-9]*$/", $phoneno)) {
-            $error = "Invalid Phone Number";
-          } else {
-            mysql_query("INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysql_error());
-            mysql_query("INSERT INTO `stats` VALUES ('$ref',1,NOW())");
-            $message = "Your Complain has been Registerd";
-          }
-        }
+               $complain = mysqli_real_escape_string($conn,$_POST['complain']);
+               $CategoryOfIssue=mysqli_real_escape_string($conn,$_POST['CategoryOfIssue']);
+               $nameOfHostel=mysqli_real_escape_string($conn,$_POST['nameOfHostel']);
+               $address=mysqli_real_escape_string($conn,$_POST['address']);
+               $availability=mysqli_real_escape_string($conn,$_POST['availability']);
+               if(empty($phoneno) || empty($complain) || empty($CategoryOfIssue || empty($address))){
+                // $message = "Please fill all details!";
+              }else
+              if (!preg_match("/^[0-9]*$/",$phoneno)) {
+                $error = "Invalid Phone Number";
+              }else{
+                  $id++;
+                 mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysqli_error($conn));
+                 mysqli_query($conn,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
+                 $message = "Your Complain has been Registerd";
+                 }
+             }
         ?>
         <form class="" method="post" autocomplete="off">
           <div class="container">
@@ -102,11 +106,8 @@ $message = "";
                                                                 ?></h2>
               </div>
             </div>
-            <table style="margin-left: 180px; width:90%">
-              <!-- <tr>
-                  <td class="text-left">Your Refference no</td>
-                  <td class="text-left"><div class="dis_b"><?php echo $ref;  ?></div></td>
-                </tr> -->
+            <table style="width:90%">
+
               <tr>
                 <td class="text-left ">Name of Hostel</td>
                 <td>
@@ -120,18 +121,14 @@ $message = "";
                     <option value="RHR">RHR</option>
                     <option value="SHR">SHR</option>
                     <option value="GHR">GHR</option>
-                    <!-- </datalist> -->
                   </select>
                 </td>
               </tr>
               <tr>
 
                 <td class="text-left">Category of Issue</td>
-                <!-- <td><input type = "text" name="CategoryOfIssue">  </td> -->
                 <td>
-                  <!-- <input list="categoriesofissue" name="CategoryOfIssue" style="text-align:center;"/> -->
-                  <select class="form-select shadow-none" id="inputGroupSelect02" name="CategoryOfIssue" style="width:450px">
-                    <!-- <datalist id="categoriesofissue"> -->
+                  <select class="form-select" id="inputGroupSelect02" name="CategoryOfIssue" style="width:100%">
                     <option selected>Choose...</option>
                     <option value="Cleanliness">Cleanliness</option>
                     <option value="Electricity">Electricity</option>
@@ -139,14 +136,13 @@ $message = "";
                     <option value="Internet Issue">Internet Issue</option>
                     <option value="Food">Food</option>
                     <option value="Other">Other</option>
-                    <!-- </datalist> -->
                   </select>
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Name</td>
                 <td class="text-left">
-                  <div class="form-control" style="width:450px; text-align:left"><?php echo $name; ?></div>
+                  <div class="form-control" style="width:100%; text-align:left"><?php echo $name; ?></div>
                 </td>
               </tr>
               <tr>
@@ -162,27 +158,24 @@ $message = "";
               <tr>
                 <td class="text-left">Your Email ID</td>
                 <td class="text-left">
-                  <div class="form-control" style="width:450px; text-align:left"><?php echo $email; ?></div>
+                  <div class="form-control" style="width:100%; text-align:left"><?php echo $_SESSION['email']; ?></div>
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Roll Number</td>
                 <td class="text-left">
-                  <div class="form-control" style="width:450px; text-align:left"><?php echo $rollno; ?></div>
+                  <div class="form-control" style="width:100%; text-align:left"><?php echo $rollno; ?></div>
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Availability (Time)</td>
                 <td>
-                  <!-- <input list="availabilityOfTime" name="availability" style="text-align:center;"/> -->
-                  <select class="form-select shadow-none" id="inputGroupSelect02" name="availability" style="width:450px">
-                    <!-- <datalist id="availabilityOfTime"> -->
+                  <select class="form-select" id="inputGroupSelect02" name="availability" style="width:100%">
                     <option selected>Choose...</option>
                     <option value="Morning (6:00 - 11:59)">Morning (6:00 - 11:59)</option>
                     <option value="Afternoon (12:00 - 16:00)">Afternoon (12:00 - 16:00)</option>
                     <option value="Evening (16:00 - 20:00)">Evening (16:00 - 20:00)</option>
                     <option value="Night (20:00 - 00:00)">Night (20:00 - 00:00)</option>
-                    <!-- </datalist> -->
                   </select>
                 </td>
               </tr>
@@ -206,20 +199,11 @@ $message = "";
                       </div>
                     </div>
                   </fieldset>
-                  <!-- <div class="form-check form-check-inline"  color:black">
-                    <input class="form-check-input" type="radio" name="Public" id="inlineRadio1" value="option1">
-                    <label class="form-check-label" for="inlineRadio1">Public</label>
-                  </div>
-                  <div class="form-check form-check-inline" style="float:left; color:brown">
-                    <input class="form-check-input" type="radio" name="Private" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">Private</label>
-                  </div> -->
                 </td>
               </tr>
               <tr>
                 <td class="text-left">Your Complain *</td>
-                <td><textarea class="form-control shadow-none" name="complain" rows="8" cols="80" placeholder="Your complain..." id="floatingTextarea" style="width:450px"></textarea></td>
-                <!-- <td><textarea name="complain" rows="8" cols="80" placeholder="Your complain"></textarea></td> -->
+                <td><textarea class="form-control" name="complain" rows="8" cols="80" placeholder="Your complain..." id="floatingTextarea" style="width:100%"></textarea></td>
               </tr>
               <tr>
                 <td></td>
@@ -227,7 +211,6 @@ $message = "";
               </tr>
               <tr>
                 <td></td>
-                <!-- <td><button type="submit" class="btn btn-primary btn-lg logmessage">Submit</button></td> -->
                 <td><button type="submit" class="log">Submit</button></td>
               </tr>
             </table>
@@ -236,6 +219,8 @@ $message = "";
       </div>
     </div>
   </div>
+  <!-- </div>
+  </div> -->
   <?php
   include 'footer2.php';
   ?>

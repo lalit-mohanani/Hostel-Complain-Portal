@@ -1,10 +1,10 @@
 <?php
 
   require 'core/session.php';
-  require 'core/config.php';
+  require 'core/config1.php';
   include 'core/user_key.php';
 
-//  require 'core/redirect.php';
+  require 'core/redirect.php';
 
  ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
 
   <nav class="navbar navbar-dark navbar-custom navbar-light navbar-expand-lg fixed-top bg-none" >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Hostel Portal</a>
+      <a class="navbar-brand" href="#" style="color:aliceblue">Hostel Portal</a>
       <button class="navbar-toggler shadow-none" style="border-width:0 ;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -55,19 +55,7 @@
             <li class="nav-item">
               <a class="nav-link"  style="color: white; font-size: 0.9em;" href="logout.php" onClick="javascript:return confirm ('Do you really want to Logout ?');">Logout</a>
             </li>
-            <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li> -->
+            
           </ul>
          
         </div>
@@ -76,24 +64,6 @@
   </nav>
   <div class="coverusr" style="height: 300px; ;">
 
-    <!-- <nav class="nav_u">
-
-      
-      <ul>
-        <li style="position:absolute;left:20px;"><a style="font-size:19px">Hostel Management Portal</a></li>
-        <li><a href="profile.php">Home</a></li>
-        <li><a href="message.php">Add Complaints</a></li>
-        <li><a href="status.php">Status</a></li>
-        <li><a href="logout.php" onClick="javascript:return confirm ('Do you really want to Logout ?');">Logout</a></li>
-        
-      </ul>
-
-
-
-
-    </nav> -->
-
-    
     <p class="text-right pdd" style="padding-left:75%">
       <?php echo date("d M , l "); ?>
     </p>
@@ -135,29 +105,6 @@
           </div>
         </div>
 
-        <left -->
-
-        <!-- <div class="content">
-                <div class="col-lg-12">
-                  <div class="posts">
-                    <?php
-                      $db=mysql_query("SELECT * FROM `posts` ");
-                      while($data=mysql_fetch_array($db)) {
-                      echo "<br> <br> <div class='quotes glow'> ";
-                      echo "<h4 class='heading'> Heading : ".$data['subject']."</h4>";
-                      echo "<p> Story : ".$data['story']."<br><br>";
-                      echo " Posted By : ".$data['session_name']."<br>";
-                      echo "</p></div><br><br>";
-                     }
-                    ?>
-                  </div>
-                </div>
-              </div> -->
-
-
-
-
-
         <div class="col-lg-12">
           <div class="jumbotron india_cover"></div>
         </div>
@@ -165,15 +112,6 @@
       </div>
     </div>
   </div>
-
-  <!-- <?php
-      include 'footer2.php';
-      ?> -->
-
-
-
-
-
 
   <?php include 'core/jsscript.php'; ?>
 </body>

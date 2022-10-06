@@ -1,6 +1,6 @@
 
 
-<div class="bar">
+<div class="bar" style="padding-left:0%">
      <!-- Single button -->
       <div class="btn-group nav-item">
         <button type="button" class="acc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,14 +1,15 @@
 <?php
 require './core/session.php';
-require './core/config.php';
-require './core/user_key.php';
+require './core/config1.php';
+require 'core/redirect.php';
+// require './core/user_key.php';
 
 $ref = $_GET['ref'];
-$result = mysql_query("SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
-$arry = mysql_fetch_array($result);
-if (!$result) {
-  die("Error: Data not found..");
-}
+	$result = mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
+	$arry = mysqli_fetch_array($result);
+	if (!$result) {
+			die("Error: Data not found..");
+		}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +24,11 @@ if (!$result) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="./files/css/bootstrap.css"> -->
   <link rel="stylesheet" href="./files/css/custom.css">
+  <style>
+    td {
+      padding-left: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -38,51 +44,32 @@ if (!$result) {
 
     <?php require 'nav-profile.php'; ?>
     <div class="panel-body" style="text-align:center;">
-      <h2>Status : &nbsp;&nbsp;&nbsp;&nbsp;<?php
-                                            $query2 = mysql_query("SELECT * FROM `stats` WHERE ref_no='$ref'");
-                                            while ($arry2 = mysql_fetch_array($query2)) {
-                                              $status = $arry2['status'];
-                                            }
-                                            if ($status == 0) {
-                                              echo "Rejected";
-                                            }
-                                            if ($status == 1) {
-                                              echo "Pending at Officer 1";
-                                            }
-                                            if ($status == 2) {
-                                              echo "Pending at Officer 2";
-                                            }
-                                            if ($status == 3) {
-                                              echo "Pending at Officer 3";
-                                            }
-                                            if ($status == 4) {
-                                              echo "Resolved";
-                                            }
-                                            echo "<p><span class='error'>" . $error . "</p></span>";
-                                            echo "<p><span class='message'>" . $message . "</p></span>";
-                                            ?></h2>
+      <h2>Status : &nbsp;&nbsp;&nbsp;&nbsp;
+        <?php
+        $query2=mysqli_query($conn,"SELECT * FROM `stats` WHERE ref_no='$ref'");
+        while( $arry2=mysqli_fetch_array($query2) ) {
+          $status=$arry2['status'];
+        }
+        if($status==0){echo "Rejected";}
+        if($status==1){echo "Pending at Officer 1";}
+        if($status==2){echo "Pending at Officer 2";}
+        if($status==3){echo "Pending at Officer 3";}
+        if($status==4){echo "Resolved";}
+        echo"<p><span class='error'>".$error."</p></span>";
+        echo "<p><span class='message'>".$message."</p></span>";
+        ?>
+      </h2>
     </div>
 
 
-    <div class="div">
-      <div class="col-lg-12 ">
-        <!-- <?php
-              echo "<a class='button logout' style='background-color: rgb(62, 179, 153);border-radius: 5px;margin-right: 8px;' href ='m_accept.php?id=$id' onClick=\"javascript:return confirm ('Confirm Acceptance');\">Accept</a>";
-              ?>
-
-          <?php
-          echo "<a class='button logout' style='background-color: rgb(62, 179, 153);border-radius: 5px;margin-right: 8px;' href ='m_reject.php?id=$id' onClick=\"javascript:return confirm ('Confirm Rejection');\">Reject</a>";
-          ?>
-
-          <?php
-          echo "<a class='button logout' style='background-color: #116ba7;border-radius: 5px;' href ='m_escalate.php?id=$id' onClick=\"javascript:return confirm ('Do you really want to escalate ?');\">Escalate</a>";
-          ?> -->
+    <div class="col-md-auto">
+      <div class="col-lg-12 " style="padding-left:5px;padding-right:5px">
 
         <br><br><br><br>
         <table>
           <?php
-          $query1 = mysql_query("SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
-          while ($arry = mysql_fetch_array($query1)) {
+          $query1=mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
+          while( $arry=mysqli_fetch_array($query1) ) {
 
             $id = $arry['id'];
             $name = $arry['name'];
@@ -93,7 +80,7 @@ if (!$result) {
             $avail = $arry['availability'];
             $ref = $arry['ref_no'];
             $coi = $arry['CategoryOfIssue'];
-            $room = $arry['address'];
+            $room=$arry['address'];
           }
 
           echo "<tr> <td> <b> Refference no. </b> </td>";

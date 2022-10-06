@@ -1,7 +1,8 @@
 <?php
 require './core/session.php';
-require './core/config.php';
-require './core/user_key.php';
+require './core/config1.php';
+require 'core/redirect.php';
+// require './core/user_key.php';
 
 ?>
 
@@ -25,19 +26,19 @@ require './core/user_key.php';
 
   <div class="animated fadeIn">
 
-
+  <!-- <div class="coverusr" style="height: 300px; ;"> -->
     <div class="cover user text-center" style="height:120px;">
       <br>
       <h2>Complaints</h2>
     </div>
 
     <?php require 'nav-profile.php'; ?>
-    <div class="div">
+    <div class="col-md-auto">
       <div class="col-lg-12">
         <?php
         $email = $_SESSION['email'];
-        $result = mysql_query("SELECT * FROM `cmp_log` WHERE email='$email'");
-        $num_rows = mysql_num_rows($result);
+        $result = mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE email='$email'");
+        $num_rows = mysqli_num_rows($result);
 
         ?>
         <!-- <div class='admin-data'>
@@ -52,11 +53,11 @@ require './core/user_key.php';
         <h2 class="text-center"><?php echo $message; ?></h2>
         <br><br>
 
-        <div class="list-group" style="width:37em;">
-          <ol>
+        <div class="list-group" style="margin-right:10px;">
+          <ol style="padding-left:25px">
             <?php
 
-            while ($data = mysql_fetch_array($result)) {
+while ($data = mysqli_fetch_array($result)) {
               // echo"<div class='admin-data'>";
               echo '<li>';
               echo "<a href='status-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
