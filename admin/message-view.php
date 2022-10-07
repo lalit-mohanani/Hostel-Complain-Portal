@@ -2,8 +2,6 @@
 require '../core/session.php';
 // require '../core/config1.php';
 require '../core/admin-key.php';
-
-$host = "localhost";
 $database = "hrmd";
 $username = "root";
 $password = "";
@@ -11,12 +9,11 @@ $password = "";
 
 $conn = mysqli_connect($host, $username, $password, $database);
 
-if (!$conn) {
-  die('Error in connecting to server or Database');
-}
+if(!$conn){
+   die('Error in connecting to server or Database');
+ }
 
-session_start();
-
+ session_start();
 $ref = $_GET['ref'];
 	$result = mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
 	$arry = mysqli_fetch_array($result);
