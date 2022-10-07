@@ -114,7 +114,7 @@ $message = "";
                 <td>
                   <!-- <input type = "text" name="nameOfHostel" style="text-align:center;"> -->
                   <!-- <input list="namesOfHostel" name="nameOfHostel" style="text-align:center;"/> -->
-                  <select class="form-select shadow-none" id="inputGroupSelect02" name="nameOfHostel" style="width:450px">
+                  <select class="form-select shadow-none" id="inputGroupSelect02" name="nameOfHostel" style="width:100%">
                     <!-- <datalist id="namesOfHostel"> -->
                     <option selected>Choose...</option>
                     <option value="MHR">MHR</option>
@@ -148,12 +148,12 @@ $message = "";
               </tr>
               <tr>
                 <td class="text-left">Room Number</td>
-                <td><input type="text" class="form-control shadow-none" name="address" placeholder="Block-Room No." aria-label="Username" aria-describedby="addon-wrapping" style="width:450px"></td>
+                <td><input type="text" class="form-control shadow-none" name="address" placeholder="Block-Room No." aria-label="Username" aria-describedby="addon-wrapping" style="width:100%"></td>
                 <!-- <td><input type = "text" name = "address" style="text-align:center;">  </td> -->
               </tr>
               <tr>
                 <td class="text-left">Contact Number *</td>
-                <td><input type="number" class="form-control shadow-none" name="phoneno" maxlength=10 placeholder="10-digit No." aria-label="Username" aria-describedby="addon-wrapping" style="width:450px"></td>
+                <td><input type="number" class="form-control shadow-none" name="phoneno" maxlength=10 placeholder="10-digit No." aria-label="Username" aria-describedby="addon-wrapping" style="width:100%"></td>
                 <!-- <td><input type = "number" name = "phoneno" maxlength=10 style="text-align:center;">  </td> -->
               </tr>
               <tr>
