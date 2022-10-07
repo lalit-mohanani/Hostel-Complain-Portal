@@ -11,22 +11,22 @@ $password = "";
 
 $conn = mysqli_connect($host, $username, $password, $database);
 
-if(!$conn){
-   die('Error in connecting to server or Database');
- }
+if (!$conn) {
+  die('Error in connecting to server or Database');
+}
 
- session_start();
+session_start();
 
 ?>
 <?php $filter = $_GET['fil'];
 $coi = $_GET['coi'];
 $at = $_GET['at']; ?>
 <?php
-$username=$_SESSION['name']." ".$_SESSION['user_last_name'];
-  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
-  $arry1 = mysqli_fetch_array($query1);
-  $usr = $arry1['name'];
-  $aid = $arry1['id'];
+$username = $_SESSION['name'] . " " . $_SESSION['user_last_name'];
+$query1 = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username'");
+$arry1 = mysqli_fetch_array($query1);
+$usr = $arry1['name'];
+$aid = $arry1['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,8 +56,9 @@ $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
       font-size: 20px;
     }
 
-    .reset-style, .reset-style * {
-        all: revert;
+    .reset-style,
+    .reset-style * {
+      all: revert;
     }
   </style>
 
@@ -81,13 +82,13 @@ $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
               <div class="col-lg-12" style="padding-left:10px">
                 <?php
                 if (empty($filter) && empty($coi) && empty($at)) {
-                  $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else if (!empty($filter)) {
-                  $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else if (!empty($coi)) {
-                  $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 } else {
-                  $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                 }
                 $num_rows = mysqli_num_rows($result);
                 ?>
@@ -100,13 +101,13 @@ $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
                 <div class="col-lg-12">
                   <?php
                   if (empty($filter) && empty($coi) && empty($at)) {
-                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($filter)) {
-                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($coi)) {
-                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else {
-                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   }
                   $num_rows = mysqli_num_rows($result);
                   ?>
@@ -182,7 +183,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                     <ol>
                       <?php
 
-while ($data = mysqli_fetch_array($result)) {
+                      while ($data = mysqli_fetch_array($result)) {
 
                         echo '<li>';
                         echo "<a href='message-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
@@ -195,11 +196,11 @@ while ($data = mysqli_fetch_array($result)) {
                         echo '</div>';
                         echo '<div class="d-flex justify-content-between">';
                         echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
-                        
+
                         // echo "<a class='nav-link' href ='m_accept.php?ref=$data[ref_no]' onClick=\"javascript:return confirm ('Confirm Acceptance');\">";
                         // echo '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
                         // <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                      // </svg>';
+                        // </svg>';
                         // echo '</a>';
                         echo '</div>';
                         echo '<div class="d-flex justify-content-between">';
@@ -234,29 +235,34 @@ while ($data = mysqli_fetch_array($result)) {
               </div>
 
             </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
 
-            <script src="../files/js/jquery.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-            <script src="../files/js/script.js"></script>
+  <script src="../files/js/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="../files/js/script.js"></script>
 
-            <script>
-              $(document).ready(function() {
-                $(".dropdown-submenu a.test").on("click", function(e) {
-                  $(this)
-                    .next("ul")
-                    .toggle();
-                  e.stopPropagation();
-                  e.preventDefault();
-                });
-              });
-            </script>
+  <script>
+    $(document).ready(function() {
+      $(".dropdown-submenu a.test").on("click", function(e) {
+        $(this)
+          .next("ul")
+          .toggle();
+        e.stopPropagation();
+        e.preventDefault();
+      });
+    });
+  </script>
 
-            <script>
-              var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-              var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl)
-              })
-            </script>
+  <script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
+    })
+  </script>
 
 </body>
 
