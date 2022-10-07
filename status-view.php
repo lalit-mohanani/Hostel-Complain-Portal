@@ -111,8 +111,8 @@ $ref = $_GET['ref'];
 
           echo "<tr> <td> <b> Visibility </b> </td>";
           echo "     <td style='color: ";
-           if($vi=="private"){echo "red";}
-           if($vi=="public"){echo "green";}
+          //  if($vi=="private"){echo "red";}
+          //  if($vi=="public"){echo "green";}
           
            echo "'> " . $vi. "</td> </tr>";
 

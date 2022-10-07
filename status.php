@@ -84,7 +84,9 @@ while ($data = mysqli_fetch_array($result)) {
               echo $data['phone no'];
               echo " | Availability: $data[availability]</small>";
               // echo '<small style="color:red">Public</small>';
-              echo "<medium style='color: .color($data[visibility]). '>$data[visibility]</medium>";
+              if($data['visibility']=='Private'){echo "<medium style='color: green '>$data[visibility]</medium>";}
+              if($data['visibility']=='Public'){echo "<medium style='color: red '>$data[visibility]</medium>";}
+              // echo "<medium style='color: .color($data[visibility]). '>$data[visibility]</medium>";
               echo '</div>';
               // echo "<a class='button view' href='status-view.php?ref=$data[ref_no]'>View Status</a>";
               // echo "</div>";
