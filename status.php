@@ -73,8 +73,8 @@ while ($data = mysqli_fetch_array($result)) {
               echo "<a href='status-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
               echo '<div class="d-flex w-100 justify-content-between">';
               echo '<h5 class="mb-1">';
-              echo $data['CategoryOfIssue'];
-              $empty = $data['CategoryOfIssue'];
+              echo $data['name'];
+              $empty = $data['name'];
               echo '</h5>';
               echo '<small>3 days ago</small>';
               echo '</div>';
