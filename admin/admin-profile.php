@@ -58,9 +58,9 @@ if(!$conn){
 
             <div class="cover main">
             <?php
-      if (isset($_SESSION['email'])===true) {echo "<h1> Welcome, ".$usr."</h1>";}
+      if (isset($_SESSION['email'])===true) {echo "<h1> Welcome, ".$usr."</h1><a class='button logout' style='background-color: rgb(62, 179, 153);border-radius: 4%; margin-left:55%; margin-bottom:10%; 'href='../logout.php' onClick='javascript:return confirm ('Do you really want to logout ?');'> Logout </a>";}
        ?>
-       <a class="button logout" style="background-color: rgb(62, 179, 153);border-radius: 4%;"href="../logout.php" onClick="javascript:return confirm ('Do you really want to logout ?');"> Logout </a>
+       
        &nbsp;&nbsp;&nbsp;
 
 

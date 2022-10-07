@@ -83,6 +83,7 @@ $message = "";
                $nameOfHostel=mysqli_real_escape_string($conn,$_POST['nameOfHostel']);
                $address=mysqli_real_escape_string($conn,$_POST['address']);
                $availability=mysqli_real_escape_string($conn,$_POST['availability']);
+               $visibility=mysqli_real_escape_string($conn,$_POST['visibility']);
                if(empty($phoneno) || empty($complain) || empty($CategoryOfIssue || empty($address))){
                 // $message = "Please fill all details!";
               }else
@@ -90,7 +91,7 @@ $message = "";
                 $error = "Invalid Phone Number";
               }else{
                   $id++;
-                 mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability')") or die(mysqli_error($conn));
+                 mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability','$visibility')") or die(mysqli_error($conn));
                  mysqli_query($conn,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
                  $message = "Your Complain has been Registerd";
                  }
@@ -186,13 +187,13 @@ $message = "";
                   <fieldset class="row mb-3">
                     <div class="col-sm-10">
                       <div class="form-check form-check-inline" style="float:left;color:black">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Public" checked>
+                        <input class="form-check-input" type="radio" name="visibility" id="gridRadios1" value="Public" checked>
                         <label class="form-check-label" for="gridRadios1">
                           Public
                         </label>
                       </div>
                       <div class="form-check form-check-inline" style="float:left;color:black">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Private">
+                        <input class="form-check-input" type="radio" name="visibility" id="gridRadios2" value="Private">
                         <label class="form-check-label" for="gridRadios2">
                           Private
                         </label>

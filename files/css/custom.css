@@ -117,6 +117,9 @@ button.log{
 button.log:hover{
   background: #85e0d8;
 }
+.hovering:hover{
+  background: #85e0d8;
+}
 button.logmessage:hover{
   background: #85e0d8;
 }
@@ -255,6 +258,11 @@ nav.admin ul li a svg{
   border-left:5px solid #7fe8de;
 
 }
+/* .hovering:hover{
+  background: #eee;
+  border-left:5px solid #7fe8de;
+
+} */
 .view{
   background:#4db6ac;
   float: right;

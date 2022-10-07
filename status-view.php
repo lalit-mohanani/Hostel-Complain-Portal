@@ -81,7 +81,9 @@ $ref = $_GET['ref'];
             $ref = $arry['ref_no'];
             $coi = $arry['CategoryOfIssue'];
             $room=$arry['address'];
+            $vi=$arry['visibility'];
           }
+        
 
           echo "<tr> <td> <b> Refference no. </b> </td>";
           echo "     <td> " . $ref . "</td> </tr>";
@@ -108,13 +110,17 @@ $ref = $_GET['ref'];
           echo "     <td> " . $avail . "</td> </tr>";
 
           echo "<tr> <td> <b> Visibility </b> </td>";
-          echo "     <td> " . $visibility . "</td> </tr>";
+          echo "     <td style='color: ";
+           if($vi=="private"){echo "red";}
+           if($vi=="public"){echo "green";}
+          
+           echo "'> " . $vi. "</td> </tr>";
 
           echo "<tr> <td> <b> Complain </b> </td>";
           echo "     <td> " . $complain . "</td> </tr>";
 
           echo "<tr> <td> <b> Remarks by Warden </b> </td>";
-          echo "     <td> " . $remarks . "</td> </tr>";
+          echo "     <td > " . $remarks . "</td> </tr>";
 
           ?>
         </table>

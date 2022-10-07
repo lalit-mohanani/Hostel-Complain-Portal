@@ -68,6 +68,7 @@ CREATE TABLE `cmp_log` (
 `availability` VARCHAR(100) NOT NULL 
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ALTER TABLE `cmp_log` ADD `visibility` VARCHAR(100) NOT NULL AFTER `availability`;
 
 --
 -- Dumping data for table `cmp_log`

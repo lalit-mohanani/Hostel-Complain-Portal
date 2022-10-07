@@ -105,8 +105,11 @@ $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
                     $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($coi)) {
                     $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                  } else {
+                  } else if (!empty($coi)) {
                     $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  }
+                  else {
+                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where visibility='$vi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   }
                   $num_rows = mysqli_num_rows($result);
                   ?>
@@ -207,7 +210,7 @@ while ($data = mysqli_fetch_array($result)) {
                         echo $data['phone no'];
                         echo " | Availability: $data[availability]</small>";
                         // echo '<medium style="color:red">Public</medium>';
-                        echo '<medium style="color:green">Private</medium>';
+                        echo "<medium style='color:green'>$data[visibility]</medium>";
                         echo '</div>';
                         // echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";
                         //echo "</div>";

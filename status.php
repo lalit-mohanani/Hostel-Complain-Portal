@@ -36,9 +36,18 @@ require 'core/redirect.php';
     <div class="col-md-auto">
       <div class="col-lg-12">
         <?php
+        function color($data)
+        {
+            if ($data=="private" )
+                return 'red';
+            else 
+                return 'green';
+           
+        }
         $email = $_SESSION['email'];
         $result = mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE email='$email'");
         $num_rows = mysqli_num_rows($result);
+        
 
         ?>
         <!-- <div class='admin-data'>
@@ -58,6 +67,7 @@ require 'core/redirect.php';
             <?php
 
 while ($data = mysqli_fetch_array($result)) {
+         
               // echo"<div class='admin-data'>";
               echo '<li>';
               echo "<a href='status-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
@@ -74,7 +84,7 @@ while ($data = mysqli_fetch_array($result)) {
               echo $data['phone no'];
               echo " | Availability: $data[availability]</small>";
               // echo '<small style="color:red">Public</small>';
-              echo '<medium style="color:green">Private</medium>';
+              echo "<medium style='color: .color($data[visibility]). '>$data[visibility]</medium>";
               echo '</div>';
               // echo "<a class='button view' href='status-view.php?ref=$data[ref_no]'>View Status</a>";
               // echo "</div>";
