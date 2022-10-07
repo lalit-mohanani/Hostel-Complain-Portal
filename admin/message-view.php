@@ -1,7 +1,21 @@
 <?php
 require '../core/session.php';
-require '../core/config1.php';
+// require '../core/config1.php';
 require '../core/admin-key.php';
+
+$host = "localhost";
+$database = "hrmd";
+$username = "root";
+$password = "";
+
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if (!$conn) {
+  die('Error in connecting to server or Database');
+}
+
+session_start();
 
 $ref = $_GET['ref'];
 	$result = mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
@@ -82,6 +96,7 @@ $aid=$arry1['id'];
                     $avai = $arry['availability'];
                     $ref = $arry['ref_no'];
                     $address = $arry['address'];
+                    $vi=$arry['visibility'];
                   }
 
 
@@ -113,7 +128,7 @@ $aid=$arry1['id'];
                   echo "     <td> " . $avai . "</td> </tr>";
 
                   echo "<tr> <td> <b> Visibility </b> </td>";
-                  echo "     <td> " . $visibility . "</td> </tr>";
+                  echo "     <td> " . $vi . "</td> </tr>";
 
                   echo "<tr> <td> <b> Complain </b> </td>";
                   echo "     <td> " . $complain . "</td> </tr>";

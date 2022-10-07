@@ -105,12 +105,11 @@ $aid = $arry1['id'];
                   } else if (!empty($filter)) {
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($coi)) {
-                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($coi)) {
-                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                  }
-                  else {
-                    $result = mysqli_query($conn,"SELECT * FROM `cmp_log` where visibility='$vi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                  } else {
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where visibility='$vi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   }
                   $num_rows = mysqli_num_rows($result);
                   ?>
@@ -211,7 +210,13 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                         echo $data['phone no'];
                         echo " | Availability: $data[availability]</small>";
                         // echo '<medium style="color:red">Public</medium>';
-                        echo "<medium style='color:green'>$data[visibility]</medium>";
+                        // echo "<medium style='color:green'>$data[visibility]</medium>";
+                        if ($data['visibility'] == 'Private') {
+                          echo "<medium style='color: green '>$data[visibility]</medium>";
+                        }
+                        if ($data['visibility'] == 'Public') {
+                          echo "<medium style='color: red '>$data[visibility]</medium>";
+                        }
                         echo '</div>';
                         // echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";
                         //echo "</div>";

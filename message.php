@@ -187,13 +187,13 @@ $message = "";
                   <fieldset class="row mb-3">
                     <div class="col-sm-10">
                       <div class="form-check form-check-inline" style="float:left;color:black">
-                        <input class="form-check-input" type="radio" name="visibility" id="gridRadios1" value="Public" checked>
+                        <input class="form-check-input" type="radio" name="visibility" id="gridRadios1" value="Public">
                         <label class="form-check-label" for="gridRadios1">
                           Public
                         </label>
                       </div>
                       <div class="form-check form-check-inline" style="float:left;color:black">
-                        <input class="form-check-input" type="radio" name="visibility" id="gridRadios2" value="Private">
+                        <input class="form-check-input" type="radio" name="visibility" id="gridRadios2" value="Private" checked>
                         <label class="form-check-label" for="gridRadios2">
                           Private
                         </label>
