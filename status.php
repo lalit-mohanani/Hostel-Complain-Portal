@@ -26,7 +26,7 @@ require 'core/redirect.php';
 
   <div class="animated fadeIn">
 
-  <!-- <div class="coverusr" style="height: 300px; ;"> -->
+    <!-- <div class="coverusr" style="height: 300px; ;"> -->
     <div class="cover user text-center" style="height:120px;">
       <br>
       <h2>Complaints</h2>
@@ -38,16 +38,15 @@ require 'core/redirect.php';
         <?php
         function color($data)
         {
-            if ($data=="private" )
-                return 'red';
-            else 
-                return 'green';
-           
+          if ($data == "private")
+            return 'red';
+          else
+            return 'green';
         }
         $email = $_SESSION['email'];
-        $result = mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE email='$email'");
+        $result = mysqli_query($conn, "SELECT * FROM `cmp_log` WHERE email='$email'");
         $num_rows = mysqli_num_rows($result);
-        
+
 
         ?>
         <!-- <div class='admin-data'>
@@ -66,8 +65,8 @@ require 'core/redirect.php';
           <ol style="padding-left:25px">
             <?php
 
-while ($data = mysqli_fetch_array($result)) {
-         
+            while ($data = mysqli_fetch_array($result)) {
+
               // echo"<div class='admin-data'>";
               echo '<li>';
               echo "<a href='status-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
@@ -84,8 +83,12 @@ while ($data = mysqli_fetch_array($result)) {
               echo $data['phone no'];
               echo " | Availability: $data[availability]</small>";
               // echo '<small style="color:red">Public</small>';
-              if($data['visibility']=='Private'){echo "<medium style='color: green '>$data[visibility]</medium>";}
-              if($data['visibility']=='Public'){echo "<medium style='color: red '>$data[visibility]</medium>";}
+              if ($data['visibility'] == 'Private') {
+                echo "<medium style='color: green '>$data[visibility]</medium>";
+              }
+              if ($data['visibility'] == 'Public') {
+                echo "<medium style='color: red '>$data[visibility]</medium>";
+              }
               // echo "<medium style='color: .color($data[visibility]). '>$data[visibility]</medium>";
               echo '</div>';
               // echo "<a class='button view' href='status-view.php?ref=$data[ref_no]'>View Status</a>";
