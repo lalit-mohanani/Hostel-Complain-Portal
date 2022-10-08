@@ -54,7 +54,7 @@ if(isset($_GET["code"]))
 
 if(!isset($_SESSION['access_token']))
 {
- $login_button = '<a class="btn btn-primary  hovering" style=" width:298px;color:white; background-color: #4db6ac ;border:0px; margin-top:10px;border-radius:0px; font-size:0.9em;" href="'.$google_client->createAuthUrl().'">Login With Google</a>';
+ $login_button = '<a class="btn btn-primary  hovering" style=" width:30%;color:white; background-color: #4db6ac ;border:0px; margin-top:60px;border-radius:4px; font: size 0.9em;em;" href="'.$google_client->createAuthUrl().'"><i style="margin-right: 0.5em; "class="fa-brands fa-google"></i><b style="font-size:0.9em ;"> Login</b></a>';
 }
 
  ?>
@@ -78,6 +78,7 @@ if(!isset($_SESSION['access_token']))
 
     <!-- <link rel="stylesheet" href="files/css/bootstrap.css"> -->
     <link rel="stylesheet" href="files/css/custom.css">
+    <script src="https://kit.fontawesome.com/036cabc19a.js" crossorigin="anonymous"></script>
   </head>
   <body >
 
@@ -89,7 +90,7 @@ if(!isset($_SESSION['access_token']))
     <br>
     <br>
       
-    <img src = "./files/img/iitbbs_logo.png" fill="#fff" height="148" viewBox="0 0 24 24" width="148" class="shad">
+    <img src = "./files/img/iitbbs_logo.png" fill="#fff"  style="width:6em ;" viewBox="0 0 24 24"  class="shad">
     <h2>USER LOGIN</h2>
       <!-- <svg fill="#fff" height="148" viewBox="0 0 24 24" width="148" xmlns="http://www.w3.org/2000/svg" class="shad">
           <path d="M0 0h24v24H0z" fill="none"/>
@@ -106,13 +107,13 @@ if(!isset($_SESSION['access_token']))
 
         <div class="col-lg-12 text-center">
               <form class="" method="post" autocomplete="off">
-                <label for="username"></label>
+                <!-- <label for="username"></label>
                 <input type="email" name="email" placeholder="Email" id="email">
                 <br><br>
                 <label for="password"></label>
                 <input type="password" name="password" placeholder="Password" id="pass">
                 <br><br>
-                <button type="submit" class="log">Login</button>
+                <button type="submit" class="log">Login</button> -->
                 <?php
                 if($login_button == ''){
                   // echo '<div class="panel-heading">Welcome User</div><div class="panel-body">';
@@ -143,11 +144,15 @@ if(!isset($_SESSION['access_token']))
       </div>
 
     </div>
+    <footer style="padding-top: 30px;">
+      <a href="blog/blog.php" style="padding-bottom:20px; font-size:0.9em;">Email: admin@iitbbs.ac.in </a> &nbsp;&nbsp;|
+      <a href="blog/documentation.php" style="font-size:0.9em;">Phone: 7205898887</a>
+    </footer>
     <?php
     include 'footer.php';
     include 'core/jsscript.php';
     ?>
 
-
+  
   </body>
 </html>
