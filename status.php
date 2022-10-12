@@ -63,6 +63,9 @@ require 'core/redirect.php';
 
         <div class="list-group" style="margin-right:10px;">
           <ol style="padding-left:25px">
+          <?php
+
+          ?>
             <?php
 
             while ($data = mysqli_fetch_array($result)) {
@@ -75,7 +78,9 @@ require 'core/redirect.php';
               echo $data['name'];
               $empty = $data['name'];
               echo '</h5>';
-              echo '<small>3 days ago</small>';
+              $result2 = mysqli_query($conn, "SELECT * FROM `stats` WHERE ref_no=$data[ref_no]");
+              $data2 = mysqli_fetch_array($result2);
+              echo "<small> $data2[time] </small>";
               echo '</div>';
               echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
               echo '<div class="d-flex justify-content-between">';
