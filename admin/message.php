@@ -22,8 +22,9 @@ session_start();
 $coi = $_GET['coi'];
 $at = $_GET['at']; ?>
 <?php
-$username = $_SESSION['name'] . " " . $_SESSION['user_last_name'];
-$query1 = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username'");
+$username=$_SESSION['name']." ".$_SESSION['user_last_name'];
+$email=$_SESSION['email'];
+$query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
 $arry1 = mysqli_fetch_array($query1);
 $usr = $arry1['name'];
 $aid = $arry1['id'];
@@ -194,7 +195,9 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                         echo $data['name'];
                         $empty = $data['name'];
                         echo '</h5>';
-                        echo '<small>3 days ago</small>';
+                        $result2 = mysqli_query($conn, "SELECT * FROM `stats` WHERE ref_no=$data[ref_no]");
+                        $data2 = mysqli_fetch_array($result2);
+                        echo "<small> $data2[time] </small>";
                         echo '</div>';
                         echo '<div class="d-flex justify-content-between">';
                         echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";

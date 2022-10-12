@@ -18,6 +18,14 @@ if(!$conn){
  session_start();
 
 ?>
+ <?php
+  $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
+  $email=$_SESSION['email'];
+  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
+  $arry1 = mysqli_fetch_array($query1);
+  $usr = $arry1['name'];
+  $aid = $arry1['id'];
+  ?>
 <!DOCTYPE html>
 <html>
 
@@ -40,14 +48,7 @@ if(!$conn){
 </head>
 
 <body>
-  <?php
-  $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
-  $email=$_SESSION['email'];
-  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
-  $arry1 = mysqli_fetch_array($query1);
-  $usr = $arry1['name'];
-  $aid = $arry1['id'];
-  ?>
+ 
   <div class="container-fluid overflow-hidden">
     <div class="row vh-100 overflow-auto">
       <?php require 'nav.php'; ?>
@@ -76,8 +77,8 @@ if(!$conn){
                 <div class="analysis">
                   <?php
 
-$users = mysqli_query($conn,"SELECT * FROM `circle` ");
-$count_users = mysqli_num_rows($users);
+// $users = mysqli_query($conn,"SELECT * FROM `circle` ");
+// $count_users = mysqli_num_rows($users);
 
 $cmp = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
 $count_cmp = mysqli_num_rows($cmp);
@@ -93,7 +94,7 @@ $count_frd = mysqli_num_rows($frd);
                           <h4 class="my-0 fw-normal">Total Users</h4>
                         </div>
                         <div class="card-body">
-                          <h1 class="card-title pricing-card-title"><?php echo $count_users; ?></h1>
+                          <h1 class="card-title pricing-card-title"><?php echo "1000"; ?></h1>
                           <ul class="list-unstyled mt-3 mb-4">
                             <li>data_1</li>
                             <li>data_2</li>
