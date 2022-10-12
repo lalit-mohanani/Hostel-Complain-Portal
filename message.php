@@ -114,7 +114,7 @@ $message = "";
                 <td>
                   <!-- <input type = "text" name="nameOfHostel" style="text-align:center;"> -->
                   <!-- <input list="namesOfHostel" name="nameOfHostel" style="text-align:center;"/> -->
-                  <select class="form-select shadow-none" id="inputGroupSelect02" name="nameOfHostel" style="width:100%">
+                  <select class="form-select shadow-none" id="inputGroupSelect02" name="nameOfHostel" style="width:100%" required>
                     <!-- <datalist id="namesOfHostel"> -->
                     <option selected>Choose...</option>
                     <option value="MHR">MHR</option>
@@ -129,7 +129,7 @@ $message = "";
 
                 <td class="text-left">Category of Issue</td>
                 <td>
-                  <select class="form-select" id="inputGroupSelect02" name="CategoryOfIssue" style="width:100%">
+                  <select class="form-select" id="validationDefault01" id="inputGroupSelect02" name="CategoryOfIssue" style="width:100%" required>
                     <option selected>Choose...</option>
                     <option value="Cleanliness">Cleanliness</option>
                     <option value="Electricity">Electricity</option>
@@ -148,12 +148,12 @@ $message = "";
               </tr>
               <tr>
                 <td class="text-left">Room Number</td>
-                <td><input type="text" class="form-control shadow-none" name="address" placeholder="Block-Room No." aria-label="Username" aria-describedby="addon-wrapping" style="width:100%"></td>
+                <td><input type="text" class="form-control shadow-none" id="validationDefault01" name="address" placeholder="Block-Room No." aria-label="Username" aria-describedby="addon-wrapping" style="width:100%" required></td>
                 <!-- <td><input type = "text" name = "address" style="text-align:center;">  </td> -->
               </tr>
               <tr>
                 <td class="text-left">Contact Number *</td>
-                <td><input type="number" class="form-control shadow-none" name="phoneno" maxlength=10 placeholder="10-digit No." aria-label="Username" aria-describedby="addon-wrapping" style="width:100%"></td>
+                <td><input type="number" class="form-control shadow-none" id="validationDefault01" name="phoneno" maxlength=10 placeholder="10-digit No." aria-label="Username" aria-describedby="addon-wrapping" style="width:100%" required></td>
                 <!-- <td><input type = "number" name = "phoneno" maxlength=10 style="text-align:center;">  </td> -->
               </tr>
               <tr>
@@ -164,14 +164,12 @@ $message = "";
               </tr>
               <tr>
                 <td class="text-left">Roll Number</td>
-                <td class="text-left">
-                  <div class="form-control" style="width:100%; text-align:left"><?php echo $rollno; ?></div>
-                </td>
+                <td><input type="text" class="form-control" id="validationDefault01" name="rollno" placeholder="Roll No." value="<?php echo $rollno; ?>" required></td>
               </tr>
               <tr>
                 <td class="text-left">Availability (Time)</td>
                 <td>
-                  <select class="form-select" id="inputGroupSelect02" name="availability" style="width:100%">
+                  <select class="form-select" id="inputGroupSelect02" name="availability" style="width:100%" required>
                     <option selected>Choose...</option>
                     <option value="Morning (6:00 - 11:59)">Morning (6:00 - 11:59)</option>
                     <option value="Afternoon (12:00 - 16:00)">Afternoon (12:00 - 16:00)</option>
