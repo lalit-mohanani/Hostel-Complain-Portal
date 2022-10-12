@@ -53,7 +53,7 @@
 
 if(!isset($_SESSION['access_token']))
 {
- $login_button = '<a href="'.$google_client->createAuthUrl().'">Login With Google</a>';
+ $login_button = '<a class="btn btn-primary  hovering" style=" width:30%;color:white; background-color: #4db6ac ;border:0px; margin-top:60px;border-radius:4px; font: size 0.9em;em;" href="'.$google_client->createAuthUrl().'"><i style="margin-right: 0.5em; "class="fa-brands fa-google"></i><b style="font-size:0.9em ;"> Login</b></a>';
 }
  ?>
 
@@ -91,18 +91,18 @@ if(!isset($_SESSION['access_token']))
       <h2>ADMIN LOGIN</h2>
     </div>
 
-      <div class="padd">
+      <div class="padd" style="background: #FFFFFF">
 
         <div class="col-lg-12 text-center">
               <form class="" method="post" autocomplete="off">
-                <label for="username"></label>
+                <!-- <label for="username"></label>
                 <input type="text" name="username" placeholder="Admin username" id="email">
                 <br><br>
                 <label for="password"></label>
                 <input type="password" name="password" placeholder="Password" id="pass">
                 <br><br>
                 <button type="submit" class="log">Login</button>
-                <br><br>
+                <br><br> -->
                 <?php
                 if($login_button == ''){
                   // echo '<div class="panel-heading">Welcome User</div><div class="panel-body">';
@@ -127,6 +127,10 @@ if(!isset($_SESSION['access_token']))
        &nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php">User </a>
       </div>
   </div>
+  <footer style="padding-top: 30px;">
+      <a href="blog/blog.php" style="padding-bottom:20px; font-size:0.9em;">Email: admin@iitbbs.ac.in </a> &nbsp;&nbsp;|
+      <a href="blog/documentation.php" style="font-size:0.9em;">Phone: 7205898887</a>
+    </footer>
       <?php
       include 'footer.php';
       include 'core/jsscript.php';

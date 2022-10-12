@@ -1,7 +1,25 @@
 <?php
 require '../core/session.php';
 require '../core/admin-key.php';
+$host = "localhost";
+$database = "hrmd";
+$username = "root";
+$password = "";
 
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+if(!$conn){
+   die('Error in connecting to server or Database');
+ }
+
+ session_start();
+$email=$_SESSION['email'];
+  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
+  $arry1 = mysqli_fetch_array($query1);
+  $usr = $arry1['name'];
+  $hos=$arry1['hostel'];
+  $aid = $arry1['id'];
 ?>
 
 <div class="col-12 col-sm-3 col-xl-2 sm-2 px-0 bg-dark d-flex sticky-top" style="background-color:#37474f">
@@ -29,9 +47,9 @@ require '../core/admin-key.php';
                     <span class="ms-1 d-none d-sm-inline text-white">Complaints</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                    <li><a class="dropdown-item" href="#">Your Hostel</a></li>
+                    <li><a class="dropdown-item" href="message.php?fil=<?php echo $hos?>">Your Hostel</a></li>
                     <li><a class="dropdown-item" href="message.php">Other Hostels</a></li>
-                    <li><a class="dropdown-item" href="#">Other Wardens</a></li>
+                    <!-- <li><a class="dropdown-item" href="message.php?">Other Wardens</a></li> -->
                 </ul>
             </li>
             <br>

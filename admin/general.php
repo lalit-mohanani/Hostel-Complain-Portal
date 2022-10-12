@@ -17,10 +17,11 @@ if(!$conn){
  }
 
  session_start();
-   $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
-   $qu=mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'"); 
-   $ar=mysqli_fetch_array($qu); 
-   $aid=$ar['id'];
+ $email=$_SESSION['email'];
+ $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
+ $arry1 = mysqli_fetch_array($query1);
+ $usr = $arry1['name'];
+ $aid = $arry1['id'];
 
   date_default_timezone_set('Asia/Kolkata');
   $update = date('M, l, h:i a');
@@ -28,8 +29,8 @@ if(!$conn){
   {
     $name = mysqli_real_escape_string($conn,$_POST['name']);
     $username = mysqli_real_escape_string($conn,$_POST['username']);
-    $password=mysqli_real_escape_string($conn,$_POST['password']);
-    if(empty($name) || empty($username) || empty($password)){
+    
+    if(empty($name) || empty($username) ){
       $message="
       <div class='alert errr' id='msg'>
       <div class ='text-right' id='close'>
@@ -41,7 +42,7 @@ if(!$conn){
        <p>Choose Name, Username And Password !!</p>
       </div>";
     }else{
-        mysqli_query($conn,"UPDATE admin SET name='$name',username='$username',password='$password',up_time='$update' WHERE id='1'")or die(mysqli_error($conn));
+        mysqli_query($conn,"UPDATE admin SET name='$name',username='$username' ,up_time='$update' WHERE id='$aid'")or die(mysqli_error($conn));
         $message = "
         <div class='alert succ' id='msg'>
           <div class ='text-right' id='close'>
@@ -119,8 +120,8 @@ if(!$conn){
                         <td><input type="text" name="username" placeholder="<?php echo $arry1['username']; ?>"></td>
                       </tr>
                       <tr>
-                        <td>Password</td>
-                        <td><input type="text" name="password" placeholder="<?php echo $arry1['password']; ?>"></td>
+                        <!-- <td>Password</td>
+                        <td><input type="text" name="password" placeholder="<//?php echo $arry1['password']; ?>"></td> -->
                       </tr>
                       <tr>
                         <td></td>
