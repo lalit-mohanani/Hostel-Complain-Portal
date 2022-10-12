@@ -42,7 +42,8 @@ if(!$conn){
 <body>
   <?php
   $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
-  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
+  $email=$_SESSION['email'];
+  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
   $arry1 = mysqli_fetch_array($query1);
   $usr = $arry1['name'];
   $aid = $arry1['id'];

@@ -2,16 +2,13 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+05:30";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL ,
+  `hostel` varchar(4) ,
   `up_time` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -19,39 +16,12 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `name`, `username`, `password`, `up_time`) VALUES
-(1, 'Officer 1', 'admin1', 'admin1', 'May, Saturday, 05:24 pm');
-INSERT INTO `admin` (`id`, `name`, `username`, `password`, `up_time`) VALUES
-(2, 'Officer 2', 'admin2', 'admin2', 'May, Saturday, 05:24 pm');
-INSERT INTO `admin` (`id`, `name`, `username`, `password`, `up_time`) VALUES
-(3, 'Officer 3', 'admin3', 'admin3', 'May, Saturday, 05:24 pm');
+INSERT INTO `admin` (`id`, `name`, `username`, `email`,`hostel`, `up_time`) VALUES
+(1, 'Lalit Mohanani', 'Lalit','21cs02006@iitbbs.ac.in','MHR','May, Saturday, 05:24 pm');
+
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `circle`
---
-
-CREATE TABLE `circle` (
-  `id` int(11) NOT NULL,
-  `rollno` varchar(10) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `circle`
---
-
-INSERT INTO `circle` (`id`,`rollno`,`name`, `username`, `email`, `password`, `date`) VALUES
-(1,'21cs01001','Demo', 'demo', 'demo@demo.com', 'password', '2021-05-10'),
-(2,'21cs02006','Lalit','lalit-mohanani', '21cs02006@iitbbs.ac.in', '123', '2022-10-23'),
-(3,'21ec01010','Harsha','hv789', '21cs01010@iitbbs.ac.in', '123', '2022-10-23'),
-(4,'21mm01014','Durgesh','dmaster007', '21mm01014@iitbbs.ac.in', '123', '2022-10-23'),
-(5,'21cs01111','Timepass','jamesbond', 'fcuk@123.com', '123', '2022-10-23');
 
 
 
