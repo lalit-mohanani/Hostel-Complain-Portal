@@ -63,13 +63,30 @@ require 'core/redirect.php';
 
         <div class="list-group" style="margin-right:10px;">
           <ol style="padding-left:25px">
-          <?php
-
-          ?>
+            
             <?php
 
             while ($data = mysqli_fetch_array($result)) {
-
+              $ref=$data['ref_no'];
+              $query2 = mysqli_query($conn, "SELECT * FROM `stats` WHERE ref_no='$ref'");
+              $arry2 = mysqli_fetch_array($query2);
+                $status = $arry2['status'];
+              
+              if ($status == 0) {
+                $s = "Rejected";
+              }
+              if ($status == 1) {
+                $s = "Pending at Officer 1";
+              }
+              if ($status == 2) {
+                $s = "Pending at Officer 2";
+              }
+              if ($status == 3) {
+                $s = "Pending at Officer 3";
+              }
+              if ($status == 4) {
+                $s = "Resolved";
+              }
               // echo"<div class='admin-data'>";
               echo '<li>';
               echo "<a href='status-view.php?ref=$data[ref_no]' data-bs-toggle='popover' data-bs-trigger='hover focus' title='Complain' data-bs-content='$data[complain]' class='list-group-item list-group-item-action' aria-current='true' style='color:black; border-radius:12px'>";
@@ -80,9 +97,13 @@ require 'core/redirect.php';
               echo '</h5>';
               $result2 = mysqli_query($conn, "SELECT * FROM `stats` WHERE ref_no=$data[ref_no]");
               $data2 = mysqli_fetch_array($result2);
-              echo "<small> $data2[time] </small>";
+              echo "<small style='color:#37474f'> $data2[time] </small>";
               echo '</div>';
+              echo '<div class="d-flex justify-content-between">';
               echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
+              echo "<p style='color:#37474f' class='mb-1'>$s</p>";
+              echo '</div>';
+              // echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
               echo '<div class="d-flex justify-content-between">';
               echo "<small style='color:#37474f'>$data[nameOfHostel], $data[address] | Phone No. ";
               echo $data['phone no'];
