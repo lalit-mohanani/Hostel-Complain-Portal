@@ -3,6 +3,7 @@
 require '../core/session.php';
 // require '../core/config.php';
 require '../core/admin-key.php';
+$host = "localhost";
 $database = "hrmd";
 $username = "root";
 $password = "";
@@ -17,7 +18,7 @@ if(!$conn){
  session_start();
 		$ref = $_GET['ref'];
 		
-		mysql_query("UPDATE `stats` SET `Status`=4 WHERE `ref_no` = $ref")or die(mysql_error());
+		mysqli_query($conn,"UPDATE `stats` SET `Status`=4 WHERE `ref_no` = $ref")or die(mysql_error());
 		// mysql_query("DELETE FROM `cmp_log` WHERE id='$id'")or die(mysql_error());
 		header("Location:message.php");
 

@@ -107,7 +107,7 @@ $aid = $arry1['id'];
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($coi)) {
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                  } else if (!empty($coi)) {
+                  } else if (!empty($at)) {
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else {
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where visibility='$vi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
