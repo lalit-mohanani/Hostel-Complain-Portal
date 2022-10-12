@@ -20,12 +20,15 @@ $ref = $_GET['ref'];
 	if (!$result) {
 			die("Error: Data not found..");
 		}
+  
 ?>
 <?php
-$username=$_SESSION['username'];
-$query1=mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'"); 
-$arry1=mysqli_fetch_array($query1); 
-$aid=$arry1['id'];
+ $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
+ $email=$_SESSION['email'];
+ $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
+ $arry1 = mysqli_fetch_array($query1);
+ $usr = $arry1['name'];
+ $aid = $arry1['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,7 +98,13 @@ $aid=$arry1['id'];
                     $address = $arry['address'];
                     $vi=$arry['visibility'];
                   }
-
+                  
+                    $remark =mysqli_real_escape_string($conn,$_POST['remark']);
+                    if(empty($remark)){
+                    //  $message = "Please fill all details!";
+                   }else{
+                      mysqli_query($conn,"UPDATE `cmp_log` SET remark='$remark' WHERE ref_no='$ref'") or die(mysqli_error($conn));
+                    }
 
                   echo "<tr> <td style='border-radius:10px'> <b> Refference no. </b> </td>";
                   echo "     <td> " . $ref . "</td> </tr>";
@@ -136,10 +145,10 @@ $aid=$arry1['id'];
                 </table>
                 <br><br>
 
-                <div class="input-group mb-3" style="padding-right:10px">
-                  <input type="text" class="form-control" placeholder="Your Remark..." aria-label="Your Remark..." aria-describedby="button-addon2" style="height:70px">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color:#37474f">Send</button>
-                </div>
+                <form class="input-group mb-3" method="post" style="padding-right:10px">
+                  <input type="text" name="remark" class="form-control" placeholder="Your Remark..." aria-label="Your Remark..." aria-describedby="button-addon2" style="height:70px">
+                  <button class="btn btn-outline-secondary" type="submit" id="button-addon2" style="background-color:#37474f">Send</button>
+                </form>
 
 
                 <br><br>

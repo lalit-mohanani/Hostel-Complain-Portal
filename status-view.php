@@ -82,6 +82,7 @@ $ref = $_GET['ref'];
             $coi = $arry['CategoryOfIssue'];
             $room=$arry['address'];
             $vi=$arry['visibility'];
+            $remarks=$arry['remark'];
           }
         
 

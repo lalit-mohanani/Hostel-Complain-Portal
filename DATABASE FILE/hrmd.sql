@@ -35,8 +35,8 @@ CREATE TABLE `cmp_log` (
   `nameOfHostel` VARCHAR(100) NOT NULL ,
 `CategoryOfIssue` VARCHAR(100) NOT NULL ,
 `address` VARCHAR(100) NOT NULL ,
-`availability` VARCHAR(100) NOT NULL 
-
+`availability` VARCHAR(100) NOT NULL, 
+`remark` varchar(300) 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ALTER TABLE `cmp_log` ADD `visibility` VARCHAR(100) NOT NULL AFTER `availability`;
 
@@ -44,12 +44,12 @@ ALTER TABLE `cmp_log` ADD `visibility` VARCHAR(100) NOT NULL AFTER `availability
 -- Dumping data for table `cmp_log`
 --
 
-INSERT INTO `cmp_log` (`id`, `name`,`email`, `phone no`, `complain`, `ref_no`,`nameOfHostel`,`CategoryOfIssue`,`address`,`availability`) VALUES
-(1, 'Demo',  'demo@demo.com', '7854125400', 'Test1 with demo', 1747926,'BHR','Food','B-404','Night (20:00 - 00:00)'),
-(2, 'Liam Johnson', 'liam@gmail.com', '8520001269',  'Dear Sir/Madam, I\'ve recently ordered a new pair of soccer cleats (item #69694582) from your website last week (May 7th). I received the order on May 10th, but unfortunately when I opened it, I saw that the cleats were used. Cleats were dirty enough and there was a small tear in front part where the', 1845767,'MHR','Cleanliness','B-404','Morning (6:00 - 11:59)'),
-(3, 'Erma Anderson', 'erma@gmail.com', '1547800002',  'I am disappointed with your company\'s service because the provided service was much unsatisfactory as . . . . . . . . . . . . . . . .', 689799,'GHR','Electricity','B-404','Afternoon (12:00 - 16:00)'),
-(4, 'Jamie Morgan', 'jamie@gmail.com', '3540002158', 'Dear Sir/Madam, On May 10th I enrolled in a debt repayment plan with company. The purpose of the repayment plan was to help me repay my debts quickly and efficiently. Company\'s fee structure of explanation of fee structure is excessive and not in the best interest of the client. These fees were not ', 2993246,'SHR','Broken Items','B-404','Evening (16:00 - 20:00)'),
-(5, 'George Carlson', 'george@gmail.com', '3450002547', 'Dear Sir/Madam, I bought an item (#ASTRO58_D7) last week, I\'ve also attached a copy of my receipt for your kind information. I\'m writing to you because the service was not carried out with necessary skill, care and diligence. Used materials were not of merchantable quality. I also rang and spoke to ', 1018191,'RHR','Internet Issue','B-404','Night (20:00 - 00:00)');
+INSERT INTO `cmp_log` (`id`, `name`,`email`, `phone no`, `complain`, `ref_no`,`nameOfHostel`,`CategoryOfIssue`,`address`,`availability`,`visibility`) VALUES
+(1, 'Demo',  'demo@demo.com', '7854125400', 'Test1 with demo', 1747926,'BHR','Food','B-404','Night (20:00 - 00:00)','Public'),
+(2, 'Liam Johnson', 'liam@gmail.com', '8520001269',  'Dear Sir/Madam, I\'ve recently ordered a new pair of soccer cleats (item #69694582) from your website last week (May 7th). I received the order on May 10th, but unfortunately when I opened it, I saw that the cleats were used. Cleats were dirty enough and there was a small tear in front part where the', 1845767,'MHR','Cleanliness','B-404','Morning (6:00 - 11:59)','Public'),
+(3, 'Erma Anderson', 'erma@gmail.com', '1547800002',  'I am disappointed with your company\'s service because the provided service was much unsatisfactory as . . . . . . . . . . . . . . . .', 689799,'GHR','Electricity','B-404','Afternoon (12:00 - 16:00)','Public'),
+(4, 'Jamie Morgan', 'jamie@gmail.com', '3540002158', 'Dear Sir/Madam, On May 10th I enrolled in a debt repayment plan with company. The purpose of the repayment plan was to help me repay my debts quickly and efficiently. Company\'s fee structure of explanation of fee structure is excessive and not in the best interest of the client. These fees were not ', 2993246,'SHR','Broken Items','B-404','Evening (16:00 - 20:00)','Public'),
+(5, 'George Carlson', 'george@gmail.com', '3450002547', 'Dear Sir/Madam, I bought an item (#ASTRO58_D7) last week, I\'ve also attached a copy of my receipt for your kind information. I\'m writing to you because the service was not carried out with necessary skill, care and diligence. Used materials were not of merchantable quality. I also rang and spoke to ', 1018191,'RHR','Internet Issue','B-404','Night (20:00 - 00:00)','Public');
 
 
 CREATE TABLE `stats` (

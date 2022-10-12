@@ -91,7 +91,7 @@ $message = "";
                 $error = "Invalid Phone Number";
               }else{
                   $id++;
-                 mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability','$visibility')") or die(mysqli_error($conn));
+                 mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability','$visibility','')") or die(mysqli_error($conn));
                  mysqli_query($conn,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
                  $message = "Your Complain has been Registerd";
                  }
