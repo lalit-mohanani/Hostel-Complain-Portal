@@ -42,7 +42,7 @@ if(!$conn){
        <p>Choose Name, Username And Password !!</p>
       </div>";
     }else{
-        mysqli_query($conn,"UPDATE admin SET name='$name',username='$username' ,up_time='$update' WHERE id='$aid'")or die(mysqli_error($conn));
+        mysqli_query($conn,"UPDATE admin SET name='$name', username='$username' ,up_time='$update' WHERE id='$aid'")or die(mysqli_error($conn));
         $message = "
         <div class='alert succ' id='msg'>
           <div class ='text-right' id='close'>

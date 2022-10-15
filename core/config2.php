@@ -28,7 +28,7 @@ if(!$conn){
  $google_client->setClientSecret('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');
  
  //Set the OAuth 2.0 Redirect URI
- $google_client->setRedirectUri('http://localhost/CodeRelay_22/admin-login.php');
+ $google_client->setRedirectUri('https://hostelmanagementportal-iitbbs.herokuapp.com/admin-login.php');
  // to get the email and profile 
  $google_client->addScope('email');
  

@@ -156,6 +156,10 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='accepted.php'>Accepted</a>
                  -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 -moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
+                        <a class='btn btn-secondary' style="margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
+                 -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
+box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='message.php'>All</a>
                       </div>
                     </div>
                   </div>
