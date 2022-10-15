@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$database = "hrmd";
-$username = "root";
-$password = "";
+$host = "db4free.net"; 
+$database = "hostel_db";
+$username = "webnduser";
+$password = "webndPass";
 
 
 $conn = mysqli_connect($host, $username, $password, $database);
