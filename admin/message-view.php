@@ -2,9 +2,10 @@
 require '../core/session.php';
 // require '../core/config1.php';
 require '../core/admin-key.php';
-$database = "hrmd";
-$username = "root";
-$password = "";
+$host = "db4free.net"; 
+$database = "hostel_db";
+$username = "webnduser";
+$password = "webndPass";
 
 
 $conn = mysqli_connect($host, $username, $password, $database);
