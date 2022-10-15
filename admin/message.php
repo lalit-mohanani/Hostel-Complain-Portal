@@ -81,18 +81,7 @@ $aid = $arry1['id'];
             <div class="col-md-auto">
 
               <div class="col-lg-12" style="padding-left:10px">
-                <?php
-                if (empty($filter) && empty($coi) && empty($at)) {
-                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                } else if (!empty($filter)) {
-                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                } else if (!empty($coi)) {
-                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                } else {
-                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                }
-                $num_rows = mysqli_num_rows($result);
-                ?>
+              
 
                 <br><br><br><br>
                 <br><br>
