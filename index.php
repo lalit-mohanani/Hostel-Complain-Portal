@@ -145,8 +145,8 @@ if(!isset($_SESSION['access_token']))
 
     </div>
     <footer style="padding-top: 30px;">
-      <a href="blog/blog.php" style="padding-bottom:20px; font-size:0.9em;">Email: admin@iitbbs.ac.in </a> &nbsp;&nbsp;|
-      <a href="blog/documentation.php" style="font-size:0.9em;">Phone: 7205898887</a>
+      <a href="blog/blog.php" style="padding-bottom:20px; font-size:0.9em;">Email: secyweb.sg@iitbbs.ac.in </a> &nbsp;&nbsp;|
+      <a href="blog/documentation.php" style="font-size:0.9em;">Phone: 1234567890</a>
     </footer>
     <?php
     include 'footer.php';
