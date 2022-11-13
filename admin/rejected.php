@@ -1,6 +1,6 @@
 <?php
   require '../core/session.php';
-  require '../core/config.php';
+  require '../core/config2.php';
   require '../core/admin-key.php';
 
  ?>

@@ -2,6 +2,7 @@
 require '../core/session.php';
 // require '../core/config1.php';
 require '../core/admin-key.php';
+$host = "localhost";
 $database = "hrmd";
 $username = "root";
 $password = "";
