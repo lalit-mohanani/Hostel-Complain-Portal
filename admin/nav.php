@@ -1,18 +1,7 @@
 <?php
 require '../core/session.php';
 require '../core/admin-key.php';
-$host = "localhost";
-$database = "hrmd";
-$username = "root";
-$password = "";
-
-
-$conn = mysqli_connect($host, $username, $password, $database);
-
-if(!$conn){
-   die('Error in connecting to server or Database');
- }
-
+require '../core/dbconfig.php';
  session_start();
 $email=$_SESSION['email'];
   $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
