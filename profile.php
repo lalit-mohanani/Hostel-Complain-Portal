@@ -47,6 +47,9 @@
               <a class="nav-link active" aria-current="page" style="color: white; font-size: 0.9em;" href="profile.php">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link"  style="color: white; font-size: 0.9em;" href="public.php">Public Complaints</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link"   style="color: white; font-size: 0.9em;" href="message.php" >Add Complaints</a>
             </li>
             <li class="nav-item">
