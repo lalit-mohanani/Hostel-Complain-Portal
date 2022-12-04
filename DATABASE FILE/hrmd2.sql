@@ -1,31 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 13, 2022 at 01:11 PM
--- Server version: 8.0.31
--- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+05:30";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `hostel_db`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
 
 CREATE TABLE `admin` (
   `id` int NOT NULL,
@@ -36,13 +13,13 @@ CREATE TABLE `admin` (
   `up_time` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `admin`
---
 
 INSERT INTO `admin` (`id`, `name`, `username`, `email`, `hostel`, `up_time`) VALUES
 (1, 'Lalit Mohanani', 'Lalit', '21cs02006@iitbbs.ac.in', 'MHR', 'May, Saturday, 05:24 pm'),
-(1, 'hv789', 'Harsha Vardhan', '21ec01010@iitbbs.ac.in', 'GHR', 'MAY 5TH ');
+(2, 'Warden SHR', 'Lalit', 'warden.shr@iitbbs.ac.in', 'SHR', 'May, Saturday, 05:24 pm'),
+(2, 'Warden SHR', 'Lalit', 'warden.shr@iitbbs.ac.in', 'SHR', 'May, Saturday, 05:24 pm'),
+(2, 'Warden SHR', 'Lalit', 'warden.shr@iitbbs.ac.in', 'SHR', 'May, Saturday, 05:24 pm'),
+(3, 'Lalit Mohanani', 'Lalit', '21cs02006@iitbbs.ac.in', 'MHR', 'May, Saturday, 05:24 pm');
 
 -- --------------------------------------------------------
 

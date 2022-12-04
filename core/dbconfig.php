@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$database = "hrmd";
-$username = "root";
-$password = "";
+$host = "webnd-iitbbs.org";
+$database = "u116929436_hmp";
+$username = "u116929436_hmp";
+$password = "Shashwat545@";
 
 
 $conn = mysqli_connect($host, $username, $password, $database);
