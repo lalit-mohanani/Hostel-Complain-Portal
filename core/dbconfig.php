@@ -1,5 +1,5 @@
 <?php
-$host = "webnd-iitbbs.org";
+$host = "localhost";
 $database = "u116929436_hmp";
 $username = "u116929436_hmp";
 $password = "Shashwat545@";
