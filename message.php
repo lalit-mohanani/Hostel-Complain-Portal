@@ -91,9 +91,9 @@ $message = "";
                 $error = "Invalid Phone Number";
               }else{
                   $id++;
-                 mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability','$visibility','')") or die(mysqli_error($conn));
+                 mysqli_query($conn,"INSERT INTO `cmp_log` VALUES ('$id','$name','$email','$phoneno','$complain','$ref','$nameOfHostel','$CategoryOfIssue','$address','$availability','$visibility','',1)") or die(mysqli_error($conn));
                  mysqli_query($conn,"INSERT INTO `stats` VALUES ('$ref',1,NOW())");
-                 $message = "Your Complain has been Registerd";
+                 $message = "Your Complain has been Registered";
                  }
              }
         ?>
@@ -103,7 +103,7 @@ $message = "";
               <div class="panel-body">
                 <h2>Your Reference no : &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $ref;
                                                                 echo "<p><span class='error'>" . $error . "</p></span>";
-                                                                echo "<p><span class='message'>" . $message . "</p></span>";
+                                                                echo "<span style='color:#0ea798; font-size:17px;margin:12px;'>" . $message . "</span>";
                                                                 ?></h2>
               </div>
             </div>

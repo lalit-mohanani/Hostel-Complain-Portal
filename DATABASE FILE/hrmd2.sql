@@ -1,31 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 13, 2022 at 01:11 PM
--- Server version: 8.0.31
--- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+05:30";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `hostel_db`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
 
 CREATE TABLE `admin` (
   `id` int NOT NULL,
@@ -36,29 +13,13 @@ CREATE TABLE `admin` (
   `up_time` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `admin`
---
 
 INSERT INTO `admin` (`id`, `name`, `username`, `email`, `hostel`, `up_time`) VALUES
 (1, 'Lalit Mohanani', 'Lalit', '21cs02006@iitbbs.ac.in', 'MHR', 'May, Saturday, 05:24 pm'),
-(1, 'hv789', 'Harsha Vardhan', '21ec01010@iitbbs.ac.in', 'GHR', 'MAY 5TH '),
-(1, 'hor_RHR', 'Rushikulya Hall of Residence', 'hor.rushikulya@iitbbs.ac.in', 'RHR', 'DEC 13TH '),
-(1, 'hor_BHR', 'Brahmaputra Hall of Residence', 'hor.brahmaputra@iitbbs.ac.in', 'BHR', 'DEC 13TH '),
-(1, 'hor_GHR', 'Ganga Hall of Residence', 'hor.ganga@iitbbs.ac.in', 'GHR', 'DEC 13TH '),
-(1, 'hor_MHR', 'Mahanadi Hall of Residence', 'hor.mahanadi@iitbbs.ac.in', 'MHR', 'DEC 13TH '),
-(1, 'hor_SHR', 'Subarnarekha Hall of Residence', 'hor.subarnarekha@iitbbs.ac.in', 'SHR', 'DEC 13TH '),
-(2, 'Warden_RHR', 'Warden RHR IIT Bhubaneswar', 'warden.rhr@iitbbs.ac.in', 'RHR', 'DEC 13TH '),
-(2, 'Warden_BHR', 'Warden BHR IIT Bhubaneswar', 'warden.bhr@iitbbs.ac.in', 'BHR', 'DEC 13TH '),
-(2, 'Warden_MHR', 'Warden MHR IIT Bhubaneswar', 'warden.mhr@iitbbs.ac.in', 'MHR', 'DEC 13TH '),
-(2, 'Warden_GHR', 'Warden GHR IIT Bhubaneswar', 'warden.ghr@iitbbs.ac.in', 'GHR', 'DEC 13TH '),
-(2, 'Warden_SHR', 'Warden SHR IIT Bhubaneswar', 'warden.shr@iitbbs.ac.in', 'SHR', 'DEC 13TH '),
-(2, 'Asst_Warden_RHR', 'Assistant Warden RHR IIT Bhubaneswar', 'asstwarden.rhr@iitbbs.ac.in', 'RHR', 'DEC 13TH '),
-(2, 'Asst_Warden_BHR', 'Assistant Warden BHR IIT Bhubaneswar', 'asstwarden.bhr@iitbbs.ac.in', 'BHR', 'DEC 13TH '),
-(2, 'Asst_Warden_MHR', 'Assistant Warden MHR IIT Bhubaneswar', 'asstwarden.mhr@iitbbs.ac.in', 'MHR', 'DEC 13TH '),
-(2, 'Asst_Warden_GHR', 'Assistant Warden GHR IIT Bhubaneswar', 'asstwarden.ghr@iitbbs.ac.in', 'GHR', 'DEC 13TH '),
-(2, 'Asst_Warden_SHR', 'Assistant Warden SHR IIT Bhubaneswar', 'asstwarden.shr@iitbbs.ac.in', 'SHR', 'DEC 13TH '),
-(3, 'Chief_Warden', 'Chief Warden IIT Bhubaneswar', 'chiefwarden@iitbbs.ac.in', 'IIT ', 'DEC 13TH ');
+(2, 'Warden SHR', 'Lalit', 'warden.shr@iitbbs.ac.in', 'SHR', 'May, Saturday, 05:24 pm'),
+(2, 'Warden SHR', 'Lalit', 'warden.shr@iitbbs.ac.in', 'SHR', 'May, Saturday, 05:24 pm'),
+(2, 'Warden SHR', 'Lalit', 'warden.shr@iitbbs.ac.in', 'SHR', 'May, Saturday, 05:24 pm'),
+(3, 'Lalit Mohanani', 'Lalit', '21cs02006@iitbbs.ac.in', 'MHR', 'May, Saturday, 05:24 pm');
 
 -- --------------------------------------------------------
 

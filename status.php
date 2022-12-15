@@ -29,7 +29,7 @@ require 'core/redirect.php';
     <!-- <div class="coverusr" style="height: 300px; ;"> -->
     <div class="cover user text-center" style="height:120px;">
       <br>
-      <h2>Complaints</h2>
+      <h2>Complaint</h2>
     </div>
 
     <?php require 'nav-profile.php'; ?>
@@ -44,7 +44,7 @@ require 'core/redirect.php';
             return 'green';
         }
         $email = $_SESSION['email'];
-        $result = mysqli_query($conn, "SELECT * FROM `cmp_log` WHERE email='$email'");
+        $result = mysqli_query($conn, "SELECT * FROM `cmp_log` WHERE (email='$email')");
         $num_rows = mysqli_num_rows($result);
 
 
@@ -76,13 +76,13 @@ require 'core/redirect.php';
                 $s = "Rejected";
               }
               if ($status == 1) {
-                $s = "Pending at Officer 1";
+                $s = "Pending at Hall Office";
               }
               if ($status == 2) {
-                $s = "Pending at Officer 2";
+                $s = "Pending at Warden/Assistant Warden";
               }
               if ($status == 3) {
-                $s = "Pending at Officer 3";
+                $s = "Pending at Chief Warden";
               }
               if ($status == 4) {
                 $s = "Resolved";
@@ -100,12 +100,12 @@ require 'core/redirect.php';
               echo "<small style='color:#37474f'> $data2[time] </small>";
               echo '</div>';
               echo '<div class="d-flex justify-content-between">';
-              echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
-              echo "<p style='color:#37474f' class='mb-1'>$s</p>";
+              echo "<span class='mb-1' style='color:#666;'>Category: $data[CategoryOfIssue]</span>";
+              echo "<span style='color:#666;' class='mb-1'>$s</span>";
               echo '</div>';
               // echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
               echo '<div class="d-flex justify-content-between">';
-              echo "<small style='color:#37474f'>$data[nameOfHostel], $data[address] | Phone No. ";
+              echo "<small style='color:#666'>$data[nameOfHostel], $data[address] | Phone No. ";
               echo $data['phone no'];
               echo " | Availability: $data[availability]</small>";
               // echo '<small style="color:red">Public</small>';
@@ -113,7 +113,7 @@ require 'core/redirect.php';
                 echo "<medium style='color: green '>$data[visibility]</medium>";
               }
               if ($data['visibility'] == 'Public') {
-                echo "<medium style='color: red '>$data[visibility]</medium>";
+                echo "<medium style='color: red '>$data[visibility] <medium style='background-color: red; border-radius: 8px; padding:4px; color: white'>$data[public_cmp_freq]</medium></medium>";
               }
               // echo "<medium style='color: .color($data[visibility]). '>$data[visibility]</medium>";
               echo '</div>';

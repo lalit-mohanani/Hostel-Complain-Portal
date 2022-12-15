@@ -29,10 +29,10 @@ require '../core/admin-key.php';
               <path d='M0 0h24v24H0z' fill='none'/>
           </svg>
       </div>
-       <p>Choose Name, Username And Password !!</p>
+       <p>Choose Name, Username !!</p>
       </div>";
     }else{
-        mysqli_query($conn,"UPDATE admin SET name='$name',username='$username' ,up_time='$update' WHERE id='$aid'")or die(mysqli_error($conn));
+        mysqli_query($conn,"UPDATE admin SET name='$name',username='$username' ,up_time='$update' WHERE email='$email'")or die(mysqli_error($conn));
         $message = "
         <div class='alert succ' id='msg'>
           <div class ='text-right' id='close'>
@@ -88,7 +88,7 @@ require '../core/admin-key.php';
               <div class="col-lg-12">
                 <form class="" action="" method="post" autocomplete="off">
                   <?php
-                  $query1=mysqli_query($conn,"SELECT * FROM admin WHERE id='$aid'");
+                  $query1=mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
             			while( $arry1=mysqli_fetch_array($query1)) {
                   ?>
                     <table>

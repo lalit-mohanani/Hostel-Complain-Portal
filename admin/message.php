@@ -146,6 +146,13 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">
                               <li><a class="dropdown-item" tabindex="-1" href="?at=Night (20:00 - 00:00)">Night (20:00 - 00:00)</a></li>
                             </ul>
                           </li>
+                          <!-- <li class="dropdown-submenu dropdown-submenu-dark">
+                            <a class="test dropdown-item dropdown-toggle" tabindex="-1" href="#">Visibility</a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                              <li><a class="dropdown-item" tabindex="-1" href="?vi=Public">Public</a></li>
+                              <li><a class="dropdown-item" tabindex="-1" href="?vi=Private">Private</a></li>
+                            </ul>
+                          </li> -->
                         </ul>
                         <a class='btn btn-secondary' style="margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
                  -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
@@ -206,7 +213,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                           echo "<medium style='color: green '>$data[visibility]</medium>";
                         }
                         if ($data['visibility'] == 'Public') {
-                          echo "<medium style='color: red '>$data[visibility]</medium>";
+                          echo "<medium style='color: red '>$data[visibility] <medium style='background-color: red; border-radius: 10px; padding:2px; color: white'>$data[public_cmp_freq]</medium></medium>";
                         }
                         echo '</div>';
                         // echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";

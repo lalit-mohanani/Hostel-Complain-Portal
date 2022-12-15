@@ -18,7 +18,7 @@ require('dbconfig.php');
  $google_client->setClientSecret('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');
  
  //Set the OAuth 2.0 Redirect URI
- $google_client->setRedirectUri('http://localhost/CodeRelay_22/index.php');
+ $google_client->setRedirectUri('https://hmp.webnd-iitbbs.org/index.php');
  // to get the email and profile 
  $google_client->addScope('email');
  
