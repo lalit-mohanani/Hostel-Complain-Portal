@@ -3,17 +3,17 @@ require '../core/session.php';
 require '../core/dbconfig.php';
 require '../core/admin-key.php';
 
- session_start();
+session_start();
 
 ?>
- <?php
-  $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
-  $email=$_SESSION['email'];
-  $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
-  $arry1 = mysqli_fetch_array($query1);
-  $usr = $arry1['name'];
-  $aid = $arry1['id'];
-  ?>
+<?php
+$username = $_SESSION['name'] . " " . $_SESSION['user_last_name'];
+$email = $_SESSION['email'];
+$query1 = mysqli_query($conn, "SELECT * FROM admin WHERE email='$email'");
+$arry1 = mysqli_fetch_array($query1);
+$usr = $arry1['name'];
+$aid = $arry1['id'];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +36,7 @@ require '../core/admin-key.php';
 </head>
 
 <body>
- 
+
   <div class="container-fluid overflow-hidden">
     <div class="row vh-100 overflow-auto">
       <?php require 'nav.php'; ?>
@@ -46,17 +46,19 @@ require '../core/admin-key.php';
           <div class="animated fadeIn" style="padding:0px">
 
 
-            <div class="cover main">
-            <?php
-      if (isset($_SESSION['email'])===true) {echo "<h1> Welcome, ".$usr."</h1><a class='button logout' style='background-color: rgb(62, 179, 153);border-radius: 4%; margin-left:55%; margin-bottom:10%; 'href='../logout.php' onClick='javascript:return confirm ('Do you really want to logout ?');'> Logout </a>";}
-       ?>
-       
-       &nbsp;&nbsp;&nbsp;
+            <div class="cover main" style="display: flex;
+    align-items: center;
+    justify-content: center;">
+              <?php
+              if (isset($_SESSION['email']) === true) {
+                echo "<h1> Welcome, " . $usr . "</h1>";
+              }
+              ?>
+
+              &nbsp;&nbsp;&nbsp;
 
 
-      <p class="text-right" style="margin-left:80%" >
-        <?php echo date("l, d M"); ?>
-      </p>
+
 
             </div>
 
@@ -65,14 +67,14 @@ require '../core/admin-key.php';
                 <div class="analysis">
                   <?php
 
-// $users = mysqli_query($conn,"SELECT * FROM `circle` ");
-// $count_users = mysqli_num_rows($users);
+                  // $users = mysqli_query($conn,"SELECT * FROM `circle` ");
+                  // $count_users = mysqli_num_rows($users);
 
-$cmp = mysqli_query($conn,"SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
-$count_cmp = mysqli_num_rows($cmp);
+                  $cmp = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status not in (0,4))");
+                  $count_cmp = mysqli_num_rows($cmp);
 
-$frd = mysqli_query($conn,"SELECT * FROM `stats` where status=($aid+1)");
-$count_frd = mysqli_num_rows($frd);
+                  $frd = mysqli_query($conn, "SELECT * FROM `stats` where status=($aid+1)");
+                  $count_frd = mysqli_num_rows($frd);
                   ?>
 
                   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" style="padding-top:10px;">

@@ -8,7 +8,9 @@ session_start();
 ?>
 <?php $filter = $_GET['fil'];
 $coi = $_GET['coi'];
-$at = $_GET['at']; ?>
+$at = $_GET['at']; 
+$vi = $_GET['vi'];
+?>
 <?php
 $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
 $email=$_SESSION['email'];
@@ -69,19 +71,7 @@ $aid = $arry1['id'];
             <div class="col-md-auto">
 
               <div class="col-lg-12" style="padding-left:10px">
-                <?php
-                if (empty($filter) && empty($coi) && empty($at)) {
-                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                } else if (!empty($filter)) {
-                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                } else if (!empty($coi)) {
-                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                } else {
-                  $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
-                }
-                $num_rows = mysqli_num_rows($result);
-                ?>
-
+                
                 <br><br><br><br>
                 <br><br>
 
@@ -89,7 +79,7 @@ $aid = $arry1['id'];
 
                 <div class="col-lg-12">
                   <?php
-                  if (empty($filter) && empty($coi) && empty($at)) {
+                  if (empty($filter) && empty($coi) && empty($at) && empty($vi)) {
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
                   } else if (!empty($filter)) {
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
@@ -146,13 +136,13 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">
                               <li><a class="dropdown-item" tabindex="-1" href="?at=Night (20:00 - 00:00)">Night (20:00 - 00:00)</a></li>
                             </ul>
                           </li>
-                          <!-- <li class="dropdown-submenu dropdown-submenu-dark">
+                          <li class="dropdown-submenu dropdown-submenu-dark">
                             <a class="test dropdown-item dropdown-toggle" tabindex="-1" href="#">Visibility</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
                               <li><a class="dropdown-item" tabindex="-1" href="?vi=Public">Public</a></li>
                               <li><a class="dropdown-item" tabindex="-1" href="?vi=Private">Private</a></li>
                             </ul>
-                          </li> -->
+                          </li>
                         </ul>
                         <a class='btn btn-secondary' style="margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
                  -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);

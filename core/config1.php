@@ -12,13 +12,14 @@ require('dbconfig.php');
  $google_client = new Google_Client();
  
  //Set the OAuth 2.0 Client ID
- $google_client->setClientId('599638185867-alv797lbomfgo1t1j4khh1j0pu9v5f5r.apps.googleusercontent.com');
+//  $google_client->setClientId('599638185867-alv797lbomfgo1t1j4khh1j0pu9v5f5r.apps.googleusercontent.com');
+ $google_client->setClientId('599638185867-g5p9edu3cjl7chb13lmnsqeen0u9gac6.apps.googleusercontent.com');
  
  //Set the OAuth 2.0 Client Secret key
- $google_client->setClientSecret('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');
+ $google_client->setClientSecret('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');
  
  //Set the OAuth 2.0 Redirect URI
- $google_client->setRedirectUri('https://hmp.webnd-iitbbs.org/index.php');
+ $google_client->setRedirectUri('http://localhost/CodeRelay_22/index.php');
  // to get the email and profile 
  $google_client->addScope('email');
  
