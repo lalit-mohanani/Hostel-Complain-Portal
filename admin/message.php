@@ -16,6 +16,7 @@ $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
 $email=$_SESSION['email'];
 $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
 $arry1 = mysqli_fetch_array($query1);
+$hos = $arry1['hostel'];
 $usr = $arry1['name'];
 $aid = $arry1['id'];
 ?>
@@ -32,7 +33,7 @@ $aid = $arry1['id'];
   <link rel="stylesheet" href="../files/css/custom.css">
   <style>
     li {
-      font-size: 21px;
+      font-size: 18px;
     }
 
     .Admin-data {
@@ -51,6 +52,10 @@ $aid = $arry1['id'];
     .reset-style * {
       all: revert;
     }
+
+    .dropdown-item {
+      font-size: 18px;
+    }
   </style>
 
 </head>
@@ -64,8 +69,10 @@ $aid = $arry1['id'];
         <main class="row overflow-auto" style="height:100%;">
           <div class="animated fadeIn" style="padding:0px">
 
-            <div class="cover main">
-              <h1>Complaints</h1>
+            <div class="cover main" style="display: flex;
+    align-items: center;
+    justify-content: center;">
+              <h1 style="font-size:38px;">Complaints</h1>
             </div>
 
             <div class="col-md-auto">
@@ -80,15 +87,15 @@ $aid = $arry1['id'];
                 <div class="col-lg-12">
                   <?php
                   if (empty($filter) && empty($coi) && empty($at) && empty($vi)) {
-                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid)) ORDER BY `cmp_log`.`id` DESC");
                   } else if (!empty($filter)) {
-                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid)) ORDER BY `cmp_log`.`id` DESC");
                   } else if (!empty($coi)) {
-                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where CategoryOfIssue='$coi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid)) ORDER BY `cmp_log`.`id` DESC");
                   } else if (!empty($at)) {
-                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where availability='$at' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid)) ORDER BY `cmp_log`.`id` DESC");
                   } else {
-                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where visibility='$vi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid))");
+                    $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where visibility='$vi' and cmp_log.ref_no in (select stats.ref_no from `stats` where status in ($aid)) ORDER BY `cmp_log`.`public_cmp_freq` DESC");
                   }
                   $num_rows = mysqli_num_rows($result);
                   ?>
@@ -99,7 +106,7 @@ $aid = $arry1['id'];
                   <div class="row" style="margin-top:40px">
                     <div class="col-md-4 col-lg-2">
                       <div class="btn-group dropend">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#4db6ac;color:#FFFFFF ;padding-right: 12px;padding-left: 12px; padding-top: 8px;padding-bottom: 8px; font-weight: bold;
                  -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 -moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">
@@ -144,14 +151,15 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">
                             </ul>
                           </li>
                         </ul>
-                        <a class='btn btn-secondary' style="margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
-                 -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
--moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='accepted.php'>Accepted</a>
-                        <a class='btn btn-secondary' style="margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
-                 -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
--moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
+                        <!--Commented till bug is cleared-->
+<!--                        <a class='btn btn-secondary' style="display:flex;align-items: center;margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 12px;padding-left: 12px; padding-top: 8px;padding-bottom: 8px; font-weight: bold;-->
+<!--                 -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);-->
+<!---moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);-->
+<!--box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='accepted.php?fil=<?php echo $hos?>'>Accepted</a>-->
+<!--                        <a class='btn btn-secondary' style="display:flex;align-items: center;margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 12px;padding-left: 12px; padding-top: 8px;padding-bottom: 8px; font-weight: bold;-->
+<!--                 -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);-->
+<!---moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);-->
+<!--box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php?fil=<?php echo $hos?>'>Rejected</a>-->
                       </div>
                     </div>
                   </div>
@@ -182,28 +190,25 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                         echo '</h5>';
                         $result2 = mysqli_query($conn, "SELECT * FROM `stats` WHERE ref_no=$data[ref_no]");
                         $data2 = mysqli_fetch_array($result2);
-                        echo "<small> $data2[time] </small>";
+                        $t = $data2['time'];
+                        echo "<small style='font-size:14px;'>";
+                        echo substr($t, 0, 9) ;
+                        echo "</small>";
                         echo '</div>';
                         echo '<div class="d-flex justify-content-between">';
-                        echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
-
-                        // echo "<a class='nav-link' href ='m_accept.php?ref=$data[ref_no]' onClick=\"javascript:return confirm ('Confirm Acceptance');\">";
-                        // echo '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                        // <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                        // </svg>';
-                        // echo '</a>';
+                        echo "<span class='mb-1' style='color:#666;font-size:16px;'>Category: $data[CategoryOfIssue]</span>";
                         echo '</div>';
                         echo '<div class="d-flex justify-content-between">';
-                        echo "<small style='color:#37474f'>$data[nameOfHostel], $data[address] | Phone No. ";
+                        echo "<span style='color:#666;font-size:14px;'>$data[nameOfHostel], $data[address] | Phone No. ";
                         echo $data['phone no'];
-                        echo " | Availability: $data[availability]</small>";
+                        echo " | Availability: $data[availability]</span>";
                         // echo '<medium style="color:red">Public</medium>';
                         // echo "<medium style='color:green'>$data[visibility]</medium>";
                         if ($data['visibility'] == 'Private') {
-                          echo "<medium style='color: green '>$data[visibility]</medium>";
+                          echo "<span style='color: green; font-size:16px '>$data[visibility]</span>";
                         }
                         if ($data['visibility'] == 'Public') {
-                          echo "<medium style='color: red '>$data[visibility] <medium style='background-color: red; border-radius: 10px; padding:2px; color: white'>$data[public_cmp_freq]</medium></medium>";
+                          echo "<span style='color: red;font-size:16px'>$data[visibility] <medium style='background-color: red; border-radius: 8px; padding:4px; color: white'>$data[public_cmp_freq]</medium></span>";
                         }
                         echo '</div>';
                         // echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";

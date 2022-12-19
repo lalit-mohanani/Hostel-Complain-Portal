@@ -54,7 +54,7 @@ if(isset($_GET["code"]))
 
 if(!isset($_SESSION['access_token']))
 {
- $login_button = '<a class="btn btn-primary  hovering" style=" width:30%;color:white; background-color: #4db6ac ;border:0px; margin-top:60px;border-radius:4px; font: size 0.9em;em;" href="'.$google_client->createAuthUrl().'"><i style="margin-right: 0.5em; "class="fa-brands fa-google"></i><b style="font-size:0.9em ;"> Login</b></a>';
+ $login_button = '<a class="btn btn-primary hovering" style="width:30%;color:white; background-color: #4db6ac ;border:0px; margin-top:60px;border-radius:4px; font: size 0.9em;em;" href="'.$google_client->createAuthUrl().'"><i style="margin-right: 0.5em; "class="fa-brands fa-google"></i><b style="font-size:0.9em ;"> Login</b></a>';
 }
 
  ?>
@@ -79,6 +79,11 @@ if(!isset($_SESSION['access_token']))
     <!-- <link rel="stylesheet" href="files/css/bootstrap.css"> -->
     <link rel="stylesheet" href="files/css/custom.css">
     <script src="https://kit.fontawesome.com/036cabc19a.js" crossorigin="anonymous"></script>
+    <style>
+      .login:hover{
+        background-color: #308875;
+      }
+    </style>
   </head>
   <body >
 

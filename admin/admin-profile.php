@@ -51,7 +51,7 @@ $aid = $arry1['id'];
     justify-content: center;">
               <?php
               if (isset($_SESSION['email']) === true) {
-                echo "<h1> Welcome, " . $usr . "</h1>";
+                echo "<h1 style='font-size:36px;'> Welcome, " . $usr . "</h1>";
               }
               ?>
 
@@ -77,20 +77,20 @@ $aid = $arry1['id'];
                   $count_frd = mysqli_num_rows($frd);
                   ?>
 
-                  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" style="padding-top:10px;">
+                  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" style="margin-top:16px;">
                     <div class="col">
                       <div class="card mb-4 rounded-3 shadow-sm">
                         <div class="card-header py-3" style="background-color:#3498db">
                           <h4 class="my-0 fw-normal">Total Users</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="font-size:10px;">
                           <h1 class="card-title pricing-card-title"><?php echo "1000"; ?></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                            <li>data_1</li>
-                            <li>data_2</li>
-                            <li>data_3</li>
-                            <li>data_4</li>
-                          </ul>
+                          <!--<ul class="list-unstyled mt-3 mb-4">-->
+                          <!--  <li>data_1</li>-->
+                          <!--  <li>data_2</li>-->
+                          <!--  <li>data_3</li>-->
+                          <!--  <li>data_4</li>-->
+                          <!--</ul>-->
                           <!-- <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button> -->
                         </div>
                       </div>
@@ -102,12 +102,12 @@ $aid = $arry1['id'];
                         </div>
                         <div class="card-body">
                           <h1 class="card-title pricing-card-title"><?php echo $count_cmp; ?></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                            <li>data_1</li>
-                            <li>data_2</li>
-                            <li>data_3</li>
-                            <li>data_4</li>
-                          </ul>
+                          <!--<ul class="list-unstyled mt-3 mb-4">-->
+                          <!--  <li>data_1</li>-->
+                          <!--  <li>data_2</li>-->
+                          <!--  <li>data_3</li>-->
+                          <!--  <li>data_4</li>-->
+                          <!--</ul>-->
                           <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button> -->
                         </div>
                       </div>
@@ -125,12 +125,12 @@ $aid = $arry1['id'];
                             }
                             ?>
                           </h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                            <li>data_1</li>
-                            <li>data_2</li>
-                            <li>data_3</li>
-                            <li>data_4</li>
-                          </ul>
+                          <!--<ul class="list-unstyled mt-3 mb-4">-->
+                          <!--  <li>data_1</li>-->
+                          <!--  <li>data_2</li>-->
+                          <!--  <li>data_3</li>-->
+                          <!--  <li>data_4</li>-->
+                          <!--</ul>-->
                           <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button> -->
                         </div>
                       </div>

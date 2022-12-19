@@ -3,22 +3,22 @@ require '../core/session.php';
 require '../core/dbconfig.php';
 require '../core/admin-key.php';
 
- session_start();
+session_start();
 $ref = $_GET['ref'];
-	$result = mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
-	$arry = mysqli_fetch_array($result);
-	if (!$result) {
-			die("Error: Data not found..");
-		}
-  
+$result = mysqli_query($conn, "SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
+$arry = mysqli_fetch_array($result);
+if (!$result) {
+  die("Error: Data not found..");
+}
+
 ?>
 <?php
- $username=$_SESSION['name']." ".$_SESSION['user_last_name'];
- $email=$_SESSION['email'];
- $query1 = mysqli_query($conn,"SELECT * FROM admin WHERE email='$email'");
- $arry1 = mysqli_fetch_array($query1);
- $usr = $arry1['name'];
- $aid = $arry1['id'];
+$username = $_SESSION['name'] . " " . $_SESSION['user_last_name'];
+$email = $_SESSION['email'];
+$query1 = mysqli_query($conn, "SELECT * FROM admin WHERE email='$email'");
+$arry1 = mysqli_fetch_array($query1);
+$usr = $arry1['name'];
+$aid = $arry1['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,6 +36,45 @@ $ref = $_GET['ref'];
     li {
       font-size: 21px;
     }
+    
+    .button{
+  position: relative;
+  top: 20px;
+  padding: 12px 16px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.26);
+  font-size: 18px;
+     }
+     
+     .logou{
+  /* border: 1px solid #fff; */
+    background:#e23c39;
+}
+.logou:hover{
+  background: #cf1815;
+}
+.accept{
+  /* border: 1px solid #fff; */
+    background:#3eb399;
+}
+.accept:hover{
+  background: #308875;
+}
+.escalate{
+  /* border: 1px solid #fff; */
+    background:#116ba7;
+}
+.escalate:hover{
+  background: #106299;
+}
+
+    .ARE_btns {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      margin-top: 260px;
+    }
   </style>
 </head>
 
@@ -48,85 +87,88 @@ $ref = $_GET['ref'];
         <main class="row overflow-auto" style="height:100%;">
           <div class="animated fadeIn" style="padding:0px">
 
-            <div class="cover main">
+            <div class="cover main" style="display: flex;
+    align-items: center;
+    justify-content: center;">
               <h1>Complaint</h1>
             </div style="margin-bottom :300px ;">
             <div class="col-md-auto">
               <div class="col-lg-12 " style="padding-left:15px">
+              <div class="ARE_btns">
                 <?php
-                echo "<a class='button logout' style='background-color: rgb(62, 179, 153);border-radius: 5px;margin-right: 8px;' href ='m_accept.php?ref=$ref' onClick=\"javascript:return confirm ('Confirm Acceptance');\">Accept</a>";
+                echo "<a class='button accept' style='margin-right: 8px; color: white;' href ='m_accept.php?ref=$ref' onClick=\"javascript:return confirm ('Confirm Acceptance');\">Accept</a>";
                 ?>
-
                 <?php
-                echo "<a class='button logout' style='background-color: rgb(62, 179, 153);border-radius: 5px;margin-right: 8px;' href ='m_reject.php?ref=$ref' onClick=\"javascript:return confirm ('Confirm Rejection');\">Reject</a>";
+                echo "<a class='button logou' style='margin-right: 8px;color: white;' href ='m_reject.php?ref=$ref' onClick=\"javascript:return confirm ('Confirm Rejection');\">Reject</a>";
                 ?>
-
+               
                 <?php
                 if ($aid != 3) {
-                  echo "<a class='button logout' style='background-color: #116ba7;border-radius: 5px;' href ='m_escalate.php?ref=$ref' onClick=\"javascript:return confirm ('Do you really want to escalate ?');\">Escalate</a>";
+                  echo "<a class='button escalate' style='color: white' href ='m_escalate.php?ref=$ref' onClick=\"javascript:return confirm ('Do you really want to escalate ?');\">Escalate</a>";
                 }
                 ?>
+              </div>
 
                 <br><br><br><br>
                 <table>
                   <?php
-                  $query1=mysqli_query($conn,"SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
-                  while( $arry=mysqli_fetch_array($query1) ) {
-      
+                  $query1 = mysqli_query($conn, "SELECT * FROM `cmp_log` WHERE ref_no='$ref'");
+                  while ($arry = mysqli_fetch_array($query1)) {
+
                     $id = $arry['id'];
-                    
+
                     $name = $arry['name'];
-                   
+
                     $email = $arry['email'];
                     $phone_no = $arry['phone no'];
-                    
+
                     $complain = $arry['complain'];
                     $category = $arry['CategoryOfIssue'];
                     $noh = $arry['nameOfHostel'];
                     $avai = $arry['availability'];
                     $ref = $arry['ref_no'];
                     $address = $arry['address'];
-                    $vi=$arry['visibility'];
+                    $vi = $arry['visibility'];
                   }
-                  
-                    $remark =mysqli_real_escape_string($conn,$_POST['remark']);
-                    if(empty($remark)){
-                    //  $message = "Please fill all details!";
-                   }else{
-                      mysqli_query($conn,"UPDATE `cmp_log` SET remark='$remark' WHERE ref_no='$ref'") or die(mysqli_error($conn));
-                    }
 
-                  echo "<tr> <td style='border-radius:10px'> <b> Refference no. </b> </td>";
+                  $remark = mysqli_real_escape_string($conn, $_POST['remark']);
+                  if (empty($remark)) {
+                    //  $message = "Please fill all details!";
+                  } else {
+                    mysqli_query($conn, "UPDATE `cmp_log` SET remark='$remark' WHERE ref_no='$ref'") or die(mysqli_error($conn));
+                  }
+
+                  echo "<tr> <td> <span style='color:black'> Refference no. </span> </td>";
                   echo "     <td> " . $ref . "</td> </tr>";
 
-                  echo "<tr> <td> <b> Name of Hostel </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Name of Hostel </span> </td>";
                   echo "     <td> " . $noh . "</td> </tr>";
 
-                  echo "<tr> <td> <b> Category of Issue </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Category of Issue </span> </td>";
                   echo "     <td> " . $category . "</td> </tr>";
 
-                  echo "<tr> <td> <b> Name </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Name </span> </td>";
                   echo "     <td> " . $name . "</td> </tr>";
 
-                  echo "<tr> <td> <b> Room Number </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Room Number </span> </td>";
                   echo "     <td> " . $address . "</td> </tr>";
 
-                  echo "<tr> <td> <b> Contact Number* </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Contact Number* </span> </td>";
                   echo "     <td> " . $phone_no . "</td> </tr>";
 
-                  echo "<tr> <td> <b> Email ID </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Email ID </span> </td>";
                   echo "     <td> " . $email . "</td> </tr>";
 
                   //  echo "<tr> <td> <b> Roll Number </b> </td>";
                   //  echo "     <td> ".$rollno."</td> </tr>";
 
-                  echo "<tr> <td> <b> Availability Time </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Availability Time </span> </td>";
                   echo "     <td> " . $avai . "</td> </tr>";
 
-                  echo "<tr> <td> <b> Visibility </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Visibility </span> </td>";
                   echo "     <td> " . $vi . "</td> </tr>";
 
-                  echo "<tr> <td> <b> Complain </b> </td>";
+                  echo "<tr> <td> <span style='color:black'> Complain </span> </td>";
                   echo "     <td> " . $complain . "</td> </tr>";
 
                   //  echo "<tr> <td> <b> Remarks </b> </td>";

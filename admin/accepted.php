@@ -8,7 +8,9 @@ session_start();
 ?>
 <?php $filter = $_GET['fil'];
 $coi = $_GET['coi'];
-$at = $_GET['at']; ?>
+$at = $_GET['at']; 
+$vi = $_GET['vi'];
+?>
 <?php
 $username = $_SESSION['name'] . " " . $_SESSION['user_last_name'];
 $email = $_SESSION['email'];
@@ -49,6 +51,10 @@ $aid = $arry1['id'];
     .reset-style * {
       all: revert;
     }
+
+    .dropdown-item {
+      font-size: 18px;
+    }
   </style>
 
 </head>
@@ -62,7 +68,9 @@ $aid = $arry1['id'];
         <main class="row overflow-auto" style="height:100%;">
           <div class="animated fadeIn" style="padding:0px">
 
-            <div class="cover main">
+            <div class="cover main" style="display: flex;
+    align-items: center;
+    justify-content: center;">
               <h1>Accepted Complaints</h1>
             </div>
 
@@ -78,7 +86,7 @@ $aid = $arry1['id'];
 
                 <div class="col-lg-12">
                   <?php
-                  if (empty($filter) && empty($coi) && empty($at)) {
+                  if (empty($filter) && empty($coi) && empty($at) && empty($vi)) {
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where cmp_log.ref_no in (select stats.ref_no from `stats` where status=4 in ($aid))");
                   } else if (!empty($filter)) {
                     $result = mysqli_query($conn, "SELECT * FROM `cmp_log` where nameOfHostel='$filter' AND cmp_log.ref_no in (select stats.ref_no from `stats` where status=4 in ($aid))");
@@ -98,7 +106,7 @@ $aid = $arry1['id'];
                   <div class="row" style="margin-top:40px">
                     <div class="col-md-4 col-lg-2">
                       <div class="btn-group dropend">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#4db6ac;color:#FFFFFF ;padding-right: 12px;padding-left: 12px; padding-top: 8px;padding-bottom: 8px; font-weight: bold;
                  -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 -moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">
@@ -135,22 +143,22 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);">
                               <li><a class="dropdown-item" tabindex="-1" href="?at=Night (20:00 - 00:00)">Night (20:00 - 00:00)</a></li>
                             </ul>
                           </li>
-                          <!-- <li class="dropdown-submenu dropdown-submenu-dark">
+                          <li class="dropdown-submenu dropdown-submenu-dark">
                             <a class="test dropdown-item dropdown-toggle" tabindex="-1" href="#">Visibility</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
                               <li><a class="dropdown-item" tabindex="-1" href="?vi=Public">Public</a></li>
                               <li><a class="dropdown-item" tabindex="-1" href="?vi=Private">Private</a></li>
                             </ul>
-                          </li> -->
+                          </li>
                         </ul>
                         <!-- <a class='btn btn-secondary' style="margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
                  -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 -moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='accepted.php'>Accepted</a> -->
-                        <a class='btn btn-secondary' style="margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 30px;padding-left: 30px; padding-top: 10px;padding-bottom: 10px; font-size: larger; font-weight: bold;
+                        <a class='btn btn-secondary' style="display:flex;align-items: center;margin-left:10px;border-radius:0.375rem;background-color:#4db6ac;color:#FFFFFF ;padding-right: 12px;padding-left: 12px; padding-top: 8px;padding-bottom: 8px; font-weight: bold;
                  -webkit-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
 -moz-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);
-box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
+box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php?fil=<?php echo $hos?>'>Rejected</a>
                       </div>
                     </div>
                   </div>
@@ -181,10 +189,13 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                         echo '</h5>';
                         $result2 = mysqli_query($conn, "SELECT * FROM `stats` WHERE ref_no=$data[ref_no]");
                         $data2 = mysqli_fetch_array($result2);
-                        echo "<small> $data2[time] </small>";
+                        $t = $data2['time'];
+                        echo "<small>";
+                        echo substr($t, 0, 9) ;
+                        echo "</small>";
                         echo '</div>';
                         echo '<div class="d-flex justify-content-between">';
-                        echo "<p class='mb-1'>Category: $data[CategoryOfIssue]</p>";
+                        echo "<span class='mb-1' style='color:#666;'>Category: $data[CategoryOfIssue]</span>";
 
                         // echo "<a class='nav-link' href ='m_accept.php?ref=$data[ref_no]' onClick=\"javascript:return confirm ('Confirm Acceptance');\">";
                         // echo '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
@@ -202,7 +213,7 @@ box-shadow: 3px 3px 9px 0px rgba(0,0,0,0.25);" href='rejected.php'>Rejected</a>
                           echo "<medium style='color: green '>$data[visibility]</medium>";
                         }
                         if ($data['visibility'] == 'Public') {
-                          echo "<medium style='color: red '>$data[visibility] <medium style='background-color: red; border-radius: 10px; padding:2px; color: white'>$data[public_cmp_freq]</medium></medium>";
+                          echo "<medium style='color: red '>$data[visibility] <medium style='background-color: red; border-radius: 8px; padding:4px; color: white'>$data[public_cmp_freq]</medium></medium>";
                         }
                         echo '</div>';
                         // echo "<a class='button view' href='message-view.php?ref=$data[ref_no]'>View</a>";

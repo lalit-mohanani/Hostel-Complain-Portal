@@ -81,7 +81,9 @@ require '../core/admin-key.php';
       <div class="col d-flex flex-column h-sm-100">
         <main class="row overflow-auto" style="height:100%;">
           <div class="animated fadeIn" style="padding:0px">
-            <div class="cover main">
+            <div class="cover main" style="display: flex;
+    align-items: center;
+    justify-content: center;">
               <h1>General Settings</h1>
             </div>
             <div class="col-md-auto">
@@ -102,12 +104,14 @@ require '../core/admin-key.php';
                         <td> <?php echo $arry1['up_time']; ?></td>
                       </tr>
                       <tr>
-                        <td>Name</td>
-                        <td><input type="text" name="name" placeholder="<?php echo $arry1['name']; ?>"></td>
+                        <td class="text-left">Name</td>
+                        <td><input type="text" class="form-control shadow-none" id="validationDefault01" name="name" placeholder="<?php echo $arry1['name']; ?>" aria-label="Username" aria-describedby="addon-wrapping" style="width:100%" required></td>
+                        <!-- <td><input type = "text" name = "address" style="text-align:center;">  </td> -->
                       </tr>
                       <tr>
-                        <td>Username</td>
-                        <td><input type="text" name="username" placeholder="<?php echo $arry1['username']; ?>"></td>
+                        <td class="text-left">Username</td>
+                        <td><input type="text" class="form-control shadow-none" id="validationDefault01" name="username" placeholder="<?php echo $arry1['username']; ?>" aria-label="Username" aria-describedby="addon-wrapping" style="width:100%" required></td>
+                        <!-- <td><input type = "text" name = "address" style="text-align:center;">  </td> -->
                       </tr>
                       <tr>
                         <!-- <td>Password</td>
@@ -115,7 +119,7 @@ require '../core/admin-key.php';
                       </tr>
                       <tr>
                         <td></td>
-                        <td><button name="update" type="submit" class="log">Save</button></td>
+                        <td><button style="width:100px;border-radius:5px;" type="submit" class="log">Save</button></td>
                       </tr>
                 </form>
               <?php

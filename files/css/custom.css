@@ -20,7 +20,7 @@ button{
   outline: 0px;
 }
 .col-lg-12 p{
-  font-size: 17px!important;
+  font-size: 17px;
 }
 
 .cover{
@@ -216,18 +216,31 @@ nav.admin ul li a svg{
 .button{
   position: relative;
   top: 20px;
-  padding: 15px 40px;
-  color: #fff!important;
-  border-radius: 2px;
+  padding: 12px 16px;
+  color: #fff;
+  border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,.26);
-  font-size: 17px;
+  font-size: 18px;
 }
 .logout{
-  border: 1px solid #fff!important;
     background:#e23c39;
 }
 .logout:hover{
   background: #cf1815;
+}
+.accept{
+  /* border: 1px solid #fff; */
+    background:#3eb399;
+}
+.accept:hover{
+  background: #308875;
+}
+.escalate{
+  /* border: 1px solid #fff; */
+    background:#116ba7;
+}
+.escalate:hover{
+  background: #106299;
 }
 .bor{
   padding: 15px 42px;
